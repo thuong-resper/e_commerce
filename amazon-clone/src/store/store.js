@@ -7,7 +7,11 @@ import {
   productDetailsReducer,
   productListReducer,
 } from "./reducers/productReducers";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  userDetailsReducer,
+  userLoginReducer,
+  userRegisterReducer,
+} from "./reducers/userReducers";
 
 // const composeEnhancers =
 //   process.env.NODE_ENV === "development"
@@ -22,6 +26,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

@@ -88,6 +88,11 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+body,
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,

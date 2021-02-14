@@ -1,0 +1,25 @@
+.kind-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-right: 1px solid var(--background);
+  position: relative;
+}
+.img-kind {
+  margin-right: 5px;
+  width: 60px;
+}
+.news-Fwatch {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  color: #fff !important;
+  background-color: #f00;
+  font-size: 12px !important;
+  border-radius: 4px;
+  padding: 0 3px;
+  padding-top: 2px;
+  line-height: 1.3;
+}

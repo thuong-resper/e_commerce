@@ -103,18 +103,20 @@ const Header = (props) => {
         </Typography>
       </Link>
       {userInfo ? (
-        <React.Fragment>
+        <div>
           <Link to="/profile" className={classes.link}>
             <Typography variant="body2" className={classes.spacing}>
               Profile
             </Typography>
           </Link>
-          <Link onClick={logoutHandler} className={classes.link}>
-            <Typography variant="body2" className={classes.spacing}>
-              Logout
-            </Typography>
-          </Link>
-        </React.Fragment>
+          <Typography
+            variant="body2"
+            className={classes.spacing}
+            onClick={logoutHandler}
+          >
+            Logout
+          </Typography>
+        </div>
       ) : null}
     </Menu>
   );

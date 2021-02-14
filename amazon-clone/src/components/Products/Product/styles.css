@@ -1,62 +1,46 @@
-/* .rec-carousel {
-  position: relative;
-  height: 400px !important;
-} */
-
-.rec-carousel button:hover {
-  background-color: var(--primary) !important;
-}
-
-@media only screen and (max-width: 600px) {
-  .rec-carousel button {
-    display: none;
-  }
-}
-
 .product-item {
   width: 100%;
-  margin: 5px 0;
-  height: 100%;
 }
 
 .one-item {
   width: 100%;
   background-color: #fff;
+  list-style: none;
   height: 100%;
-  max-width: 240px;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 768px) {
   .product-item {
-    width: 33%;
+    width: calc(100% / 3);
   }
 }
 
 @media only screen and (max-width: 600px) {
   .product-item {
-    width: 45%;
+    width: calc(100% / 2);
   }
 }
 
 @media only screen and (min-width: 769px) {
   .product-item {
-    width: 240px;
+    width: calc(100% / 4);
   }
 }
 
-.rec-slider,
-.rec-swipable,
-.rec-item-wrapper {
-  height: 100%;
+@media only screen and (min-width: 960px) {
+  .product-item {
+    width: calc(100% / 5);
+  }
 }
 
 .item {
   height: 100%;
-  /* float: left; */
+  float: left;
   position: relative;
   overflow: hidden;
-  border: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-right: 0.5px solid #eee;
+  border-top: 0.5px solid #eee;
+  border-bottom: 0.5px solid #eee;
   transition: 0.4;
 }
 
@@ -84,25 +68,6 @@
   height: 23px;
 }
 
-.rec-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
-.rec-arrow-left {
-  left: 0;
-}
-.rec-arrow-right {
-  right: 0;
-}
-
-.rec-arrow-left:focus,
-.rec-arrow-right:focus {
-  background-color: var(--primary) !important;
-}
-
 .item-img {
   width: 180px;
   height: 180px;
@@ -125,6 +90,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  max-width: fit-content;
 }
 
 .pros {
@@ -180,23 +146,4 @@
   display: inline-block;
   vertical-align: middle;
   font-style: normal;
-}
-
-/* Material UI */
-.app-bar {
-  background-color: var(--background);
-  box-shadow: none;
-  color: var(--primary);
-}
-
-.tab {
-  padding: 0;
-}
-
-.tab-panel > div {
-  padding: 20px 0;
-}
-
-.Mui-selected {
-  font-weight: 600;
 }

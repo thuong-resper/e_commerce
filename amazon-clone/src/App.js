@@ -6,11 +6,9 @@ import SimpleBackdrop from "./components/Backdrop/Backdrop";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import "./global.css";
+import HomePage from "./pages/HomePage/HomePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { useStyles } from "./styles";
-
-const HomePage = React.lazy(() => {
-  return import("./pages/HomePage/HomePage");
-});
 
 const ProductPage = React.lazy(() => {
   return import("./pages/ProductPage/ProductPage");
@@ -33,22 +31,23 @@ const App = () => {
 
   return (
     <Router>
-      <Suspense fallback={<SimpleBackdrop />}>
-        <Header />
-        <div className={classes.root}>
-          <CssBaseline />
-          <Container component="main" className="main-view">
-            <Switch>
-              <Route path="/" component={HomePage} exact />
+      <Header />
+      <div className={classes.root}>
+        <CssBaseline />
+        <Container component="main" className="main-view">
+          <Switch>
+            <Route path="/" component={HomePage} exact />
+            <Suspense fallback={<SimpleBackdrop />}>
               <Route path="/product/:id" component={ProductPage} />
               <Route path="/cart/:id?" component={CartPage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={SignupPage} />
-            </Switch>
-          </Container>
-        </div>
-        <Footer />
-      </Suspense>
+              <Route path="/profile" component={ProfilePage} />
+            </Suspense>
+          </Switch>
+        </Container>
+      </div>
+      <Footer />
     </Router>
   );
 };

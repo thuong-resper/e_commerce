@@ -12,7 +12,7 @@ const Product = (props) => {
   return (
     <Grid item className="product-item">
       {loading ? (
-        <div className={classes.skeleton}>
+        <div>
           <Skeleton animation="pulse" variant="rect" height={200} />
           <Skeleton variant="text" animation="pulse" height={30} />
           <Skeleton
@@ -23,7 +23,7 @@ const Product = (props) => {
           />
         </div>
       ) : (
-        <div className="one-item">
+        <li className="one-item">
           <div className="item">
             <Link to={`/product/${product._id}`} className="item-link">
               <div className="height-label"></div>
@@ -52,7 +52,7 @@ const Product = (props) => {
               </div>
             </Link>
           </div>
-        </div>
+        </li>
       )}
     </Grid>
   );

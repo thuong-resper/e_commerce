@@ -1,73 +1,46 @@
-.cukhLH {
-  margin: 0 !important;
-}
-
-.carousel-layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.carousel-product {
+.tab,
+.tab:hover {
   position: relative;
-}
-.carousel-product > div {
-  height: 400px !important;
-}
-
-.carousel-banner {
-  position: relative;
-  height: 400px;
-  /* height: 100% !important; */
+  padding: 0;
+  background-color: #fff !important;
 }
 
-@media only screen and (max-width: 600px) {
-  .carousel-banner {
-    height: 110px;
-  }
-  .carousel-banner .rec-pagination {
-    bottom: 5px !important;
-  }
-  .carousel-banner .rec-pagination .rec-dot {
-    height: 3px;
-    width: 3px;
-  }
+/* Material UI */
+.app-bar {
+  background-color: #fff !important;
+  box-shadow: none;
+  color: var(--defaultTextColor) !important;
+  width: fit-content;
+  box-shadow: none !important;
 }
 
-@media only screen and (min-width: 768px) {
-  .carousel-banner {
-    height: 200px;
-  }
-  .carousel-banner .rec-pagination {
-    bottom: 5px !important;
-  }
+.tab-panel > div {
+  padding: 20px 0 0 0;
 }
 
-@media only screen and (min-width: 1024px) {
-  .carousel-banner {
-    height: 300px;
-  }
-  .carousel-banner .rec-pagination {
-    bottom: 20px !important;
-  }
+.Mui-selected {
+  font-weight: 600;
 }
 
-@media only screen and (min-width: 1200px) {
-  .carousel-banner {
-    height: 370px;
-  }
-  .carousel-banner .rec-pagination {
-    bottom: 20px !important;
-  }
+.headingtop {
+  height: 89px;
+  text-indent: -9999px;
+  margin-top: 20px;
+  padding: 0;
+  background: transparent url("./title-bestseller-min.png") no-repeat center top;
+}
+.seemore:after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid var(--primary);
+  border-right: 1px solid var(--primary);
+  transform: rotate(45deg);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1px 5px;
 }
 
-.carousel-banner .rec-carousel {
-  height: 100% !important;
-}
-
-.carousel-banner .rec-pagination {
-  position: absolute;
-  bottom: 20px;
+.top-10 {
+  margin-top: 10px !important;
 }
