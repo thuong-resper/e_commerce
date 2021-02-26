@@ -419,402 +419,402 @@ const products = [
       },
     ],
   },
-  {
-    name: "Lentils - Green, Dry",
-    image: "/images/phone.jpg",
-    description: "Division of Right Upper Arm Muscle, Perc Endo Approach",
-    brand: "Coppertone KIDS",
-    category: "PHP",
-    price: "962.71",
-    sale: false,
-    priceCompare: "980.23",
-    countInStock: 11,
-    rating: 2.1,
-    numReviews: 184,
-    promotions: [
-      {
-        name: "Repair L Low Extrem Bursa/Lig, Perc Approach",
-        detail: "Vivax malaria [benign tertian]",
-      },
-      {
-        name: "Dressing of Left Lower Leg using Bandage",
-        detail:
-          "Accidents involving powered vehicles used solely within the buildings and premises of industrial or commercial establishment",
-      },
-      {
-        name: "Introduction of Low dose IL-2 into Periph Art, Perc Approach",
-        detail:
-          "Closed fracture of unspecified vertebral column with spinal cord injury",
-      },
-      {
-        name: "Replacement of R Vocal Cord with Synth Sub, Open Approach",
-        detail: "Cyclosporiasis",
-      },
-    ],
-    colors: [
-      {
-        name: "Khaki",
-        value: "#4f04b1",
-      },
-      {
-        name: "Puce",
-        value: "#183d94",
-      },
-      {
-        name: "Puce",
-        value: "#49288e",
-      },
-    ],
-  },
-  {
-    name: "Bread - Raisin Walnut Oval",
-    image: "/images/playstation.jpg",
-    description: "Repair Left Hypogastric Vein, Open Approach",
-    brand: "Pure Transformation Sheer Medium",
-    category: "PHP",
-    price: "104.00",
-    sale: true,
-    priceCompare: "240.86",
-    countInStock: 12,
-    rating: 3.1,
-    numReviews: 870,
-    promotions: [
-      {
-        name: "Removal of Radioactive Element from Upper Jaw, Open Approach",
-        detail: "Toxic effect of cadmium and its compounds",
-      },
-      {
-        name: "Restriction of Left Large Intestine, Via Opening",
-        detail: "Hypertrophy of kidney",
-      },
-      {
-        name: "LDR Brachytherapy of Abd Lymph using Californium 252",
-        detail:
-          "Tuberculous abscess of spinal cord, tubercle bacilli not found by bacteriological examination, but tuberculosis confirmed histologically",
-      },
-    ],
-    colors: [
-      {
-        name: "Khaki",
-        value: "#6b8df9",
-      },
-      {
-        name: "Purple",
-        value: "#a9d9d5",
-      },
-      {
-        name: "Red",
-        value: "#302b71",
-      },
-      {
-        name: "Khaki",
-        value: "#f5185d",
-      },
-    ],
-  },
-  {
-    name: "Oyster - In Shell",
-    image: "/images/airpods.jpg",
-    description: "Revision of Synth Sub in L Scapula, Extern Approach",
-    brand: "Antiseptic",
-    category: "XAF",
-    price: "428.74",
-    sale: true,
-    priceCompare: "589.04",
-    countInStock: 13,
-    rating: 2.6,
-    numReviews: 491,
-    promotions: [
-      {
-        name: "Repair Right Sublingual Gland, Percutaneous Approach",
-        detail: "Myocardial degeneration",
-      },
-      {
-        name: "Urinary System, Change",
-        detail: "Outcome of delivery, unspecified outcome of delivery",
-      },
-    ],
-    colors: [
-      {
-        name: "Orange",
-        value: "#25af74",
-      },
-      {
-        name: "Khaki",
-        value: "#1fa3e3",
-      },
-    ],
-  },
-  {
-    name: "Sauce - Cranberry",
-    image: "/images/alexa.jpg",
-    description: "Destruction of Rectum, Via Natural or Artificial Opening",
-    brand: "Oily SK Specific Solutions",
-    category: "CNY",
-    price: "719.82",
-    sale: true,
-    priceCompare: "860.03",
-    countInStock: 14,
-    rating: 4.8,
-    numReviews: 53,
-    promotions: [
-      {
-        name: "Resection of Bilateral Fallopian Tubes, Perc Endo Approach",
-        detail:
-          "Bone and joint disorders of back, pelvis, and lower limbs of mother, unspecified as to episode of care or not applicable",
-      },
-      {
-        name: "Drainage of R Subclav Art with Drain Dev, Open Approach",
-        detail:
-          "Infection with microorganisms with resistance to multiple drugs",
-      },
-    ],
-    colors: [
-      {
-        name: "Goldenrod",
-        value: "#d5dbba",
-      },
-      {
-        name: "Crimson",
-        value: "#5f13d5",
-      },
-      {
-        name: "Crimson",
-        value: "#8e54e9",
-      },
-    ],
-  },
-  {
-    name: "Macaroons - Homestyle Two Bit",
-    image: "/images/airpods.jpg",
-    description: "Destruction of Left Eustachian Tube, Perc Endo Approach",
-    brand: "TRAZODONE HYDROCHLORIDE",
-    category: "CNY",
-    price: "751.06",
-    sale: false,
-    priceCompare: "849.40",
-    countInStock: 15,
-    rating: 2.7,
-    numReviews: 968,
-    promotions: [
-      {
-        name: "Insertion of Stimulator Lead into Up Muscle, Perc Approach",
-        detail: "Latent nystagmus",
-      },
-      {
-        name: "Supplement Left Thorax Muscle with Nonaut Sub, Open Approach",
-        detail: "Malignant neoplasm of other parts of bronchus or lung",
-      },
-    ],
-    colors: [
-      {
-        name: "Blue",
-        value: "#f445ed",
-      },
-      {
-        name: "Purple",
-        value: "#5bde48",
-      },
-    ],
-  },
-  {
-    name: "Cake Sheet Combo Party Pack",
-    image: "/images/camera.jpg",
-    description: "Excision of Carina, Via Natural or Artificial Opening, Diagn",
-    brand: "Trokendi XR",
-    category: "KGS",
-    price: "840.12",
-    sale: false,
-    priceCompare: "989.84",
-    countInStock: 16,
-    rating: 3,
-    numReviews: 164,
-    promotions: [
-      {
-        name: "Fluoroscopy of Left Renal Artery using Low Osmolar Contrast",
-        detail:
-          "Other joint derangement, not elsewhere classified, other specified sites",
-      },
-      {
-        name: "Supplement L Int Iliac Art w Nonaut Sub, Perc Endo",
-        detail:
-          "Unspecified abortion, complicated by genital tract and pelvic infection, complete",
-      },
-      {
-        name: "Occlusion Cystic Duct w Extralum Dev, Perc Endo",
-        detail:
-          "Open fracture of intracapsular section of neck of femur, unspecified",
-      },
-    ],
-    colors: [
-      {
-        name: "Purple",
-        value: "#c3fc66",
-      },
-    ],
-  },
-  {
-    name: "Cheese - Pied De Vents",
-    image: "/images/mouse.jpg",
-    description: "Introduction of Autol Pancr Islet into Bil/Panc Tract, Endo",
-    brand: "Tretin-X",
-    category: "BRL",
-    price: "128.75",
-    sale: false,
-    priceCompare: "255.75",
-    countInStock: 17,
-    rating: 3.2,
-    numReviews: 838,
-    promotions: [
-      {
-        name: "Insertion of Infusion Dev into Pericard Cav, Perc Approach",
-        detail:
-          "Traumatic amputation of arm and hand (complete) (partial), unilateral, below elbow, without mention of complication",
-      },
-    ],
-    colors: [
-      {
-        name: "Maroon",
-        value: "#fdbe62",
-      },
-      {
-        name: "Yellow",
-        value: "#e52c24",
-      },
-      {
-        name: "Mauv",
-        value: "#1befbf",
-      },
-      {
-        name: "Violet",
-        value: "#803820",
-      },
-    ],
-  },
-  {
-    name: "Wasabi Powder",
-    image: "/images/phone.jpg",
-    description: "Drainage of Right Popliteal Artery, Perc Endo Approach",
-    brand: "PISTACHIO",
-    category: "EUR",
-    price: "597.28",
-    sale: true,
-    priceCompare: "628.42",
-    countInStock: 18,
-    rating: 1.8,
-    numReviews: 70,
-    promotions: [
-      {
-        name: "Drainage of Spinal Canal, Open Approach",
-        detail: "Amphetamine and other psychostimulant dependence, episodic",
-      },
-      {
-        name: "Excision of Male Perineum, External Approach",
-        detail: "Adjustment disorder with depressed mood",
-      },
-      {
-        name: "Revision of Synth Sub in R Wrist Jt, Open Approach",
-        detail: "Other seborrheic keratosis",
-      },
-      {
-        name: "Tomo Nucl Med Imag of Pelvic Region using Iodine 131",
-        detail: "Open fracture of cervical vertebra, unspecified level",
-      },
-      {
-        name: "Therapeutic Exercise Treatment of Circ Body using Orthosis",
-        detail: "Foot amputation status",
-      },
-    ],
-    colors: [
-      {
-        name: "Aquamarine",
-        value: "#42ab3c",
-      },
-      {
-        name: "Indigo",
-        value: "#35ee75",
-      },
-      {
-        name: "Teal",
-        value: "#90060a",
-      },
-      {
-        name: "Red",
-        value: "#d103d0",
-      },
-    ],
-  },
-  {
-    name: "Bread Crumbs - Panko",
-    image: "/images/playstation.jpg",
-    description: "Bypass Bladder to Cutaneous, Perc Endo Approach",
-    brand: "CareOne Cold and Cough",
-    category: "RUB",
-    price: "123.48",
-    sale: false,
-    priceCompare: "231.41",
-    countInStock: 19,
-    rating: 1.6,
-    numReviews: 985,
-    promotions: [
-      {
-        name: "Occlusion of Left Ulnar Artery, Open Approach",
-        detail: "Screening for malignant neoplasms of rectum",
-      },
-    ],
-    colors: [
-      {
-        name: "Yellow",
-        value: "#af3503",
-      },
-    ],
-  },
-  {
-    name: "Trueblue - Blueberry Cranberry",
-    image: "/images/airpods.jpg",
-    description: "Destruction of Superior Mesenteric Vein, Perc Approach",
-    brand: "Day Time Cold and Flu Relief",
-    category: "BRL",
-    price: "973.01",
-    sale: false,
-    priceCompare: "986.21",
-    countInStock: 20,
-    rating: 4.5,
-    numReviews: 997,
-    promotions: [
-      {
-        name: "Dilation of Left Basilic Vein, Perc Endo Approach",
-        detail:
-          "Subdural hemorrhage following injury with open intracranial wound, with prolonged [more than 24 hours] loss of consciousness without return to pre-existing conscious level",
-      },
-      {
-        name: "Removal of Nonaut Sub from Thor Vertebra, Open Approach",
-        detail:
-          "Other motor vehicle traffic accident involving collision with motor vehicle injuring unspecified person",
-      },
-      {
-        name: "Supplement Left Ulnar Artery with Nonaut Sub, Open Approach",
-        detail: "Accidental fall from or out of building or other structure",
-      },
-      {
-        name: "Supplement Chest Wall with Autol Sub, Open Approach",
-        detail: "Urgency of urination",
-      },
-      {
-        name: "Inspection of Lower Tendon, Open Approach",
-        detail: "Blisters, epidermal loss [second degree] of forearm",
-      },
-    ],
-    colors: [
-      {
-        name: "Maroon",
-        value: "#358440",
-      },
-      {
-        name: "Fuscia",
-        value: "#c87ca5",
-      },
-    ],
-  },
+  // {
+  //   name: "Lentils - Green, Dry",
+  //   image: "/images/phone.jpg",
+  //   description: "Division of Right Upper Arm Muscle, Perc Endo Approach",
+  //   brand: "Coppertone KIDS",
+  //   category: "PHP",
+  //   price: "962.71",
+  //   sale: false,
+  //   priceCompare: "980.23",
+  //   countInStock: 11,
+  //   rating: 2.1,
+  //   numReviews: 184,
+  //   promotions: [
+  //     {
+  //       name: "Repair L Low Extrem Bursa/Lig, Perc Approach",
+  //       detail: "Vivax malaria [benign tertian]",
+  //     },
+  //     {
+  //       name: "Dressing of Left Lower Leg using Bandage",
+  //       detail:
+  //         "Accidents involving powered vehicles used solely within the buildings and premises of industrial or commercial establishment",
+  //     },
+  //     {
+  //       name: "Introduction of Low dose IL-2 into Periph Art, Perc Approach",
+  //       detail:
+  //         "Closed fracture of unspecified vertebral column with spinal cord injury",
+  //     },
+  //     {
+  //       name: "Replacement of R Vocal Cord with Synth Sub, Open Approach",
+  //       detail: "Cyclosporiasis",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Khaki",
+  //       value: "#4f04b1",
+  //     },
+  //     {
+  //       name: "Puce",
+  //       value: "#183d94",
+  //     },
+  //     {
+  //       name: "Puce",
+  //       value: "#49288e",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Bread - Raisin Walnut Oval",
+  //   image: "/images/playstation.jpg",
+  //   description: "Repair Left Hypogastric Vein, Open Approach",
+  //   brand: "Pure Transformation Sheer Medium",
+  //   category: "PHP",
+  //   price: "104.00",
+  //   sale: true,
+  //   priceCompare: "240.86",
+  //   countInStock: 12,
+  //   rating: 3.1,
+  //   numReviews: 870,
+  //   promotions: [
+  //     {
+  //       name: "Removal of Radioactive Element from Upper Jaw, Open Approach",
+  //       detail: "Toxic effect of cadmium and its compounds",
+  //     },
+  //     {
+  //       name: "Restriction of Left Large Intestine, Via Opening",
+  //       detail: "Hypertrophy of kidney",
+  //     },
+  //     {
+  //       name: "LDR Brachytherapy of Abd Lymph using Californium 252",
+  //       detail:
+  //         "Tuberculous abscess of spinal cord, tubercle bacilli not found by bacteriological examination, but tuberculosis confirmed histologically",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Khaki",
+  //       value: "#6b8df9",
+  //     },
+  //     {
+  //       name: "Purple",
+  //       value: "#a9d9d5",
+  //     },
+  //     {
+  //       name: "Red",
+  //       value: "#302b71",
+  //     },
+  //     {
+  //       name: "Khaki",
+  //       value: "#f5185d",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Oyster - In Shell",
+  //   image: "/images/airpods.jpg",
+  //   description: "Revision of Synth Sub in L Scapula, Extern Approach",
+  //   brand: "Antiseptic",
+  //   category: "XAF",
+  //   price: "428.74",
+  //   sale: true,
+  //   priceCompare: "589.04",
+  //   countInStock: 13,
+  //   rating: 2.6,
+  //   numReviews: 491,
+  //   promotions: [
+  //     {
+  //       name: "Repair Right Sublingual Gland, Percutaneous Approach",
+  //       detail: "Myocardial degeneration",
+  //     },
+  //     {
+  //       name: "Urinary System, Change",
+  //       detail: "Outcome of delivery, unspecified outcome of delivery",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Orange",
+  //       value: "#25af74",
+  //     },
+  //     {
+  //       name: "Khaki",
+  //       value: "#1fa3e3",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Sauce - Cranberry",
+  //   image: "/images/alexa.jpg",
+  //   description: "Destruction of Rectum, Via Natural or Artificial Opening",
+  //   brand: "Oily SK Specific Solutions",
+  //   category: "CNY",
+  //   price: "719.82",
+  //   sale: true,
+  //   priceCompare: "860.03",
+  //   countInStock: 14,
+  //   rating: 4.8,
+  //   numReviews: 53,
+  //   promotions: [
+  //     {
+  //       name: "Resection of Bilateral Fallopian Tubes, Perc Endo Approach",
+  //       detail:
+  //         "Bone and joint disorders of back, pelvis, and lower limbs of mother, unspecified as to episode of care or not applicable",
+  //     },
+  //     {
+  //       name: "Drainage of R Subclav Art with Drain Dev, Open Approach",
+  //       detail:
+  //         "Infection with microorganisms with resistance to multiple drugs",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Goldenrod",
+  //       value: "#d5dbba",
+  //     },
+  //     {
+  //       name: "Crimson",
+  //       value: "#5f13d5",
+  //     },
+  //     {
+  //       name: "Crimson",
+  //       value: "#8e54e9",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Macaroons - Homestyle Two Bit",
+  //   image: "/images/airpods.jpg",
+  //   description: "Destruction of Left Eustachian Tube, Perc Endo Approach",
+  //   brand: "TRAZODONE HYDROCHLORIDE",
+  //   category: "CNY",
+  //   price: "751.06",
+  //   sale: false,
+  //   priceCompare: "849.40",
+  //   countInStock: 15,
+  //   rating: 2.7,
+  //   numReviews: 968,
+  //   promotions: [
+  //     {
+  //       name: "Insertion of Stimulator Lead into Up Muscle, Perc Approach",
+  //       detail: "Latent nystagmus",
+  //     },
+  //     {
+  //       name: "Supplement Left Thorax Muscle with Nonaut Sub, Open Approach",
+  //       detail: "Malignant neoplasm of other parts of bronchus or lung",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Blue",
+  //       value: "#f445ed",
+  //     },
+  //     {
+  //       name: "Purple",
+  //       value: "#5bde48",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Cake Sheet Combo Party Pack",
+  //   image: "/images/camera.jpg",
+  //   description: "Excision of Carina, Via Natural or Artificial Opening, Diagn",
+  //   brand: "Trokendi XR",
+  //   category: "KGS",
+  //   price: "840.12",
+  //   sale: false,
+  //   priceCompare: "989.84",
+  //   countInStock: 16,
+  //   rating: 3,
+  //   numReviews: 164,
+  //   promotions: [
+  //     {
+  //       name: "Fluoroscopy of Left Renal Artery using Low Osmolar Contrast",
+  //       detail:
+  //         "Other joint derangement, not elsewhere classified, other specified sites",
+  //     },
+  //     {
+  //       name: "Supplement L Int Iliac Art w Nonaut Sub, Perc Endo",
+  //       detail:
+  //         "Unspecified abortion, complicated by genital tract and pelvic infection, complete",
+  //     },
+  //     {
+  //       name: "Occlusion Cystic Duct w Extralum Dev, Perc Endo",
+  //       detail:
+  //         "Open fracture of intracapsular section of neck of femur, unspecified",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Purple",
+  //       value: "#c3fc66",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Cheese - Pied De Vents",
+  //   image: "/images/mouse.jpg",
+  //   description: "Introduction of Autol Pancr Islet into Bil/Panc Tract, Endo",
+  //   brand: "Tretin-X",
+  //   category: "BRL",
+  //   price: "128.75",
+  //   sale: false,
+  //   priceCompare: "255.75",
+  //   countInStock: 17,
+  //   rating: 3.2,
+  //   numReviews: 838,
+  //   promotions: [
+  //     {
+  //       name: "Insertion of Infusion Dev into Pericard Cav, Perc Approach",
+  //       detail:
+  //         "Traumatic amputation of arm and hand (complete) (partial), unilateral, below elbow, without mention of complication",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Maroon",
+  //       value: "#fdbe62",
+  //     },
+  //     {
+  //       name: "Yellow",
+  //       value: "#e52c24",
+  //     },
+  //     {
+  //       name: "Mauv",
+  //       value: "#1befbf",
+  //     },
+  //     {
+  //       name: "Violet",
+  //       value: "#803820",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Wasabi Powder",
+  //   image: "/images/phone.jpg",
+  //   description: "Drainage of Right Popliteal Artery, Perc Endo Approach",
+  //   brand: "PISTACHIO",
+  //   category: "EUR",
+  //   price: "597.28",
+  //   sale: true,
+  //   priceCompare: "628.42",
+  //   countInStock: 18,
+  //   rating: 1.8,
+  //   numReviews: 70,
+  //   promotions: [
+  //     {
+  //       name: "Drainage of Spinal Canal, Open Approach",
+  //       detail: "Amphetamine and other psychostimulant dependence, episodic",
+  //     },
+  //     {
+  //       name: "Excision of Male Perineum, External Approach",
+  //       detail: "Adjustment disorder with depressed mood",
+  //     },
+  //     {
+  //       name: "Revision of Synth Sub in R Wrist Jt, Open Approach",
+  //       detail: "Other seborrheic keratosis",
+  //     },
+  //     {
+  //       name: "Tomo Nucl Med Imag of Pelvic Region using Iodine 131",
+  //       detail: "Open fracture of cervical vertebra, unspecified level",
+  //     },
+  //     {
+  //       name: "Therapeutic Exercise Treatment of Circ Body using Orthosis",
+  //       detail: "Foot amputation status",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Aquamarine",
+  //       value: "#42ab3c",
+  //     },
+  //     {
+  //       name: "Indigo",
+  //       value: "#35ee75",
+  //     },
+  //     {
+  //       name: "Teal",
+  //       value: "#90060a",
+  //     },
+  //     {
+  //       name: "Red",
+  //       value: "#d103d0",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Bread Crumbs - Panko",
+  //   image: "/images/playstation.jpg",
+  //   description: "Bypass Bladder to Cutaneous, Perc Endo Approach",
+  //   brand: "CareOne Cold and Cough",
+  //   category: "RUB",
+  //   price: "123.48",
+  //   sale: false,
+  //   priceCompare: "231.41",
+  //   countInStock: 19,
+  //   rating: 1.6,
+  //   numReviews: 985,
+  //   promotions: [
+  //     {
+  //       name: "Occlusion of Left Ulnar Artery, Open Approach",
+  //       detail: "Screening for malignant neoplasms of rectum",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Yellow",
+  //       value: "#af3503",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Trueblue - Blueberry Cranberry",
+  //   image: "/images/airpods.jpg",
+  //   description: "Destruction of Superior Mesenteric Vein, Perc Approach",
+  //   brand: "Day Time Cold and Flu Relief",
+  //   category: "BRL",
+  //   price: "973.01",
+  //   sale: false,
+  //   priceCompare: "986.21",
+  //   countInStock: 20,
+  //   rating: 4.5,
+  //   numReviews: 997,
+  //   promotions: [
+  //     {
+  //       name: "Dilation of Left Basilic Vein, Perc Endo Approach",
+  //       detail:
+  //         "Subdural hemorrhage following injury with open intracranial wound, with prolonged [more than 24 hours] loss of consciousness without return to pre-existing conscious level",
+  //     },
+  //     {
+  //       name: "Removal of Nonaut Sub from Thor Vertebra, Open Approach",
+  //       detail:
+  //         "Other motor vehicle traffic accident involving collision with motor vehicle injuring unspecified person",
+  //     },
+  //     {
+  //       name: "Supplement Left Ulnar Artery with Nonaut Sub, Open Approach",
+  //       detail: "Accidental fall from or out of building or other structure",
+  //     },
+  //     {
+  //       name: "Supplement Chest Wall with Autol Sub, Open Approach",
+  //       detail: "Urgency of urination",
+  //     },
+  //     {
+  //       name: "Inspection of Lower Tendon, Open Approach",
+  //       detail: "Blisters, epidermal loss [second degree] of forearm",
+  //     },
+  //   ],
+  //   colors: [
+  //     {
+  //       name: "Maroon",
+  //       value: "#358440",
+  //     },
+  //     {
+  //       name: "Fuscia",
+  //       value: "#c87ca5",
+  //     },
+  //   ],
+  // },
 ];
 export default products;

@@ -6,10 +6,9 @@
   width: 100%;
   background-color: #fff;
   list-style: none;
-  height: 100%;
 }
 
-@media only screen and (min-width: 601px) and (max-width: 768px) {
+/* @media only screen and (min-width: 601px) and (max-width: 768px) {
   .product-item {
     width: calc(100% / 3);
   }
@@ -31,16 +30,13 @@
   .product-item {
     width: calc(100% / 5);
   }
-}
+} */
 
 .item {
   height: 100%;
   float: left;
   position: relative;
   overflow: hidden;
-  border-right: 0.5px solid #eee;
-  border-top: 0.5px solid #eee;
-  border-bottom: 0.5px solid #eee;
   transition: 0.4;
 }
 

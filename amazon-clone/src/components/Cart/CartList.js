@@ -55,12 +55,14 @@ const CartList = (props) => {
       </Grid>
       <div className={styles.contentItem}>
         <Grid item xs={2} className={styles.Img}>
-          <Link to="/">
+          <Link to={`/product/${item.product}`}>
             <img alt="d" className={classes.media} src={item.image} />
           </Link>
         </Grid>
         <Grid item xs={6} className={classes.ProductName}>
-          <Typography>{item.name}</Typography>
+          <Typography>
+            <Link to={`/product/${item.product}`}>{item.name}</Link>
+          </Typography>
         </Grid>
         <Grid item xs={2} className={classes.ProductPrice}>
           <div className={classes.price}>
@@ -75,18 +77,31 @@ const CartList = (props) => {
               {item.price}
             </Typography>
             <Typography variant="body2">
-              {item.sale ? (
-                <span>
-                  <span className={classes.priceCompare}>
-                    ${item.priceCompare}
-                  </span>
-                  <span>
-                    {(
-                      -(1 - (item.priceCompare - item.price) / item.price) * 100
-                    ).toFixed() + "%"}
-                  </span>
+              <span
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    verticalAlign: "middle",
+                    fontSize: "12px",
+                    textDecoration: "line-through",
+                    margin: "5px 0",
+                    color: "var(--defaultTextColor)",
+                  }}
+                >
+                  {item.priceCompare} USD
                 </span>
-              ) : null}
+                <i>
+                  {(
+                    -((item.priceCompare - item.price) / item.priceCompare) *
+                    100
+                  ).toFixed() + "%"}
+                </i>
+              </span>
             </Typography>
             <div className={classes.iconButton}>
               <IconButton>

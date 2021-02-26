@@ -1,131 +1,182 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import SimpleBackdrop from "../../components/Backdrop/Backdrop";
+import SimpleAlerts from "../../components/UI/Alerts/Alerts";
+import {
+  getUserDetails,
+  updateUserProfile,
+} from "../../store/actions/userActions";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+const ProfilePage = ({ location, history }) => {
+  const classes = useStyles();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
+
+  useEffect(() => {
+    if (!userInfo) {
+      history.push("/login");
+    } else {
+      if (!user.name) {
+        dispatch(getUserDetails("profile"));
+      } else {
+        setName(user.name);
+        setEmail(user.email);
+      }
+    }
+  }, [dispatch, history, userInfo, user]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+    } else {
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
+    }
+  };
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
+    <Grid
+      container
+      direction="row"
+      spacing={3}
+      justify="flex-start"
+      alignItems="flex-start"
     >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
+      <Grid item xs={3} className={classes.bg}>
+        <Typography variant="h5" gutterBottom>
+          User Profile
+        </Typography>
+        {message && (
+          <SimpleAlerts
+            severity="error"
+            title="Error"
+            message={message}
+          ></SimpleAlerts>
+        )}
+        {error && (
+          <SimpleAlerts severity="error" title="Error" message={error} />
+        )}
+        {success && (
+          <SimpleAlerts
+            severity="info"
+            title="Success"
+            message={"Profile Updated"}
+          ></SimpleAlerts>
+        )}
+        {loading && <SimpleBackdrop />}
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
+        <form className={classes.form} noValidate onSubmit={submitHandler}>
+          <TextField
+            value={name}
+            size="small"
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Name"
+            name="name"
+            variant="outlined"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            value={email}
+            size="small"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            variant="outlined"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            margin="normal"
+            size="small"
+            variant="outlined"
+            required
+            fullWidth
+            name="password"
+            label="Enter Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <TextField
+            margin="normal"
+            size="small"
+            variant="outlined"
+            required
+            fullWidth
+            name="confirmPassword"
+            label="Confirm Password"
+            type="password"
+            id="confirmPassword"
+            autoComplete="current-password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <Typography
+              component="h1"
+              variant="body1"
+              className={classes.textLow}
+            >
+              <b>Update</b>
+            </Typography>
+          </Button>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          ></Grid>
+        </form>
+      </Grid>
+      <Grid item xs={9}>
+        <Typography variant="h5">My Orders</Typography>
+      </Grid>
+    </Grid>
+  );
 };
 
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    display: "flex",
-    height: 500,
-    backgroundColor: "transparent",
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
   },
-  tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  textLow: {
+    textTransform: "none",
+  },
+  bg: {
+    backgroundColor: "#fff",
   },
 }));
 
-const ProfilePage = (props) => {
-  const classes = useStyles();
-  const { match, history } = props;
-  const { params } = match;
-  console.log(params);
-  const { page } = params;
-
-  const tabNameToIndex = {
-    0: "about",
-    1: "contact",
-    2: "contact",
-    3: "contact",
-    4: "contact",
-    5: "contact",
-    6: "contact",
-  };
-
-  const indexToTabName = {
-    about: 0,
-    contact: 1,
-    a: 0,
-    b: 1,
-    c: 0,
-    d: 1,
-    e: 1,
-  };
-
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    history.push(`/profile/${tabNameToIndex[newValue]}`);
-    setValue(newValue);
-  };
-
-  return (
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="Item One" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
-        <Tab label="Item Five" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
-    </div>
-  );
-};
-
 export default ProfilePage;
+  

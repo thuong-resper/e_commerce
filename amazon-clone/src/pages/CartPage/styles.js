@@ -4,6 +4,12 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
   },
+  wrapper: {
+    borderRadius: 4,
+    margin: "16px 0 0 16px",
+    padding: "16px",
+    backgroundColor: "#fff !important",
+  },
   paper: {
     width: "100%",
     boxShadow: "none",
@@ -23,17 +29,17 @@ export const useStyles = makeStyles((theme) => ({
     width: 1,
   },
   orderDetail: {
-    backgroundColor: "#fff !important",
     borderRadius: 4,
-    marginTop: theme.spacing(3.5),
+    // marginTop: theme.spacing(3.5),
   },
   location: {
     display: "flex",
     alignItems: "center",
     borderBottom: "1px solid #eff0f5",
+    paddingBottom: "1rem",
   },
   locationLabel: { color: "var(--whiteThin)" },
-  locationIcon: { color: "var(--whiteThin)" },
+  locationIcon: { color: "var(--whiteThin)", marginRight: "10px" },
   summary_section: { padding: "16px 0" },
   summary_section_heading: {
     fontSize: "18px",

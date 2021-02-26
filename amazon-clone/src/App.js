@@ -7,7 +7,6 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import "./global.css";
 import HomePage from "./pages/HomePage/HomePage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { useStyles } from "./styles";
 
 const ProductPage = React.lazy(() => {
@@ -24,6 +23,22 @@ const LoginPage = React.lazy(() => {
 
 const SignupPage = React.lazy(() => {
   return import("./pages/SignupPage/SignupPage");
+});
+
+const ProfilePage = React.lazy(() => {
+  return import("./pages/ProfilePage/ProfilePage");
+});
+
+const ShippingPage = React.lazy(() => {
+  return import("./pages/ShippingPage/ShippingPage");
+});
+
+const PaymentPage = React.lazy(() => {
+  return import("./pages/PaymentPage/PaymentPage");
+});
+
+const PlaceOrderPage = React.lazy(() => {
+  return import("./pages/PlaceOrderPage/PlaceOrderPage");
 });
 
 const App = () => {
@@ -43,6 +58,9 @@ const App = () => {
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={SignupPage} />
               <Route path="/profile" component={ProfilePage} />
+              <Route path="/shipping" component={ShippingPage} />
+              <Route path="/payment" component={PaymentPage} />
+              <Route path="/placeorder" component={PlaceOrderPage} />
             </Suspense>
           </Switch>
         </Container>

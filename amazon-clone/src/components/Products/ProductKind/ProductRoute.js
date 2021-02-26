@@ -10,7 +10,7 @@ const ProductRoute = () => {
   return (
     <Grid container className={classes.media}>
       <Grid item xs={3}>
-        <Link to="/" className={classes.link}>
+        <Link to="/fashion-watches" className={classes.link}>
           <div className="kind-item">
             <img
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrang.png"
@@ -24,7 +24,7 @@ const ProductRoute = () => {
         </Link>
       </Grid>
       <Grid item xs={3}>
-        <Link to="/" className={classes.link}>
+        <Link to="/smart-watches" className={classes.link}>
           <div className="kind-item">
             <img
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothongminh.png"
@@ -38,7 +38,7 @@ const ProductRoute = () => {
         </Link>
       </Grid>
       <Grid item xs={3}>
-        <Link to="/" className={classes.link}>
+        <Link to="/child-watches" className={classes.link}>
           <div className="kind-item">
             <img
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/dinh-vi-tre-em.png"
@@ -52,7 +52,7 @@ const ProductRoute = () => {
         </Link>
       </Grid>
       <Grid item xs={3}>
-        <Link to="/" className={classes.link}>
+        <Link to="/watch-straps" className={classes.link}>
           <div className="kind-item">
             <img
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/watch-accessory.png"
