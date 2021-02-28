@@ -30,10 +30,13 @@ export default function SimpleAlerts({
     <div className={classes.root}>
       <Alert severity={severity}>
         <AlertTitle>{title}</AlertTitle>
-        {message} —{" "}
-        <Link to={to} className={classes.link}>
-          {titleLink}
-        </Link>
+        {message}
+        {titleLink ? (
+          <Link to={to} className={classes.link}>
+            {" "}
+            — {titleLink}
+          </Link>
+        ) : null}
       </Alert>
     </div>
   );

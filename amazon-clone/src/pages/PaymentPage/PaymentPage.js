@@ -30,7 +30,7 @@ const PaymentPage = ({ history }) => {
       history.push("/shipping");
     }
   }, [shippingAddress, userInfo, history]);
-  
+
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
   const dispatch = useDispatch();
 
@@ -40,11 +40,7 @@ const PaymentPage = ({ history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(
-      savePaymentMethod({
-        paymentMethod,
-      })
-    );
+    dispatch(savePaymentMethod(paymentMethod));
     history.push("/placeorder");
   };
 
@@ -64,7 +60,6 @@ const PaymentPage = ({ history }) => {
                   aria-label="payment"
                   name="payment1"
                   value={paymentMethod}
-                  onChange={handleChange}
                 >
                   <FormControlLabel
                     value="PayPal"
@@ -85,16 +80,14 @@ const PaymentPage = ({ history }) => {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Grid item xs={12} className={classes.buttons}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                Continue
-              </Button>
-            </Grid>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Continue
+            </Button>
           </Grid>
         </form>
       </Paper>

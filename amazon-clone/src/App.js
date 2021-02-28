@@ -41,6 +41,10 @@ const PlaceOrderPage = React.lazy(() => {
   return import("./pages/PlaceOrderPage/PlaceOrderPage");
 });
 
+const OrderPage = React.lazy(() => {
+  return import("./pages/OrderPage/OrderPage");
+});
+
 const App = () => {
   const classes = useStyles();
 
@@ -61,6 +65,7 @@ const App = () => {
               <Route path="/shipping" component={ShippingPage} />
               <Route path="/payment" component={PaymentPage} />
               <Route path="/placeorder" component={PlaceOrderPage} />
+              <Route path="/order/:id" component={OrderPage} />
             </Suspense>
           </Switch>
         </Container>

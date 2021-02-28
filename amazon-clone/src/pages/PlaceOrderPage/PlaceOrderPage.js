@@ -58,7 +58,7 @@ const PlaceOrderPage = ({ history }) => {
       createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod.paymentMethod,
+        paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
@@ -241,12 +241,7 @@ const PlaceOrderPage = ({ history }) => {
                         style={{ fontSize: "1rem", marginRight: "5px" }}
                       />
                       <Typography variant="body2">
-                        <strong>
-                          Payment Method:{" "}
-                          {cart.paymentMethod
-                            ? cart.paymentMethod.paymentMethod
-                            : null}
-                        </strong>
+                        <strong>Payment Method: {cart.paymentMethod}</strong>
                       </Typography>
                     </div>
                     <div className={classes.checkout_summary_value}>

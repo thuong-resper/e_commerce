@@ -1,16 +1,10 @@
 import { Button, Grid } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import AddIcon from "@material-ui/icons/Add";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import RemoveIcon from "@material-ui/icons/Remove";
-import clsx from "clsx";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { addToCart, removeFromCart } from "../../store/actions/cartActions";
+import { removeFromCart } from "../../store/actions/cartActions";
 import AlertDialogSlide from "../UI/Modal/CustomModal";
 import { useStyles } from "./styles";
 import styles from "./styles.module.css";
@@ -20,6 +14,8 @@ const CartItemsConfirm = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { item } = props;
+
+  console.log(item);
 
   const handleDelete = (id) => {
     dispatch(removeFromCart(id));
