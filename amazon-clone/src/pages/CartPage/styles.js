@@ -28,10 +28,6 @@ export const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
-  orderDetail: {
-    borderRadius: 4,
-    // marginTop: theme.spacing(3.5),
-  },
   location: {
     display: "flex",
     alignItems: "center",

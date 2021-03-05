@@ -16,15 +16,7 @@ const CartPage = ({ match, location, history }) => {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems, shippingAddress } = cart;
-  const {
-    address,
-    city,
-    country,
-    phone,
-    postalCode,
-    province,
-    saveAddress,
-  } = shippingAddress;
+  const { address, city, country, province } = shippingAddress;
 
   useEffect(() => {
     if (productId) {
@@ -64,7 +56,7 @@ const CartPage = ({ match, location, history }) => {
               ))}
             </Grid>
             {/*order detail*/}
-            <Grid item xs={4} className={classes.orderDetail}>
+            <Grid item xs={4}>
               <div className={classes.wrapper}>
                 <Typography className={classes.locationLabel} gutterBottom>
                   Location

@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import "./global.css";
 import HomePage from "./pages/HomePage/HomePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { useStyles } from "./styles";
 
 const ProductPage = React.lazy(() => {
@@ -23,10 +24,6 @@ const LoginPage = React.lazy(() => {
 
 const SignupPage = React.lazy(() => {
   return import("./pages/SignupPage/SignupPage");
-});
-
-const ProfilePage = React.lazy(() => {
-  return import("./pages/ProfilePage/ProfilePage");
 });
 
 const ShippingPage = React.lazy(() => {
