@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import "./global.css";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import UserListPage from "./pages/UserListPage/UserListPage";
 import { useStyles } from "./styles";
 
 const ProductPage = React.lazy(() => {
@@ -63,6 +64,7 @@ const App = () => {
               <Route path="/payment" component={PaymentPage} />
               <Route path="/placeorder" component={PlaceOrderPage} />
               <Route path="/order/:id" component={OrderPage} />
+              <Route path="/admin/userlist" component={UserListPage} />
             </Suspense>
           </Switch>
         </Container>
