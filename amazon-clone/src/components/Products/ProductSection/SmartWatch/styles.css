@@ -1,0 +1,5 @@
+.tabs-smart > button {
+  min-width: 100px !important;
+  width: 100px !important;
+  /* width: 50px */
+}

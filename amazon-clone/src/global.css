@@ -16,13 +16,21 @@ html {
 }
 
 /* main view */
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .main-view {
   margin: 24px auto 12px;
+  height: fit-content;
+}
+.main-view > div {
+  position: relative;
 }
 @media only screen and (max-width: 600px) {
   .main-view {
-    height: 100px;
-    margin: 0;
     padding: 0 !important;
   }
 }

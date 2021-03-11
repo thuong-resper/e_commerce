@@ -15,7 +15,9 @@ import Product from "../../components/Products/Product/Product";
 import ProductBanner from "../../components/Products/ProductBanner/ProductBanner";
 import ProductRoute from "../../components/Products/ProductKind/ProductRoute";
 import ProductMan from "../../components/Products/ProductSection/ProductMan/ProductMan";
+import SmartWatches from "../../components/Products/ProductSection/SmartWatch/SmartWatches";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
+import WatchNews from "../../components/WatchNews/WatchNews";
 import { listProducts } from "../../store/actions/productActions";
 import "./styles.css";
 
@@ -117,8 +119,8 @@ const HomePage = (props) => {
           ) : (
             <div>
               <TabPanel value={value} index={0} className="tab-panel">
-                <Link to="/fashion-watches" className={classes.link}>
-                  <span className="seemore">
+                <Link to="/fashion-watches" className="seemore">
+                  <span>
                     See more <strong> fashion watches</strong>
                   </span>
                 </Link>
@@ -194,7 +196,7 @@ const HomePage = (props) => {
 
       {/*promotion*/}
 
-      <Grid container justify="space-between" spacing={3} className="top-10">
+      <Grid container justify="space-between" spacing={3} className="top-15">
         <Grid item xs={12} sm={6} md={4}>
           <Link to="/fashion-watches">
             <img
@@ -225,7 +227,130 @@ const HomePage = (props) => {
       </Grid>
 
       {/* man watch */}
-      <ProductMan products={products} loading={loading} error={error} />
+
+      <Grid container justify="space-between" className="top-15 rp1">
+        <Grid item xs className="background-img">
+          <Link to="">
+            <div className="df df1"></div>
+          </Link>
+        </Grid>
+        <Grid item xs>
+          <ProductMan products={products} loading={loading} error={error} />
+        </Grid>
+      </Grid>
+      <Grid container justify="space-between" className="top-15 rp1">
+        <Grid item xs className="background-img">
+          <Link to="">
+            <div className="df df2"></div>
+          </Link>
+        </Grid>
+        <Grid item xs>
+          <SmartWatches products={products} loading={loading} error={error} />
+        </Grid>
+      </Grid>
+
+      {/* smart watch */}
+
+      {/* <Grid container justify="space-between" className="top-15">
+        <Grid
+          item
+          xs
+          style={{ width: "239px", marginRight: "10px", maxWidth: "239px" }}
+        >
+          <Link to="" style={{ width: "100%", height: "auto" }}>
+            <div className="background-img df df2"></div>
+          </Link>
+        </Grid>
+        <Grid item xs>
+          <SmartWatches products={products} loading={loading} error={error} />
+        </Grid>
+      </Grid> */}
+
+      {/* watch straps */}
+
+      {/*top ten*/}
+
+      <div
+        className="accessories"
+        style={{
+          backgroundImage:
+            "url(https://cdn.tgdd.vn/v2015/Content/event/20-10/title-dayda-min.png)",
+          height: "67px",
+          lineHeight: "67px",
+          position: "relative",
+        }}
+      >
+        <Link
+          to="/watch-accessories"
+          className={classes.link}
+          style={{
+            position: "absolute",
+            top: "24px",
+            right: "0",
+            lineHeight: "35px",
+            backgroundColor: "#fff",
+          }}
+        >
+          <span className="seemore" style={{ fontSize: "1rem" }}>
+            See more <strong> watch accessories</strong>
+          </span>
+        </Link>
+      </div>
+      {loading ? (
+        <div className={classes.skeleton}>
+          <Skeleton animation="pulse" variant="rect" height={300} />
+          <Skeleton variant="text" animation="pulse" height={30} width="80%" />
+          <Skeleton
+            animation="pulse"
+            width="60%"
+            height={20}
+            style={{ marginBottom: 20 }}
+          />
+        </div>
+      ) : error ? (
+        <SimpleAlerts severity="error" message={error} />
+      ) : (
+        <div className="tab">
+          {spinner ? (
+            <div className={classes.skeleton}>
+              <Skeleton animation="pulse" variant="rect" height={300} />
+              <Skeleton
+                variant="text"
+                animation="pulse"
+                height={30}
+                width="80%"
+              />
+              <Skeleton
+                animation="pulse"
+                width="60%"
+                height={20}
+                style={{ marginBottom: 20 }}
+              />
+            </div>
+          ) : (
+            <Grid container justify="flex-start" style={{ width: "100%" }}>
+              <Carousel
+                breakPoints={breakPoints}
+                pagination={false}
+                enableSwipe={false}
+              >
+                {products.map((product) => (
+                  <Product
+                    product={product}
+                    key={product._id}
+                    loading={loading}
+                  />
+                ))}
+              </Carousel>
+            </Grid>
+          )}
+        </div>
+      )}
+
+      {/* watch news*/}
+      <div className="top-15">
+        <WatchNews products={products} loading={loading} error={error} />
+      </div>
     </div>
   );
 };
@@ -270,13 +395,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     padding: 0,
-  },
-  link: {
-    textDecoration: "none",
-    color: "var(--primary)",
-    position: "absolute",
-    top: "15px",
-    right: "3px",
   },
   img: {
     width: "100%",

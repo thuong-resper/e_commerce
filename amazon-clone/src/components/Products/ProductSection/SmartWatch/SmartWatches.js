@@ -11,6 +11,40 @@ import { Link } from "react-router-dom";
 import { AntTab, AntTabs } from "../../../Tab/Tab";
 import SimpleAlerts from "../../../UI/Alerts/Alerts";
 import Product from "../../Product/Product";
+import "./styles.css";
+
+const useStyles = makeStyles((theme) => ({
+  padding: {
+    padding: theme.spacing(3),
+  },
+  demo1: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  demo2: {
+    backgroundColor: "#2e1534",
+  },
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    padding: 0,
+  },
+  link: {
+    textDecoration: "none",
+    color: "var(--primary)",
+    position: "absolute",
+    top: "15px",
+    right: "3px",
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+  },
+  skeleton: {
+    height: "407px",
+    marginTop: "20px",
+    backgroundColor: "#fff",
+  },
+}));
 
 const breakPoints = [
   { width: 1, itemsToShow: 2 },
@@ -19,7 +53,7 @@ const breakPoints = [
   { width: 960, itemsToShow: 4 },
 ];
 
-const ProductMan = (props) => {
+const SmartWatches = (props) => {
   const classes = useStyles();
 
   const { loading, error, products } = props;
@@ -60,15 +94,13 @@ const ProductMan = (props) => {
             <AntTabs
               value={value}
               onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
+              aria-label="ant example"
             >
-              <AntTab label="Man" {...a11yProps(0)} />
-              <AntTab label="Woman" {...a11yProps(1)} />
-              <AntTab label="Couple" {...a11yProps(2)} />
+              <AntTab label="Apple" {...a11yProps(0)} />
+              <AntTab label="Samsung" {...a11yProps(1)} />
+              <AntTab label="Xiaomi" {...a11yProps(2)} />
+              <AntTab label="Huawei" {...a11yProps(3)} />
+              <AntTab label="Oppo" {...a11yProps(4)} />
             </AntTabs>
           </AppBar>
           {spinner ? (
@@ -90,8 +122,8 @@ const ProductMan = (props) => {
           ) : (
             <div>
               <TabPanel value={value} index={0} className="tab-panel">
-                <Link to="/man-watches" className={classes.link}>
-                  <span className="seemore">
+                <Link to="/man-watches" className="seemore">
+                  <span>
                     See more <strong> men's fashion watches</strong>
                   </span>
                 </Link>
@@ -179,7 +211,7 @@ const ProductMan = (props) => {
   );
 };
 
-export default ProductMan;
+export default SmartWatches;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -213,27 +245,3 @@ function a11yProps(index) {
     "aria-controls": `scrollable-auto-tabpanel-${index}`,
   };
 }
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    padding: 0,
-  },
-  link: {
-    textDecoration: "none",
-    color: "var(--primary)",
-    position: "absolute",
-    top: "15px",
-    right: "3px",
-  },
-  img: {
-    width: "100%",
-    height: "100%",
-  },
-  skeleton: {
-    height: "407px",
-    marginTop: "20px",
-    backgroundColor: "#fff",
-  },
-}));

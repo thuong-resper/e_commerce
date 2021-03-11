@@ -160,14 +160,16 @@ const Header = (props) => {
       {/*Section desktop*/}
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+          <Link to="/">
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Link>
           <Typography
             onClick={(e) => router.push("/")}
             className={classes.title}

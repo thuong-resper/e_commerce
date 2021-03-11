@@ -29,6 +29,35 @@
   padding: 0;
   background: transparent url("./title-bestseller-min.png") no-repeat center top;
 }
+
+.background-img {
+  max-width: 239px !important;
+  width: 239px !important;
+  margin-right: 10px !important;
+}
+
+.df {
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
+  height: 100%;
+}
+
+.df1 {
+  background-image: url("https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png");
+}
+
+.df2 {
+  background-image: url("https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothongminhbanner.png");
+}
+
+.seemore {
+  color: var(--primary);
+  position: absolute;
+  top: 15px;
+  right: 3px;
+}
+
 .seemore:after {
   content: "";
   width: 5px;
@@ -41,8 +70,8 @@
   margin: 0 0 1px 5px;
 }
 
-.top-10 {
-  margin-top: 10px !important;
+.top-15 {
+  margin-top: 15px !important;
 }
 
 /* carousel */
@@ -82,4 +111,30 @@
 
 .rec-slider-container {
   margin: 0 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .seemore {
+    display: none;
+  }
+  .rp1 {
+    flex-direction: column;
+  }
+  .df {
+    height: 200px;
+    width: 100%;
+    max-width: none;
+    background-size: cover;
+  }
+  .background-img {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .df1 {
+    background-image: url("https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-bannerdonghothoitrang.png");
+  }
+  .df2 {
+    background-image: url("https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-donghothongminhbanner.png");
+  }
 }

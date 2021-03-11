@@ -3,7 +3,6 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "83vh",
     backgroundColor: "#F2F3F5",
   },
   main: {
