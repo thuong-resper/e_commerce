@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { AntTab, AntTabs } from "../../../Tab/Tab";
 import SimpleAlerts from "../../../UI/Alerts/Alerts";
 import Product from "../../Product/Product";
+import SkeletonProduct from "../../Product/Skeleton/SkeletonProduct";
 
 const breakPoints = [
   { width: 1, itemsToShow: 2 },
@@ -40,18 +41,32 @@ const ProductMan = (props) => {
   }, [value]);
 
   return (
-    <div>
+    <div className="skeleton-p">
       {loading ? (
-        <div className={classes.skeleton}>
-          <Skeleton animation="pulse" variant="rect" height={300} />
-          <Skeleton variant="text" animation="pulse" height={30} width="80%" />
-          <Skeleton
-            animation="pulse"
-            width="60%"
-            height={20}
-            style={{ marginBottom: 20 }}
-          />
-        </div>
+        <Grid container spacing={1} direction="row">
+          <div style={{ width: "100%", margin: "10px 0 10px 4px" }}>
+            <Grid container direction="row" wrap="nowrap">
+              {[...Array(3)].map((item, index) => (
+                <Grid item key={index}>
+                  <Box mr={1}>
+                    <Skeleton
+                      animation="pulse"
+                      variant="rect"
+                      height={40}
+                      width={170}
+                    />
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+
+          {[...Array(4)].map((item, index) => (
+            <Grid item key={index} className="item-skeleton item-skeleton-4">
+              <SkeletonProduct />
+            </Grid>
+          ))}
+        </Grid>
       ) : error ? (
         <SimpleAlerts severity="error" message={error} />
       ) : (
@@ -72,26 +87,24 @@ const ProductMan = (props) => {
             </AntTabs>
           </AppBar>
           {spinner ? (
-            <div className={classes.skeleton}>
-              <Skeleton animation="pulse" variant="rect" height={300} />
-              <Skeleton
-                variant="text"
-                animation="pulse"
-                height={30}
-                width="80%"
-              />
-              <Skeleton
-                animation="pulse"
-                width="60%"
-                height={20}
-                style={{ marginBottom: 20 }}
-              />
-            </div>
+            <Grid container spacing={1} direction="row">
+              {[...Array(4)].map((item, index) => (
+                <Grid
+                  item
+                  key={index}
+                  className="item-skeleton item-skeleton-4"
+                >
+                  <Box mt={3}>
+                    <SkeletonProduct />
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
           ) : (
             <div>
               <TabPanel value={value} index={0} className="tab-panel">
                 <Link to="/man-watches" className={classes.link}>
-                  <span className="seemore">
+                  <span className="seemore seemore-dnone">
                     See more <strong> men's fashion watches</strong>
                   </span>
                 </Link>
@@ -223,7 +236,6 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
     color: "var(--primary)",
-    position: "absolute",
     top: "15px",
     right: "3px",
   },

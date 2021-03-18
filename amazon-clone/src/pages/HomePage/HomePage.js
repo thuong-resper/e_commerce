@@ -11,7 +11,9 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import SeeMoreButtonMobile from "../../components/Button/SeeMoreButtonMobile/SeeMoreButtonMobile";
 import Product from "../../components/Products/Product/Product";
+import SkeletonProduct from "../../components/Products/Product/Skeleton/SkeletonProduct";
 import ProductBanner from "../../components/Products/ProductBanner/ProductBanner";
 import ProductRoute from "../../components/Products/ProductKind/ProductRoute";
 import ProductMan from "../../components/Products/ProductSection/ProductMan/ProductMan";
@@ -22,10 +24,10 @@ import { listProducts } from "../../store/actions/productActions";
 import "./styles.css";
 
 const breakPoints = [
-  { width: 1, itemsToShow: 2 },
-  { width: 600, itemsToShow: 3 },
-  { width: 769, itemsToShow: 4 },
-  { width: 960, itemsToShow: 5 },
+  { width: 1, itemsToShow: 10, enableSwipe: false },
+  { width: 601, itemsToShow: 3, enableSwipe: true },
+  { width: 769, itemsToShow: 5, enableSwipe: false },
+  { width: 960, itemsToShow: 5, enableSwipe: false },
 ];
 
 const HomePage = (props) => {
@@ -36,11 +38,28 @@ const HomePage = (props) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
+  console.log(products);
+
   const [value, setValue] = useState(0);
+
   const [spinner, setSpinner] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const [isActive, setActive] = useState(false);
+  const [isActive1, setActive1] = useState(false);
+  const [isActive2, setActive2] = useState(false);
+
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
+  const toggleClass1 = () => {
+    setActive1(!isActive1);
+  };
+  const toggleClass2 = () => {
+    setActive2(!isActive2);
   };
 
   // set show skeleton when switching tabs (value change)
@@ -63,139 +82,211 @@ const HomePage = (props) => {
         <ProductBanner />
         <ProductBanner />
       </Carousel>
-
       <ProductRoute />
-
       {/*top ten*/}
-
       <div className="headingtop"></div>
-      {loading ? (
-        <div className={classes.skeleton}>
-          <Skeleton animation="pulse" variant="rect" height={300} />
-          <Skeleton variant="text" animation="pulse" height={30} width="80%" />
-          <Skeleton
-            animation="pulse"
-            width="60%"
-            height={20}
-            style={{ marginBottom: 20 }}
-          />
-        </div>
-      ) : error ? (
-        <SimpleAlerts severity="error" message={error} />
-      ) : (
-        <div className="tab">
-          <AppBar position="static" className="app-bar">
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
-            >
-              <Tab label="Fashion Watches" {...a11yProps(0)} />
-              <Tab label="Smart Watches" {...a11yProps(1)} />
-              <Tab label="Watch Straps" {...a11yProps(2)} />
-            </Tabs>
-          </AppBar>
-
-          {spinner ? (
-            <div className={classes.skeleton}>
-              <Skeleton animation="pulse" variant="rect" height={300} />
-              <Skeleton
-                variant="text"
-                animation="pulse"
-                height={30}
-                width="80%"
-              />
-              <Skeleton
-                animation="pulse"
-                width="60%"
-                height={20}
-                style={{ marginBottom: 20 }}
-              />
+      <div className="skeleton-p">
+        {loading ? (
+          <Grid
+            container
+            spacing={1}
+            direction="row"
+            style={{ maxHeight: "46rem" }}
+          >
+            <div style={{ width: "100%", margin: "10px 0 10px 4px" }}>
+              <Grid container direction="row" wrap="nowrap">
+                {[...Array(3)].map((item, index) => (
+                  <Grid item key={index}>
+                    <Box mr={1}>
+                      <Skeleton
+                        animation="pulse"
+                        variant="rect"
+                        height={40}
+                        width={170}
+                      />
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
             </div>
-          ) : (
-            <div>
-              <TabPanel value={value} index={0} className="tab-panel">
-                <Link to="/fashion-watches" className="seemore">
-                  <span>
-                    See more <strong> fashion watches</strong>
-                  </span>
-                </Link>
-                <Grid container justify="flex-start" style={{ width: "100%" }}>
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
-                    {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
-                    ))}
-                  </Carousel>
+            <Grid container direction="row" spacing={1}>
+              {[...Array(5)].map((item, index) => (
+                <Grid item key={index} className="item-skeleton">
+                  <SkeletonProduct />
                 </Grid>
-              </TabPanel>
-              <TabPanel value={value} index={1} className="tab-panel">
-                <Link to="/smart-watches" className={classes.link}>
-                  <span className="seemore">
-                    See more <strong> smart watches</strong>
-                  </span>
-                </Link>
-                <Grid container justify="flex-start" style={{ width: "100%" }}>
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
-                    {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
-                    ))}
-                  </Carousel>
+              ))}
+            </Grid>
+          </Grid>
+        ) : error ? (
+          <SimpleAlerts severity="error" message={error} />
+        ) : (
+          <div className="tab">
+            <AppBar position="static" className="app-bar">
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+                aria-label="scrollable auto tabs example"
+              >
+                <Tab label="Fashion Watches" {...a11yProps(0)} />
+                <Tab label="Smart Watches" {...a11yProps(1)} />
+                <Tab label="Watch Straps" {...a11yProps(2)} />
+              </Tabs>
+            </AppBar>
+            {spinner ? (
+              <Grid
+                container
+                spacing={1}
+                direction="row"
+                style={{ maxHeight: "46rem" }}
+              >
+                <Grid container direction="row" spacing={1}>
+                  {[...Array(5)].map((item, index) => (
+                    <Grid key={index} item className="item-skeleton">
+                      <Box mt={3}>
+                        <SkeletonProduct />
+                      </Box>
+                    </Grid>
+                  ))}
                 </Grid>
-              </TabPanel>
-              <TabPanel value={value} index={2} className="tab-panel">
-                <Link to="/watch-straps" className={classes.link}>
-                  <span className="seemore">
-                    See more <strong> watch straps</strong>
-                  </span>
-                </Link>
-                <Grid
-                  container
-                  justify="space-between"
-                  alignItems="stretch"
-                  style={{ width: "100%" }}
+              </Grid>
+            ) : (
+              <div>
+                <TabPanel
+                  value={value}
+                  index={0}
+                  className={
+                    isActive ? "skeleton-p-hide tab-panel" : "tab-panel"
+                  }
                 >
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
+                  <Link to="/fashion-watches" className="seemore">
+                    <span>
+                      See more <strong> fashion watches</strong>
+                    </span>
+                  </Link>
+
+                  {/* button see more on mobile */}
+
+                  <SeeMoreButtonMobile
+                    title="See 6 more fashion watches selling"
+                    titleAfterClick="See more fashion watches"
+                    isActive={isActive}
+                    toggleClass={() => toggleClass(value)}
+                    link="/fashion-watches"
+                  />
+                  <Grid
+                    container
+                    justify="flex-start"
+                    style={{ width: "100%" }}
                   >
-                    {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
-                    ))}
-                  </Carousel>
-                </Grid>
-              </TabPanel>
-            </div>
-          )}
-        </div>
-      )}
+                    <Carousel
+                      breakPoints={breakPoints}
+                      pagination={false}
+                      enableSwipe={false}
+                    >
+                      {products.map((product) => (
+                        <Product
+                          product={product}
+                          key={product._id}
+                          loading={loading}
+                        />
+                      ))}
+                    </Carousel>
+                  </Grid>
+                </TabPanel>
+                <TabPanel
+                  value={value}
+                  index={1}
+                  className={
+                    isActive1 ? "skeleton-p-hide tab-panel" : "tab-panel"
+                  }
+                >
+                  <Link to="/smart-watches" className={classes.link}>
+                    <span className="seemore">
+                      See more <strong> smart watches</strong>
+                    </span>
+                  </Link>
 
+                  {/* button see more on mobile */}
+
+                  <SeeMoreButtonMobile
+                    title="See 6 more smart watches selling"
+                    titleAfterClick="See more smart watches"
+                    isActive={isActive1}
+                    toggleClass={toggleClass1}
+                    link="/smart-watches"
+                  />
+                  <Grid
+                    container
+                    justify="flex-start"
+                    style={{ width: "100%" }}
+                  >
+                    <Carousel
+                      breakPoints={breakPoints}
+                      pagination={false}
+                      enableSwipe={false}
+                    >
+                      {products.map((product) => (
+                        <Product
+                          product={product}
+                          key={product._id}
+                          loading={loading}
+                        />
+                      ))}
+                    </Carousel>
+                  </Grid>
+                </TabPanel>
+                <TabPanel
+                  value={value}
+                  index={2}
+                  className={
+                    isActive2 ? "skeleton-p-hide tab-panel" : "tab-panel"
+                  }
+                >
+                  <Link to="/watch-straps" className={classes.link}>
+                    <span className="seemore">
+                      See more <strong> watch straps</strong>
+                    </span>
+                  </Link>
+                  {/* button see more on mobile */}
+
+                  <SeeMoreButtonMobile
+                    title="See 6 more watch straps selling"
+                    titleAfterClick="See more watch straps"
+                    isActive={isActive2}
+                    toggleClass={toggleClass2}
+                    link="/watch-straps"
+                  />
+                  <Grid
+                    container
+                    justify="space-between"
+                    alignItems="stretch"
+                    style={{ width: "100%" }}
+                  >
+                    <Carousel
+                      breakPoints={breakPoints}
+                      pagination={false}
+                      enableSwipe={false}
+                    >
+                      {products.map((product) => (
+                        <Product
+                          product={product}
+                          key={product._id}
+                          loading={loading}
+                        />
+                      ))}
+                    </Carousel>
+                  </Grid>
+                </TabPanel>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       {/*promotion*/}
-
       <Grid container justify="space-between" spacing={3} className="top-15">
         <Grid item xs={12} sm={6} md={4}>
           <Link to="/fashion-watches">
@@ -225,16 +316,18 @@ const HomePage = (props) => {
           </Link>
         </Grid>
       </Grid>
-
       {/* man watch */}
-
       <Grid container justify="space-between" className="top-15 rp1">
-        <Grid item xs className="background-img">
+        <Grid item xs className="m-heading">
           <Link to="">
-            <div className="df df1"></div>
+            <img
+              data-original="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png"
+              src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png"
+              style={{ width: "100%", objectFit: "cover", height: "100%" }}
+            />
           </Link>
         </Grid>
-        <Grid item xs>
+        <Grid item xs className="m-content">
           <ProductMan products={products} loading={loading} error={error} />
         </Grid>
       </Grid>
@@ -244,13 +337,11 @@ const HomePage = (props) => {
             <div className="df df2"></div>
           </Link>
         </Grid>
-        <Grid item xs>
+        <Grid item xs style={{ background: "#fff" }}>
           <SmartWatches products={products} loading={loading} error={error} />
         </Grid>
       </Grid>
-
       {/* smart watch */}
-
       {/* <Grid container justify="space-between" className="top-15">
         <Grid
           item
@@ -265,11 +356,8 @@ const HomePage = (props) => {
           <SmartWatches products={products} loading={loading} error={error} />
         </Grid>
       </Grid> */}
-
       {/* watch straps */}
-
-      {/*top ten*/}
-
+      {/*accessories */}
       <div
         className="accessories"
         style={{
@@ -284,69 +372,75 @@ const HomePage = (props) => {
           to="/watch-accessories"
           className={classes.link}
           style={{
-            position: "absolute",
             top: "24px",
             right: "0",
             lineHeight: "35px",
-            backgroundColor: "#fff",
           }}
         >
-          <span className="seemore" style={{ fontSize: "1rem" }}>
+          <span
+            className="link-accessories"
+            style={{
+              fontSize: "1rem",
+              color: "var(--primary)",
+              position: "absolute",
+              top: "25px",
+              right: "0",
+              backgroundColor: "#fff",
+            }}
+          >
             See more <strong> watch accessories</strong>
           </span>
         </Link>
+      </div>{" "}
+      <div className="skeleton-p-1">
+        {!loading ? (
+          <Grid container spacing={1} direction="row">
+            {[...Array(5)].map((item, index) => (
+              <Grid item key={index} className="item-skeleton">
+                <SkeletonProduct />
+              </Grid>
+            ))}
+          </Grid>
+        ) : error ? (
+          <SimpleAlerts severity="error" message={error} />
+        ) : (
+          <div className="tab">
+            {spinner ? (
+              <div className={classes.skeleton}>
+                <Skeleton animation="pulse" variant="rect" height={300} />
+                <Skeleton
+                  variant="text"
+                  animation="pulse"
+                  height={30}
+                  width="80%"
+                />
+                <Skeleton
+                  animation="pulse"
+                  width="60%"
+                  height={20}
+                  style={{ marginBottom: 20 }}
+                />
+              </div>
+            ) : (
+              <Grid container justify="flex-start" style={{ width: "100%" }}>
+                <Carousel
+                  breakPoints={breakPoints}
+                  pagination={false}
+                  enableSwipe={false}
+                >
+                  {products.map((product) => (
+                    <Product
+                      product={product}
+                      key={product._id}
+                      loading={loading}
+                    />
+                  ))}
+                </Carousel>
+              </Grid>
+            )}
+          </div>
+        )}
       </div>
-      {loading ? (
-        <div className={classes.skeleton}>
-          <Skeleton animation="pulse" variant="rect" height={300} />
-          <Skeleton variant="text" animation="pulse" height={30} width="80%" />
-          <Skeleton
-            animation="pulse"
-            width="60%"
-            height={20}
-            style={{ marginBottom: 20 }}
-          />
-        </div>
-      ) : error ? (
-        <SimpleAlerts severity="error" message={error} />
-      ) : (
-        <div className="tab">
-          {spinner ? (
-            <div className={classes.skeleton}>
-              <Skeleton animation="pulse" variant="rect" height={300} />
-              <Skeleton
-                variant="text"
-                animation="pulse"
-                height={30}
-                width="80%"
-              />
-              <Skeleton
-                animation="pulse"
-                width="60%"
-                height={20}
-                style={{ marginBottom: 20 }}
-              />
-            </div>
-          ) : (
-            <Grid container justify="flex-start" style={{ width: "100%" }}>
-              <Carousel
-                breakPoints={breakPoints}
-                pagination={false}
-                enableSwipe={false}
-              >
-                {products.map((product) => (
-                  <Product
-                    product={product}
-                    key={product._id}
-                    loading={loading}
-                  />
-                ))}
-              </Carousel>
-            </Grid>
-          )}
-        </div>
-      )}
-
       {/* watch news*/}
       <div className="top-15">
         <WatchNews products={products} loading={loading} error={error} />
@@ -401,7 +495,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   skeleton: {
-    height: "407px",
+    height: "478px",
     marginTop: "20px",
     backgroundColor: "#fff",
   },

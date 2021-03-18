@@ -128,3 +128,15 @@
     position: relative;
   }
 }
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .news-item div {
+    width: calc(100% / 2);
+  }
+  .news-item div:first-child a {
+    display: none;
+  }
+  .guide-div {
+    width: 130px !important;
+  }
+}

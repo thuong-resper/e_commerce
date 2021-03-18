@@ -1,27 +1,19 @@
-import { Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useStyles } from "./styles";
+import ProductRating from "../../Rating/Rating";
+import SkeletonProduct from "./Skeleton/SkeletonProduct";
+
 import "./styles.css";
 
 const Product = (props) => {
   const { product, loading } = props;
-  const classes = useStyles();
 
   return (
     <Grid item className="product-item">
       {loading ? (
-        <div>
-          <Skeleton animation="pulse" variant="rect" height={200} />
-          <Skeleton variant="text" animation="pulse" height={30} />
-          <Skeleton
-            animation="pulse"
-            width="80%"
-            height={20}
-            style={{ marginBottom: 6 }}
-          />
-        </div>
+        <SkeletonProduct />
       ) : (
         <li className="one-item">
           <div className="item">
@@ -50,6 +42,10 @@ const Product = (props) => {
                   ).toFixed() + "%"}
                 </i>
               </div>
+              <ProductRating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+              />
             </Link>
           </div>
         </li>
