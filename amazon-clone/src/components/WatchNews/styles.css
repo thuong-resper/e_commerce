@@ -43,3 +43,7 @@
   height: 80px;
   background-size: 100% 100%;
 }
+
+.tab-panel-footer {
+  height: auto !important;
+}

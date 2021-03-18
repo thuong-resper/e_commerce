@@ -19,7 +19,7 @@ const SeeMoreButtonMobile = (props) => {
             className="button-show-more"
             endIcon={<ChevronRightIcon />}
           >
-            {titleAfterClick}
+            See more&nbsp;<strong>{titleAfterClick}</strong>
           </Button>
         </Link>
       ) : (
@@ -30,7 +30,7 @@ const SeeMoreButtonMobile = (props) => {
           className="button-show-more"
           endIcon={<ExpandMoreIcon />}
         >
-          {title}
+          See 6 more&nbsp;<strong>{title}</strong>
         </Button>
       )}
     </div>

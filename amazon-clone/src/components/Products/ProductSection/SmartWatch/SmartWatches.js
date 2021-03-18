@@ -8,44 +8,11 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
+import SeeMoreButtonMobile from "../../../Button/SeeMoreButtonMobile/SeeMoreButtonMobile";
 import { AntTab, AntTabs } from "../../../Tab/Tab";
 import SimpleAlerts from "../../../UI/Alerts/Alerts";
 import Product from "../../Product/Product";
 import SkeletonProduct from "../../Product/Skeleton/SkeletonProduct";
-import "./styles.css";
-
-const useStyles = makeStyles((theme) => ({
-  padding: {
-    padding: theme.spacing(3),
-  },
-  demo1: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  demo2: {
-    backgroundColor: "#2e1534",
-  },
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    padding: 0,
-  },
-  link: {
-    textDecoration: "none",
-    color: "var(--primary)",
-    position: "absolute",
-    top: "15px",
-    right: "3px",
-  },
-  img: {
-    width: "100%",
-    height: "100%",
-  },
-  skeleton: {
-    height: "407px",
-    marginTop: "20px",
-    backgroundColor: "#fff",
-  },
-}));
 
 const breakPoints = [
   { width: 1, itemsToShow: 2 },
@@ -76,8 +43,13 @@ const SmartWatches = (props) => {
 
   return (
     <div className="skeleton-p">
-      {!loading ? (
-        <Grid container spacing={1} direction="row">
+      {loading ? (
+        <Grid
+          container
+          spacing={1}
+          direction="row"
+          style={{ maxHeight: "46rem" }}
+        >
           <div style={{ width: "100%", margin: "10px 0 10px 4px" }}>
             <Grid container direction="row" wrap="nowrap">
               {[...Array(3)].map((item, index) => (
@@ -94,22 +66,27 @@ const SmartWatches = (props) => {
               ))}
             </Grid>
           </div>
-
-          {[...Array(4)].map((item, index) => (
-            <Grid item key={index} className="item-skeleton item-skeleton-4">
-              <SkeletonProduct />
-            </Grid>
-          ))}
+          <Grid container direction="row" spacing={1}>
+            {[...Array(5)].map((item, index) => (
+              <Grid item key={index} className="item-skeleton item-skeleton-4">
+                <SkeletonProduct />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       ) : error ? (
         <SimpleAlerts severity="error" message={error} />
       ) : (
-        <div className="tab smart-section">
+        <div className="tab">
           <AppBar position="static" className="app-bar">
             <AntTabs
               value={value}
               onChange={handleChange}
-              aria-label="ant example"
+              indicatorColor="primary"
+              textColor="primary"
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="scrollable auto tabs example"
             >
               <AntTab label="Apple" {...a11yProps(0)} />
               <AntTab label="Samsung" {...a11yProps(1)} />
@@ -119,25 +96,39 @@ const SmartWatches = (props) => {
             </AntTabs>
           </AppBar>
           {spinner ? (
-            <Grid container spacing={1} direction="row">
-              {[...Array(4)].map((item, index) => (
-                <Grid
-                  item
-                  key={index}
-                  className="item-skeleton item-skeleton-4"
-                >
-                  <Box mt={3}>
-                    <SkeletonProduct />
-                  </Box>
-                </Grid>
-              ))}
+            <Grid
+              container
+              spacing={1}
+              direction="row"
+              style={{ maxHeight: "46rem" }}
+            >
+              <Grid container direction="row" spacing={1}>
+                {[...Array(5)].map((item, index) => (
+                  <Grid
+                    key={index}
+                    item
+                    className="item-skeleton item-skeleton-4"
+                  >
+                    <Box mt={3}>
+                      <SkeletonProduct />
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
             </Grid>
           ) : (
             <div>
               <TabPanel value={value} index={0} className="tab-panel">
-                <Link to="/man-watches" className="seemore seemore-dnone">
-                  <span>
-                    See more <strong> men's fashion watches</strong>
+                <Link to="/apple-watches" className={classes.link}>
+                  <span
+                    className="seemore"
+                    style={{
+                      top: "0",
+                      lineHeight: "3rem",
+                      backgroundColor: "#fff",
+                    }}
+                  >
+                    <strong>Apple watches</strong>
                   </span>
                 </Link>
                 <Grid
@@ -160,11 +151,19 @@ const SmartWatches = (props) => {
                     ))}
                   </Carousel>
                 </Grid>
+                <SeeMoreButtonMobile
+                  titleAfterClick="Apple watches"
+                  isActive={true}
+                  link="/apple-watches"
+                />
               </TabPanel>
               <TabPanel value={value} index={1} className="tab-panel">
-                <Link to="/woman-watches" className={classes.link}>
-                  <span className="seemore">
-                    See more <strong> women's fashion watches</strong>
+                <Link to="/samsung-watches" className={classes.link}>
+                  <span
+                    className="seemore"
+                    style={{ top: "0", lineHeight: "3rem" }}
+                  >
+                    <strong>Samsung watches</strong>
                   </span>
                 </Link>
                 <Grid
@@ -187,11 +186,20 @@ const SmartWatches = (props) => {
                     ))}
                   </Carousel>
                 </Grid>
+
+                <SeeMoreButtonMobile
+                  titleAfterClick="Samsung watches"
+                  isActive={true}
+                  link="/samsung-watches"
+                />
               </TabPanel>
               <TabPanel value={value} index={2} className="tab-panel">
-                <Link to="/couple-watches" className={classes.link}>
-                  <span className="seemore">
-                    See more <strong> couple watches</strong>
+                <Link to="/xiaomi-watches" className={classes.link}>
+                  <span
+                    className="seemore"
+                    style={{ top: "0", lineHeight: "3rem" }}
+                  >
+                    <strong>Xiaomi watches</strong>
                   </span>
                 </Link>
                 <Grid
@@ -215,6 +223,83 @@ const SmartWatches = (props) => {
                     ))}
                   </Carousel>
                 </Grid>
+                <SeeMoreButtonMobile
+                  titleAfterClick="Xiaomi watches"
+                  isActive={true}
+                  link="/xiaomi-watches"
+                />
+              </TabPanel>
+              <TabPanel value={value} index={3} className="tab-panel">
+                <Link to="/huawei-watches" className={classes.link}>
+                  <span
+                    className="seemore"
+                    style={{ top: "0", lineHeight: "3rem" }}
+                  >
+                    <strong>Huawei watches</strong>
+                  </span>
+                </Link>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-start"
+                  style={{ width: "100%" }}
+                >
+                  <Carousel
+                    breakPoints={breakPoints}
+                    pagination={false}
+                    enableSwipe={false}
+                  >
+                    {products.map((product) => (
+                      <Product
+                        product={product}
+                        key={product._id}
+                        loading={loading}
+                      />
+                    ))}
+                  </Carousel>
+                </Grid>
+
+                <SeeMoreButtonMobile
+                  titleAfterClick="Huawei watches"
+                  isActive={true}
+                  link="/huawei-watches"
+                />
+              </TabPanel>
+              <TabPanel value={value} index={4} className="tab-panel">
+                <Link to="/oppo-watches" className={classes.link}>
+                  <span
+                    className="seemore"
+                    style={{ top: "0", lineHeight: "3rem" }}
+                  >
+                    <strong>Oppo watches</strong>
+                  </span>
+                </Link>
+                <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="stretch"
+                  style={{ width: "100%" }}
+                >
+                  <Carousel
+                    breakPoints={breakPoints}
+                    pagination={false}
+                    enableSwipe={false}
+                  >
+                    {products.map((product) => (
+                      <Product
+                        product={product}
+                        key={product._id}
+                        loading={loading}
+                      />
+                    ))}
+                  </Carousel>
+                </Grid>
+                <SeeMoreButtonMobile
+                  titleAfterClick="Oppo watches"
+                  isActive={true}
+                  link="/oppo-watches"
+                />
               </TabPanel>
             </div>
           )}
@@ -258,3 +343,26 @@ function a11yProps(index) {
     "aria-controls": `scrollable-auto-tabpanel-${index}`,
   };
 }
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    padding: 0,
+  },
+  link: {
+    textDecoration: "none",
+    color: "var(--primary)",
+    top: "15px",
+    right: "3px",
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+  },
+  skeleton: {
+    height: "407px",
+    marginTop: "20px",
+    backgroundColor: "#fff",
+  },
+}));

@@ -74,10 +74,18 @@ const WatchNews = (props) => {
             </AntTabs>
           </AppBar>
           <div>
-            <TabPanel value={value} index={0} className="tab-panel">
+            <TabPanel
+              value={value}
+              index={0}
+              className="tab-panel tab-panel-footer"
+            >
               <NewsItem class="video-news" />
             </TabPanel>
-            <TabPanel value={value} index={1} className="tab-panel">
+            <TabPanel
+              value={value}
+              index={1}
+              className="tab-panel tab-panel-footer"
+            >
               <NewsItem />
             </TabPanel>
             {/* <TabPanel value={value} index={2} className="tab-panel"></TabPanel> */}

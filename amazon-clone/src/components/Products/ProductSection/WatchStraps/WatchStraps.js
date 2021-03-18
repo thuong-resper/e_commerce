@@ -2,6 +2,8 @@ import { Grid } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import { Skeleton } from "@material-ui/lab";
 import PropTypes from "prop-types";
@@ -9,7 +11,6 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
 import SeeMoreButtonMobile from "../../../Button/SeeMoreButtonMobile/SeeMoreButtonMobile";
-import { AntTab, AntTabs } from "../../../Tab/Tab";
 import SimpleAlerts from "../../../UI/Alerts/Alerts";
 import Product from "../../Product/Product";
 import SkeletonProduct from "../../Product/Skeleton/SkeletonProduct";
@@ -18,10 +19,10 @@ const breakPoints = [
   { width: 1, itemsToShow: 2 },
   { width: 600, itemsToShow: 3 },
   { width: 769, itemsToShow: 4 },
-  { width: 960, itemsToShow: 4 },
+  { width: 960, itemsToShow: 5 },
 ];
 
-const ProductMan = (props) => {
+const WatchStraps = (props) => {
   const classes = useStyles();
 
   const { loading, error, products } = props;
@@ -68,7 +69,7 @@ const ProductMan = (props) => {
           </div>
           <Grid container direction="row" spacing={1}>
             {[...Array(5)].map((item, index) => (
-              <Grid item key={index} className="item-skeleton item-skeleton-4">
+              <Grid item key={index} className="item-skeleton">
                 <SkeletonProduct />
               </Grid>
             ))}
@@ -79,7 +80,7 @@ const ProductMan = (props) => {
       ) : (
         <div className="tab">
           <AppBar position="static" className="app-bar">
-            <AntTabs
+            <Tabs
               value={value}
               onChange={handleChange}
               indicatorColor="primary"
@@ -88,10 +89,8 @@ const ProductMan = (props) => {
               scrollButtons="auto"
               aria-label="scrollable auto tabs example"
             >
-              <AntTab label="Man" {...a11yProps(0)} />
-              <AntTab label="Woman" {...a11yProps(1)} />
-              <AntTab label="Couple" {...a11yProps(2)} />
-            </AntTabs>
+              <Tab label="Watch Straps" {...a11yProps(0)} />
+            </Tabs>
           </AppBar>
           {spinner ? (
             <Grid
@@ -102,11 +101,7 @@ const ProductMan = (props) => {
             >
               <Grid container direction="row" spacing={1}>
                 {[...Array(5)].map((item, index) => (
-                  <Grid
-                    key={index}
-                    item
-                    className="item-skeleton item-skeleton-4"
-                  >
+                  <Grid key={index} item className="item-skeleton">
                     <Box mt={3}>
                       <SkeletonProduct />
                     </Box>
@@ -117,92 +112,20 @@ const ProductMan = (props) => {
           ) : (
             <div>
               <TabPanel value={value} index={0} className="tab-panel">
-                <Link to="/man-watches" className={classes.link}>
-                  <span
-                    className="seemore"
-                    style={{ top: "0", lineHeight: "3rem" }}
-                  >
-                    <strong>Men's fashion watches</strong>
+                <Link to="/watch-accessories" className="seemore">
+                  <span>
+                    See more <strong> watch straps</strong>
                   </span>
                 </Link>
-                <Grid
-                  container
-                  direction="row"
-                  justify="flex-start"
-                  style={{ width: "100%" }}
-                >
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
-                    {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
-                    ))}
-                  </Carousel>
-                </Grid>
-                <SeeMoreButtonMobile
-                  titleAfterClick="man's fashion watches"
-                  isActive={true}
-                  link="/man-watches"
-                />
-              </TabPanel>
-              <TabPanel value={value} index={1} className="tab-panel">
-                <Link to="/woman-watches" className={classes.link}>
-                  <span
-                    className="seemore"
-                    style={{ top: "0", lineHeight: "3rem" }}
-                  >
-                    <strong>Woman's fashion watches</strong>
-                  </span>
-                </Link>
-                <Grid
-                  container
-                  direction="row"
-                  justify="flex-start"
-                  style={{ width: "100%" }}
-                >
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
-                    {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
-                    ))}
-                  </Carousel>
-                </Grid>
+
+                {/* button see more on mobile */}
 
                 <SeeMoreButtonMobile
-                  titleAfterClick="woman's fashion watches"
+                  titleAfterClick="watch accessories"
                   isActive={true}
-                  link="/woman-watches"
+                  link="/watch-accessories"
                 />
-              </TabPanel>
-              <TabPanel value={value} index={2} className="tab-panel">
-                <Link to="/couple-watches" className={classes.link}>
-                  <span
-                    className="seemore"
-                    style={{ top: "0", lineHeight: "3rem" }}
-                  >
-                    <strong>Couple watches</strong>
-                  </span>
-                </Link>
-                <Grid
-                  container
-                  direction="row"
-                  justify="space-between"
-                  alignItems="stretch"
-                  style={{ width: "100%" }}
-                >
+                <Grid container justify="flex-start" style={{ width: "100%" }}>
                   <Carousel
                     breakPoints={breakPoints}
                     pagination={false}
@@ -217,11 +140,6 @@ const ProductMan = (props) => {
                     ))}
                   </Carousel>
                 </Grid>
-                <SeeMoreButtonMobile
-                  titleAfterClick="couple watches"
-                  isActive={true}
-                  link="/couple-watches"
-                />
               </TabPanel>
             </div>
           )}
@@ -231,7 +149,7 @@ const ProductMan = (props) => {
   );
 };
 
-export default ProductMan;
+export default WatchStraps;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

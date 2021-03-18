@@ -18,6 +18,7 @@ import ProductBanner from "../../components/Products/ProductBanner/ProductBanner
 import ProductRoute from "../../components/Products/ProductKind/ProductRoute";
 import ProductMan from "../../components/Products/ProductSection/ProductMan/ProductMan";
 import SmartWatches from "../../components/Products/ProductSection/SmartWatch/SmartWatches";
+import WatchStraps from "../../components/Products/ProductSection/WatchStraps/WatchStraps";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import WatchNews from "../../components/WatchNews/WatchNews";
 import { listProducts } from "../../store/actions/productActions";
@@ -171,8 +172,8 @@ const HomePage = (props) => {
                   {/* button see more on mobile */}
 
                   <SeeMoreButtonMobile
-                    title="See 6 more fashion watches selling"
-                    titleAfterClick="See more fashion watches"
+                    title="fashion watches selling"
+                    titleAfterClick="fashion watches"
                     isActive={isActive}
                     toggleClass={() => toggleClass(value)}
                     link="/fashion-watches"
@@ -213,8 +214,8 @@ const HomePage = (props) => {
                   {/* button see more on mobile */}
 
                   <SeeMoreButtonMobile
-                    title="See 6 more smart watches selling"
-                    titleAfterClick="See more smart watches"
+                    title="smart watches selling"
+                    titleAfterClick="smart watches"
                     isActive={isActive1}
                     toggleClass={toggleClass1}
                     link="/smart-watches"
@@ -254,8 +255,8 @@ const HomePage = (props) => {
                   {/* button see more on mobile */}
 
                   <SeeMoreButtonMobile
-                    title="See 6 more watch straps selling"
-                    titleAfterClick="See more watch straps"
+                    title="watch straps selling"
+                    titleAfterClick="watch straps"
                     isActive={isActive2}
                     toggleClass={toggleClass2}
                     link="/watch-straps"
@@ -318,12 +319,18 @@ const HomePage = (props) => {
       </Grid>
       {/* man watch */}
       <Grid container justify="space-between" className="top-15 rp1">
-        <Grid item xs className="m-heading">
+        <Grid item xs className="m-heading" sm={12}>
           <Link to="">
             <img
               data-original="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png"
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png"
-              style={{ width: "100%", objectFit: "cover", height: "100%" }}
+              className="img-m-heading img-m-heading-dk"
+            />
+
+            <img
+              data-original="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-bannerdonghothoitrang.png"
+              src="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-bannerdonghothoitrang.png"
+              className="img-m-heading img-m-heading-mb"
             />
           </Link>
         </Grid>
@@ -331,32 +338,26 @@ const HomePage = (props) => {
           <ProductMan products={products} loading={loading} error={error} />
         </Grid>
       </Grid>
+      {/* smart watch */}
       <Grid container justify="space-between" className="top-15 rp1">
-        <Grid item xs className="background-img">
+        <Grid item xs className="m-heading" sm={12}>
           <Link to="">
-            <div className="df df2"></div>
+            <img
+              className="img-m-heading img-m-heading-dk"
+              data-original="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothongminhbanner.png"
+              src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothongminhbanner.png"
+            />
+            <img
+              data-original="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-donghothongminhbanner.png"
+              src="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-donghothongminhbanner.png"
+              className="img-m-heading img-m-heading-mb"
+            />
           </Link>
         </Grid>
-        <Grid item xs style={{ background: "#fff" }}>
+        <Grid item xs className="m-content">
           <SmartWatches products={products} loading={loading} error={error} />
         </Grid>
       </Grid>
-      {/* smart watch */}
-      {/* <Grid container justify="space-between" className="top-15">
-        <Grid
-          item
-          xs
-          style={{ width: "239px", marginRight: "10px", maxWidth: "239px" }}
-        >
-          <Link to="" style={{ width: "100%", height: "auto" }}>
-            <div className="background-img df df2"></div>
-          </Link>
-        </Grid>
-        <Grid item xs>
-          <SmartWatches products={products} loading={loading} error={error} />
-        </Grid>
-      </Grid> */}
-      {/* watch straps */}
       {/*accessories */}
       <div
         className="accessories"
@@ -367,80 +368,8 @@ const HomePage = (props) => {
           lineHeight: "67px",
           position: "relative",
         }}
-      >
-        <Link
-          to="/watch-accessories"
-          className={classes.link}
-          style={{
-            top: "24px",
-            right: "0",
-            lineHeight: "35px",
-          }}
-        >
-          <span
-            className="link-accessories"
-            style={{
-              fontSize: "1rem",
-              color: "var(--primary)",
-              position: "absolute",
-              top: "25px",
-              right: "0",
-              backgroundColor: "#fff",
-            }}
-          >
-            See more <strong> watch accessories</strong>
-          </span>
-        </Link>
-      </div>{" "}
-      <div className="skeleton-p-1">
-        {!loading ? (
-          <Grid container spacing={1} direction="row">
-            {[...Array(5)].map((item, index) => (
-              <Grid item key={index} className="item-skeleton">
-                <SkeletonProduct />
-              </Grid>
-            ))}
-          </Grid>
-        ) : error ? (
-          <SimpleAlerts severity="error" message={error} />
-        ) : (
-          <div className="tab">
-            {spinner ? (
-              <div className={classes.skeleton}>
-                <Skeleton animation="pulse" variant="rect" height={300} />
-                <Skeleton
-                  variant="text"
-                  animation="pulse"
-                  height={30}
-                  width="80%"
-                />
-                <Skeleton
-                  animation="pulse"
-                  width="60%"
-                  height={20}
-                  style={{ marginBottom: 20 }}
-                />
-              </div>
-            ) : (
-              <Grid container justify="flex-start" style={{ width: "100%" }}>
-                <Carousel
-                  breakPoints={breakPoints}
-                  pagination={false}
-                  enableSwipe={false}
-                >
-                  {products.map((product) => (
-                    <Product
-                      product={product}
-                      key={product._id}
-                      loading={loading}
-                    />
-                  ))}
-                </Carousel>
-              </Grid>
-            )}
-          </div>
-        )}
-      </div>
+      ></div>
+      <WatchStraps products={products} loading={loading} error={error} />
       {/* watch news*/}
       <div className="top-15">
         <WatchNews products={products} loading={loading} error={error} />
