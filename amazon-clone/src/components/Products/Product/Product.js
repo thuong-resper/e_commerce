@@ -1,11 +1,10 @@
-import { Box, Grid } from "@material-ui/core";
-import Skeleton from "@material-ui/lab/Skeleton";
+import { Grid } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductRating from "../../Rating/Rating";
 import SkeletonProduct from "./Skeleton/SkeletonProduct";
-
 import "./styles.css";
+
 
 const Product = (props) => {
   const { product, loading } = props;

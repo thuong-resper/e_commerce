@@ -7,6 +7,7 @@ import CartList from "../../components/Cart/CartList";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { addToCart } from "../../store/actions/cartActions";
 import { useStyles } from "./styles";
+import styles from "./styles.module.css";
 
 const CartPage = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -50,14 +51,14 @@ const CartPage = ({ match, location, history }) => {
             justify="space-between"
             alignItems="flex-start"
           >
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
               {cartItems.map((item, index) => (
                 <CartList item={item} key={item.product} />
               ))}
             </Grid>
             {/*order detail*/}
-            <Grid item xs={4}>
-              <div className={classes.wrapper}>
+            <Grid item xs={12} md={4}>
+              <div className={styles.wrapper_cart_page}>
                 <Typography className={classes.locationLabel} gutterBottom>
                   Location
                 </Typography>

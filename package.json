@@ -35,7 +35,8 @@
     "express-async-handler": "^1.1.4",
     "express-load": "^1.1.16",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.9"
+    "mongoose": "^5.11.9",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

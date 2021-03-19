@@ -3,7 +3,11 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  background: { backgroundColor: "#fff", borderRadius: 4 },
+  background: {
+    backgroundColor: "#fff",
+    borderRadius: 4,
+    marginBottom: "1.5rem",
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
@@ -13,6 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%", // 16:9
     height: "100%", // 16:9
     maxHeight: "20rem",
+    objectFit: "cover",
   },
   rating: {
     display: "flex",
@@ -58,5 +63,13 @@ export const useStyles = makeStyles((theme) => ({
   },
   input: {
     webkitAppearance: "none",
+  },
+
+  formControl: {
+    minWidth: 120,
+    width: "100%",
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
   },
 }));

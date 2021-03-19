@@ -4,6 +4,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#F2F3F5",
+    flexGrow: 100,
   },
   main: {
     marginTop: theme.spacing(8),

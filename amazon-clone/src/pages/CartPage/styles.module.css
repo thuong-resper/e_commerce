@@ -14,3 +14,16 @@ tr,
 th {
   border-bottom: none !important;
 }
+
+.wrapper_cart_page {
+  border-radius: 4px;
+  margin: 1rem 0 1rem 1rem;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper_cart_page {
+    margin-left: 0;
+  }
+}
