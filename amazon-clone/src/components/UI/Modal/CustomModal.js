@@ -16,7 +16,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function AlertDialogSlide(props) {
   const classes = useStyles();
 
-  const { title, component, iconAnchor, confirmButton } = props;
+  const {
+    title,
+    component,
+    iconAnchor,
+    confirmButton,
+    disagreeButton,
+    fullScreen,
+  } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -32,6 +39,7 @@ export default function AlertDialogSlide(props) {
     <div className={classes.root}>
       <IconButton onClick={handleClickOpen}>{iconAnchor}</IconButton>
       <Dialog
+        fullScreen={fullScreen}
         open={open}
         TransitionComponent={Transition}
         keepMounted
@@ -49,9 +57,12 @@ export default function AlertDialogSlide(props) {
         </div>
         <DialogContent>{component}</DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
+          {disagreeButton ? (
+            <Button onClick={handleClose} color="primary">
+              Disagree
+            </Button>
+          ) : null}
+
           {confirmButton}
         </DialogActions>
       </Dialog>

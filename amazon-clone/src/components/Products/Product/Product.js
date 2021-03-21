@@ -1,10 +1,9 @@
-import { Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductRating from "../../Rating/Rating";
 import SkeletonProduct from "./Skeleton/SkeletonProduct";
 import "./styles.css";
-
 
 const Product = (props) => {
   const { product, loading } = props;
@@ -41,10 +40,12 @@ const Product = (props) => {
                   ).toFixed() + "%"}
                 </i>
               </div>
-              <ProductRating
-                value={product.rating}
-                text={`${product.numReviews} reviews`}
-              />
+              <Box m="5px 10px 0">
+                <ProductRating
+                  value={product.rating}
+                  text={`${product.numReviews} reviews`}
+                />
+              </Box>
             </Link>
           </div>
         </li>

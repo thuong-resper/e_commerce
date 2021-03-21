@@ -1,23 +1,29 @@
 import { Box, Typography } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import React from "react";
-import { useStyles } from "./styles";
-import "./styles.css";
+
+import styles from "./styles.module.css";
 
 const ProductRating = ({ value, text }) => {
-  const classes = useStyles();
-
   return (
-    <Box component="fieldset" borderColor="transparent" className="rating">
+    <Box
+      component="fieldset"
+      borderColor="transparent"
+      className={styles.rating}
+    >
       <Rating
         name="read-only"
         value={value ? value : 0}
         readOnly
         size="small"
         precision={0.5}
-        className="rating-start"
+        className={styles.start}
       />
-      <Typography variant="body2" color="textSecondary" className="text-review">
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        className={styles.review}
+      >
         {text && text}
       </Typography>
     </Box>

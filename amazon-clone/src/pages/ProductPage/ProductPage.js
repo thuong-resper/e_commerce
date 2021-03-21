@@ -1,21 +1,21 @@
 import {
   Avatar,
   Box,
-
-
+  Chip,
   Grid,
   InputLabel,
-
   NativeSelect,
   Paper,
-
-  TextField
+  TextField,
 } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import AddIcon from "@material-ui/icons/Add";
+import AllInboxIcon from "@material-ui/icons/AllInbox";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FiberPinIcon from "@material-ui/icons/FiberPin";
+import OfflinePinIcon from "@material-ui/icons/OfflinePin";
 import RemoveIcon from "@material-ui/icons/Remove";
 import ShareIcon from "@material-ui/icons/Share";
 import React, { useEffect, useState } from "react";
@@ -25,13 +25,15 @@ import SimpleBackdrop from "../../components/Backdrop/Backdrop";
 import CustomizedBreadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Product from "../../components/Products/Product/Product";
 import ProductColor from "../../components/Products/ProductColor/ProductColor";
+import ProductDescription from "../../components/Products/ProductDescription/ProductDescription";
+import ProductImageTab from "../../components/Products/ProductImageTab/ProductImageTab";
 import ProductPromotion from "../../components/Products/ProductPromotions/ProductPromotion";
 import ProductRating from "../../components/Rating/Rating";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../../constants/productConstants";
 import {
   createProductReview,
-  listProductDetails
+  listProductDetails,
 } from "../../store/actions/productActions";
 import { useStyles } from "./styles";
 import styles from "./styles.module.css";
@@ -42,8 +44,6 @@ const ProductPage = ({ history, match }) => {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, product, error } = productDetails;
-
-  console.log(product);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -105,12 +105,6 @@ const ProductPage = ({ history, match }) => {
     );
   };
 
-  const propImageZoom = {
-    width: 400,
-    height: 250,
-    zoomWidth: 500,
-  };
-
   return (
     <div>
       {loading ? (
@@ -129,27 +123,30 @@ const ProductPage = ({ history, match }) => {
             <Grid item xs={12}>
               <CustomizedBreadcrumbs />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <img alt="d" className={classes.media} src={product.image} />
+            <Grid item xs={12} md={7}>
+              {product.colors ? <ProductImageTab product={product} /> : null}
             </Grid>
 
-            <Grid item xs={12} sm={6}>
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="flex-start"
-              >
-                <Grid item xs={12} style={{ margin: "0 0.5rem" }}>
+            <Grid item xs={12} md={5}>
+              <Box m="0 0.5rem">
+                <Box>
                   <Typography variant="h5" gutterBottom>
                     {product.name}
                   </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.rating}>
-                  <ProductRating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                  />
+                </Box>
+                <Box
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Box>
+                    <ProductRating
+                      value={product.rating}
+                      text={`${product.numReviews} reviews`}
+                    />
+                  </Box>
                   <div>
                     <IconButton aria-label="share" color="primary">
                       <ShareIcon />
@@ -158,12 +155,13 @@ const ProductPage = ({ history, match }) => {
                       <FavoriteBorderIcon />
                     </IconButton>
                   </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  className={classes.productBrand}
-                  style={{ margin: "0 0.5rem" }}
+                </Box>
+
+                <Box
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <span>Brand:</span>
                   <Link
@@ -189,13 +187,9 @@ const ProductPage = ({ history, match }) => {
                       </Box>
                     </div>
                   </Link>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  className={classes.priceDetail}
-                  style={{ margin: "0 0.5rem" }}
-                >
+                </Box>
+
+                <Box>
                   <Typography variant="h4" color="secondary">
                     {product.price}
                     <abbr
@@ -203,6 +197,15 @@ const ProductPage = ({ history, match }) => {
                     >
                       đ
                     </abbr>
+                    {true ? (
+                      <Chip
+                        color="secondary"
+                        size="small"
+                        label="Hire purchase 0%"
+                        variant="outlined"
+                        style={{ marginLeft: "0.5rem" }}
+                      />
+                    ) : null}
                   </Typography>
                   <Typography variant="body2">
                     <span>
@@ -219,81 +222,122 @@ const ProductPage = ({ history, match }) => {
                       </span>
                     </span>
                   </Typography>
+                </Box>
+                {/*promotions */}
+                {product.promotions ? (
+                  <ProductPromotion product={product} />
+                ) : null}
+
+                {/*select quantity */}
+
+                <Box
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <Box style={{ flexBasis: "25%" }}>Quantity</Box>
+                  <Box>
+                    <IconButton
+                      onClick={decrement}
+                      disabled={qty === 1 || qty === 0}
+                    >
+                      <RemoveIcon />
+                    </IconButton>
+                    <TextField
+                      type="number"
+                      value={qty}
+                      className={styles.inputField}
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    <IconButton onClick={increment} disabled={qty === max}>
+                      <AddIcon />
+                    </IconButton>
+                  </Box>
+                </Box>
+                {/*product color*/}
+
+                {product.colors ? <ProductColor product={product} /> : null}
+
+                {/*product add to cart*/}
+                <Box height="2.5rem" m="0.5rem 0">
+                  <Button
+                    onClick={addToCartHandler}
+                    variant="contained"
+                    color="secondary"
+                    disabled={product.countInStock === 0 || qty === 0}
+                    fullWidth
+                    className={styles.button}
+                  >
+                    <Typography variant="button">Buy now</Typography>
+                  </Button>
+                </Box>
+                <Box height="2.5rem" m="0.5rem 0">
+                  <Button
+                    onClick={addToCartHandler}
+                    variant="contained"
+                    color="primary"
+                    disabled={product.countInStock === 0 || qty === 0}
+                    fullWidth
+                    className={styles.button}
+                  >
+                    <Typography variant="button">Add To Cart</Typography>
+                  </Button>
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* purchase policy */}
+            <Grid item xs={12}>
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+              >
+                <Grid item xs={12} sm={4}>
+                  <Box
+                    className={styles.d_flex}
+                    m="0.25rem 0.5rem"
+                    p="0.5rem"
+                    borderRight="1px solid #00000014"
+                  >
+                    <AllInboxIcon color="primary" />
+                    <Typography variant="body2" style={{ margin: "0 0.5rem" }}>
+                      Package includes: Box, Warranty card, User guide
+                    </Typography>
+                  </Box>
                 </Grid>
-                <Grid item xs={12} style={{ paddingLeft: "0.5rem" }}>
-                  {/*promotions */}
-                  {product.promotions ? (
-                    <ProductPromotion product={product} />
-                  ) : null}
-
-                  {/*select quantity */}
-                  {
-                    <Grid item xs={12} className={classes.table}>
-                      <Grid item xs={3}>
-                        Quantity
-                      </Grid>
-                      <Grid item xs={9} className={classes.root}>
-                        <IconButton
-                          onClick={decrement}
-                          disabled={qty === 1 || qty === 0}
-                        >
-                          <RemoveIcon />
-                        </IconButton>
-                        <TextField
-                          type="number"
-                          value={qty}
-                          className={styles.inputField}
-                          onChange={(e) => {
-                            handleChange(e);
-                          }}
-                        />
-                        <IconButton onClick={increment} disabled={qty === max}>
-                          <AddIcon />
-                        </IconButton>
-                      </Grid>
-                    </Grid>
-                  }
-
-                  {/*product color*/}
-                  {product.colors ? <ProductColor product={product} /> : null}
-
-                  {/*product size*/}
-
-                  {/*product quantity*/}
-
-                  {/*product add to cart*/}
-                  <Grid item xs={12} className={classes.button}>
-                    <Button
-                      variant="contained"
-                      className={classes.orderButton}
-                      disabled={product.countInStock === 0}
-                    >
-                      Buy Now
-                    </Button>
-                    <Button
-                      onClick={addToCartHandler}
-                      variant="contained"
-                      color="primary"
-                      className={classes.orderButton}
-                      disabled={product.countInStock === 0 || qty === 0}
-                    >
-                      Add To Card
-                    </Button>
-                  </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Box
+                    className={styles.d_flex}
+                    borderRight="1px solid #00000014"
+                  >
+                    <OfflinePinIcon color="primary" />
+                    <Typography variant="body2" style={{ margin: "0 0.5rem" }}>
+                      Genuine warranty 24 months{" "}
+                      <Link to="" style={{ color: "var(--primary)" }}>
+                        More Info
+                      </Link>
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Box className={styles.d_flex}>
+                    <FiberPinIcon color="primary" />
+                    <Typography variant="body2" style={{ margin: "0 0.5rem" }}>
+                      Lifetime battery warranty
+                    </Typography>
+                  </Box>
                 </Grid>
               </Grid>
             </Grid>
-
             {/* delivery */}
-            {/* <Grid item xs={4}>
-              delivery
-            </Grid> */}
           </Grid>
-
           {/* reviews section */}
-
           {/* related products */}
-
           <Grid
             container
             spacing={3}
@@ -301,39 +345,33 @@ const ProductPage = ({ history, match }) => {
             className={classes.background}
           >
             <Grid item xs={12} style={{ margin: "0 0.5rem" }}>
-              <Typography variant="h5">
-                Compare with similar products
-              </Typography>
+              <Typography variant="h5">Similar products</Typography>
             </Grid>
-            <Grid item xs={12} style={{ margin: "0 0.5rem" }}>
-              <Grid
-                container
-                direction="row"
-                spacing={3}
-                justify="space-between"
-              >
+            <Grid item xs={12}>
+              <Grid container direction="row" alignItems="flex-start">
                 {[...Array(6)].map((item, index) => (
-                  <Grid item key={index} md={2} sx={6} sm={4}>
-                    <Box mr={1}>
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
-                    </Box>
+                  <Grid key={index} item xs={6} sm={4} md={2}>
+                    <Product
+                      product={product}
+                      key={product._id}
+                      loading={loading}
+                    />
                   </Grid>
                 ))}
               </Grid>
             </Grid>
           </Grid>
+          {/* description products */}
+          <ProductDescription product={product} />
 
+          {/* review */}
           <Grid
             container
             spacing={3}
             direction="row"
             className={classes.background}
           >
-            <Grid item xs={12} sm={12} md={9} style={{ margin: "0.5rem" }}>
+            <Grid item xs={12} sm={12} md={7} style={{ margin: "0.5rem" }}>
               <Box>
                 <Typography variant="h5">Reviews</Typography>
               </Box>
@@ -467,5 +505,3 @@ const ProductPage = ({ history, match }) => {
 };
 
 export default ProductPage;
-
-// show promotion
