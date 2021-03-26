@@ -60,7 +60,7 @@ const ShippingPage = ({ history }) => {
           Shipping address
         </Typography>
         <form onSubmit={submitHandler}>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 required

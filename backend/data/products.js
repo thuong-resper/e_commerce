@@ -1,7 +1,7 @@
 const products = [
   {
     name: "The Pop Shoppe - Root Beer",
-    image: "/images/airpods.jpg",
+    image: "/images/demo/mvmt-d-mr01-blus-nam-1-400x400.jpg",
     description: "Replacement of R Axilla Vein with Synth Sub, Open Approach",
     brand: "Arnica Betula A",
     category: "RUB",
@@ -43,7 +43,7 @@ const products = [
   },
   {
     name: "Spinach - Spinach Leaf",
-    image: "/images/alexa.jpg",
+    image: "/images/demo/aviator-avw6971g352-nam-1-1-400x400.jpg",
     description: "Excision of Ant Neck Subcu/Fascia, Open Approach, Diagn",
     brand: "Heartburn Relief 24 hour",
     category: "RWF",
@@ -99,7 +99,7 @@ const products = [
   },
   {
     name: "Wine - Spumante Bambino White",
-    image: "/images/camera.jpg",
+    image: "/images/demo/kenneth-cole-kc50982003-nam-avatar-1-400x400.jpg",
     description: "Insertion of Spacer into R Sacroiliac Jt, Open Approach",
     brand: "Neutrogena Men Sensitive Skin Oil Free Moisture",
     category: "ZMW",
@@ -140,7 +140,7 @@ const products = [
   },
   {
     name: "Pork Loin Cutlets",
-    image: "/images/mouse.jpg",
+    image: "/images/demo/michael-kors-mk3203-vang-hong-0-400x400.jpg",
     description: "Repair Duodenum, Percutaneous Endoscopic Approach",
     brand: "CVS PHARMACY",
     category: "CNY",
@@ -181,7 +181,7 @@ const products = [
   },
   {
     name: "Nut - Pistachio, Shelled",
-    image: "/images/phone.jpg",
+    image: "/images/demo/orient-ra-ag0003s10b-nam-co-tu-dong-2-400x400.jpg",
     description: "Occlusion of Right Pulmonary Vein, Percutaneous Approach",
     brand: "Diltiazem HydrochlorideExtended Release",
     category: "PLN",
@@ -214,7 +214,7 @@ const products = [
   },
   {
     name: "Cod - Salted, Boneless",
-    image: "/images/playstation.jpg",
+    image: "/images/demo/mathey-tissot-h411bpi-nam-1-400x400.jpg",
     description: "CT Scan of Liver & Spleen using Oth Contrast",
     brand: "Lancome Paris Bienfait MultiVital Broad Spectrum SPF 30 Sunscreen",
     category: "RUB",
@@ -244,7 +244,7 @@ const products = [
   },
   {
     name: "Bowl 12 Oz - Showcase 92012",
-    image: "/images/airpods.jpg",
+    image: "/images/demo/edifice-casio-ef-334d-7avudf-bac-7-400x400.jpg",
     description: "Chiropractic Manipulation of Abdomen, Other Method",
     brand: "One Seed Juniper",
     category: "NOK",
@@ -293,7 +293,7 @@ const products = [
   },
   {
     name: "Bread - Bagels, Plain",
-    image: "/images/alexa.jpg",
+    image: "/images/demo/orient-fal00002b0-nam-0-400x400.jpg",
     description: "Extirpation of Matter from Thor Disc, Perc Approach",
     brand: "Doxycycline Hyclate",
     category: "PHP",
@@ -330,7 +330,7 @@ const products = [
   },
   {
     name: "Parsley - Dried",
-    image: "/images/camera.jpg",
+    image: "/images/demo/larmes-lm-tf004-ot49g-211-4nb-nam-1-400x400.jpg",
     description: "Drainage of Left Ureter, Perc Endo Approach, Diagn",
     brand: "BEBULIN",
     category: "SEK",
@@ -371,7 +371,7 @@ const products = [
   },
   {
     name: "Cream - 10%",
-    image: "/images/mouse.jpg",
+    image: "/images/demo/baby-g-bga-250-7a2dr-trang-5-400x400.jpg",
     description: "Bypass R Vas Deferens to R Epidid w Autol Sub, Perc Endo",
     brand: "IASO Triple Protection BB SPF 30 PA",
     category: "IQD",
@@ -421,7 +421,7 @@ const products = [
   },
   // {
   //   name: "Lentils - Green, Dry",
-  //   image: "/images/phone.jpg",
+  //   image: "/images/demo/phone.jpg",
   //   description: "Division of Right Upper Arm Muscle, Perc Endo Approach",
   //   brand: "Coppertone KIDS",
   //   category: "PHP",
@@ -468,7 +468,7 @@ const products = [
   // },
   // {
   //   name: "Bread - Raisin Walnut Oval",
-  //   image: "/images/playstation.jpg",
+  //   image: "/images/demo/playstation.jpg",
   //   description: "Repair Left Hypogastric Vein, Open Approach",
   //   brand: "Pure Transformation Sheer Medium",
   //   category: "PHP",
@@ -514,7 +514,7 @@ const products = [
   // },
   // {
   //   name: "Oyster - In Shell",
-  //   image: "/images/airpods.jpg",
+  //   image: "/images/demo/airpods.jpg",
   //   description: "Revision of Synth Sub in L Scapula, Extern Approach",
   //   brand: "Antiseptic",
   //   category: "XAF",
@@ -547,7 +547,7 @@ const products = [
   // },
   // {
   //   name: "Sauce - Cranberry",
-  //   image: "/images/alexa.jpg",
+  //   image: "/images/demo/alexa.jpg",
   //   description: "Destruction of Rectum, Via Natural or Artificial Opening",
   //   brand: "Oily SK Specific Solutions",
   //   category: "CNY",
@@ -586,7 +586,7 @@ const products = [
   // },
   // {
   //   name: "Macaroons - Homestyle Two Bit",
-  //   image: "/images/airpods.jpg",
+  //   image: "/images/demo/airpods.jpg",
   //   description: "Destruction of Left Eustachian Tube, Perc Endo Approach",
   //   brand: "TRAZODONE HYDROCHLORIDE",
   //   category: "CNY",
@@ -619,7 +619,7 @@ const products = [
   // },
   // {
   //   name: "Cake Sheet Combo Party Pack",
-  //   image: "/images/camera.jpg",
+  //   image: "/images/demo/camera.jpg",
   //   description: "Excision of Carina, Via Natural or Artificial Opening, Diagn",
   //   brand: "Trokendi XR",
   //   category: "KGS",
@@ -655,7 +655,7 @@ const products = [
   // },
   // {
   //   name: "Cheese - Pied De Vents",
-  //   image: "/images/mouse.jpg",
+  //   image: "/images/demo/mouse.jpg",
   //   description: "Introduction of Autol Pancr Islet into Bil/Panc Tract, Endo",
   //   brand: "Tretin-X",
   //   category: "BRL",
@@ -693,7 +693,7 @@ const products = [
   // },
   // {
   //   name: "Wasabi Powder",
-  //   image: "/images/phone.jpg",
+  //   image: "/images/demo/phone.jpg",
   //   description: "Drainage of Right Popliteal Artery, Perc Endo Approach",
   //   brand: "PISTACHIO",
   //   category: "EUR",
@@ -746,7 +746,7 @@ const products = [
   // },
   // {
   //   name: "Bread Crumbs - Panko",
-  //   image: "/images/playstation.jpg",
+  //   image: "/images/demo/playstation.jpg",
   //   description: "Bypass Bladder to Cutaneous, Perc Endo Approach",
   //   brand: "CareOne Cold and Cough",
   //   category: "RUB",
@@ -771,7 +771,7 @@ const products = [
   // },
   // {
   //   name: "Trueblue - Blueberry Cranberry",
-  //   image: "/images/airpods.jpg",
+  //   image: "/images/demo/airpods.jpg",
   //   description: "Destruction of Superior Mesenteric Vein, Perc Approach",
   //   brand: "Day Time Cold and Flu Relief",
   //   category: "BRL",

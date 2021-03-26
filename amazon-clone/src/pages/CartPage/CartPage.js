@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Box, Button, Grid, TextField } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import React, { useEffect } from "react";
@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CartList from "../../components/Cart/CartList";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { addToCart } from "../../store/actions/cartActions";
-import { useStyles } from "./styles";
 import styles from "./styles.module.css";
 
 const CartPage = ({ match, location, history }) => {
@@ -28,8 +27,6 @@ const CartPage = ({ match, location, history }) => {
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
   };
-
-  const classes = useStyles();
 
   return (
     <div>
@@ -58,88 +55,88 @@ const CartPage = ({ match, location, history }) => {
             </Grid>
             {/*order detail*/}
             <Grid item xs={12} md={4}>
-              <div className={styles.wrapper_cart_page}>
-                <Typography className={classes.locationLabel} gutterBottom>
+              <div className={styles.wrapper}>
+                <Typography className={styles.location_element} gutterBottom>
                   Location
                 </Typography>
-                <div className={classes.location}>
-                  <RoomOutlinedIcon className={classes.locationIcon} />
+                <div className={styles.location}>
+                  <Box mr="10px">
+                    <RoomOutlinedIcon className={styles.location_element} />
+                  </Box>
                   <Typography variant="body2">
-                    {address}, {province}, {city}, {country}
+                    {shippingAddress.length ? (
+                      <span>
+                        {address}, {province}, {city}, {country}
+                      </span>
+                    ) : (
+                      "Your shipping address"
+                    )}
                   </Typography>
                 </div>
-                <div className={classes.summary_section}>
-                  <div className={classes.summary_section_heading}>
-                    Order Summary
-                  </div>
-                  <div className={classes.summary_section_content}>
-                    <div className={classes.checkout_summary}>
-                      <div className={classes.checkout_rows}>
-                        <div className={classes.checkout_row}>
-                          <div className={classes.checkout_summary_label}>
+                <Box p="1rem 0">
+                  <Box className={styles.order}>
+                    <Typography variant="h6">Order Summary</Typography>
+                  </Box>
+                  <Box pb="1rem">
+                    <div>
+                      <div>
+                        <div className={styles.row_1}>
+                          <div className={styles.label}>
                             Subtotal (
                             {cartItems.reduce((acc, item) => acc + item.qty, 0)}{" "}
                             items)
                           </div>
-                          <div className={classes.checkout_summary_value}>
-                            $
+                          <Typography variant="body1">
+                            ${" "}
                             {cartItems
                               .reduce(
                                 (acc, item) => acc + item.qty * item.price,
                                 0
                               )
                               .toFixed(2)}
-                          </div>
+                          </Typography>
                         </div>
-                        <div className={classes.checkout_row}>
-                          <div className={classes.checkout_summary_label}>
-                            Shipping Fee
-                          </div>
-                          <div className={classes.checkout_summary_value}>
-                            $
+                        <div className={styles.row}>
+                          <div className={styles.label}>Shipping Fee</div>
+                          <Typography variant="body1">
+                            ${" "}
                             {cartItems
                               .reduce(
                                 (acc, item) => acc + item.qty * item.price,
                                 0
                               )
                               .toFixed(2)}
-                          </div>
+                          </Typography>
                         </div>
                       </div>
                     </div>
-                    <div className={classes.voucher_input}>
-                      <div className={classes.voucher_input_inner}>
-                        <div className={classes.voucher_input_col_9}>
+                    <Box mb="0.5rem">
+                      <div className={styles.voucher_input}>
+                        <Box width="73%">
                           <TextField
                             id="outlined-basic"
                             variant="outlined"
                             size="small"
-                            className={classes.voucher_input_type}
+                            fullWidth
                           />
-                        </div>
-                        <div className={classes.voucher_input_col_3}>
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.voucher_input_button}
-                          >
+                        </Box>
+                        <Box width="25%">
+                          <Button variant="contained" color="primary" fullWidth>
                             Apply
                           </Button>
-                        </div>
+                        </Box>
                       </div>
-                    </div>
-                  </div>
-                  <div className={classes.checkout_order_total}>
-                    <div className={classes.checkout_order_row}>
-                      <div className={classes.checkout_order_total_title}>
-                        Total
-                      </div>
-                      <div className={classes.checkout_order_total_fee}>
-                        $
+                    </Box>
+                  </Box>
+                  <div>
+                    <div className={styles.order_row}>
+                      <Typography variant="subtitle1">Total</Typography>
+                      <div className={styles.total}>
+                        ${" "}
                         {cartItems
                           .reduce((acc, item) => acc + item.qty * item.price, 0)
                           .toFixed(2)}
-                        <small className={classes.checkout_order_total_fee_tip}>
+                        <small className={styles.fee}>
                           VAT included, where applicable
                         </small>
                       </div>
@@ -148,14 +145,14 @@ const CartPage = ({ match, location, history }) => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    className={classes.confirm_cart_button}
+                    className={styles.button}
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
                     CONFIRM CART
                   </Button>
-                </div>
-              </div>{" "}
+                </Box>
+              </div>
             </Grid>
           </Grid>
         </div>

@@ -1,4 +1,4 @@
-import { Button, Grid } from "@material-ui/core";
+import { Box, Button, Grid } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import AddIcon from "@material-ui/icons/Add";
@@ -53,19 +53,21 @@ const CartList = (props) => {
         <Typography>{item.name} </Typography>
         <KeyboardArrowRightIcon color="disabled" />
       </Grid>
-      <div className={styles.contentItem}>
-        <Grid item xs={2} className={styles.Img}>
+      <Grid container justify="center" className={styles.contentItem}>
+        <Grid item xs={3} sm={2} className={styles.Img}>
           <Link to={`/product/${item.product}`}>
-            <img alt="d" className={classes.media} src={item.image} />
+            <img alt="d" className={styles.media} src={item.image} />
           </Link>
         </Grid>
-        <Grid item xs={6} className={classes.ProductName}>
-          <Typography>
-            <Link to={`/product/${item.product}`}>{item.name}</Link>
-          </Typography>
+        <Grid item xs={6} sm={6} className={classes.ProductName}>
+          <Box pl="0.5rem">
+            <Typography>
+              <Link to={`/product/${item.product}`}>{item.name}</Link>
+            </Typography>
+          </Box>
         </Grid>
-        <Grid item xs={2} className={classes.ProductPrice}>
-          <div className={classes.price}>
+        <Grid item xs={3} sm={2} className={classes.ProductPrice}>
+          <div className={styles.price}>
             <Typography variant="h6" color="secondary">
               <abbr
                 style={{
@@ -103,12 +105,12 @@ const CartList = (props) => {
                 </i>
               </span>
             </Typography>
-            <div className={classes.iconButton}>
+            <div className={styles.button}>
               <IconButton>
                 <FavoriteBorderIcon />
               </IconButton>
               <AlertDialogSlide
-                title="Info"
+                title="Message"
                 iconAnchor={<DeleteOutlineIcon />}
                 component={
                   <Typography>
@@ -125,11 +127,12 @@ const CartList = (props) => {
                     </Button>
                   </div>
                 }
+                disagreeButton={true}
               />
             </div>
           </div>
         </Grid>
-        <Grid item xs={2} className={styles.Qty}>
+        <Grid item xs={12} sm={2} className={styles.Qty}>
           <div className={styles.IconButton}>
             <RemoveIcon
               className={clsx(styles.IconButtonItem, {
@@ -153,7 +156,7 @@ const CartList = (props) => {
             />
           </div>
         </Grid>
-      </div>
+      </Grid>
     </div>
   );
 };

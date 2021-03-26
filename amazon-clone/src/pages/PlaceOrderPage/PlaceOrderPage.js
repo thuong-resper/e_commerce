@@ -1,4 +1,4 @@
-import { Button, Chip, Grid, makeStyles, TextField } from "@material-ui/core";
+import { Box, Button, Chip, Grid, TextField } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import EmailIcon from "@material-ui/icons/Email";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -12,10 +12,9 @@ import CartItemsConfirm from "../../components/Cart/CartItemsConfirm";
 import CheckoutSteps from "../../components/Checkout/CheckoutSteps";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { createOrder } from "../../store/actions/orderActions";
+import styles from "./styles.module.css";
 
 const PlaceOrderPage = ({ history }) => {
-  const classes = useStyles();
-
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -75,8 +74,8 @@ const PlaceOrderPage = ({ history }) => {
 
   return (
     <React.Fragment>
-      <Grid container direction="row" className={classes.layout}>
-        <div className={classes.paper}>
+      <Grid container direction="row" className={styles.layout}>
+        <div className={styles.paper}>
           <CheckoutSteps step1 step2 step3 step4 />
         </div>
       </Grid>
@@ -86,13 +85,13 @@ const PlaceOrderPage = ({ history }) => {
         justify="space-between"
         alignItems="flex-start"
       >
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Grid
             container
             direction="row"
             justify="flex-start"
             alignItems="flex-start"
-            className={classes.title}
+            className={styles.title}
           >
             <Grid item xs={8}>
               <Typography variant="body2" style={{ marginLeft: "19px" }}>
@@ -121,15 +120,17 @@ const PlaceOrderPage = ({ history }) => {
           ) : (
             <div>
               {cartItems.map((item, index) => (
-                <CartItemsConfirm item={item} key={item.product} />
+                <Box m="1rem 0" key={item.product}>
+                  <CartItemsConfirm item={item} />
+                </Box>
               ))}
             </div>
           )}
         </Grid>
 
         {/*order detail*/}
-        <Grid item xs={4} className={classes.orderDetail}>
-          <div className={classes.summary_section}>
+        <Grid item xs={12} md={4}>
+          <div className={styles.wrapper}>
             <Typography
               variant="subtitle1"
               gutterBottom
@@ -137,11 +138,11 @@ const PlaceOrderPage = ({ history }) => {
             >
               Shipping & Billing
             </Typography>
-            <div className={classes.summary_section_content}>
-              <div className={classes.checkout_summary}>
-                <div className={classes.checkout_rows}>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+            <Box pb="1rem">
+              <div>
+                <div>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <LocationOnIcon
                         color="primary"
                         style={{ fontSize: "1rem", marginRight: "5px" }}
@@ -153,14 +154,14 @@ const PlaceOrderPage = ({ history }) => {
                         {name}
                       </Typography>
                     </div>
-                    <div className={classes.checkout_summary_value}>
+                    <div className={styles.value}>
                       <Typography variant="body2" color="primary">
                         Edit
                       </Typography>
                     </div>
                   </div>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <Chip
                         label="HOME"
                         size="small"
@@ -176,8 +177,8 @@ const PlaceOrderPage = ({ history }) => {
                       </Typography>
                     </div>
                   </div>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <ReceiptIcon
                         color="primary"
                         style={{ fontSize: "1rem", marginRight: "5px" }}
@@ -186,56 +187,56 @@ const PlaceOrderPage = ({ history }) => {
                         Bill to the same address
                       </Typography>
                     </div>
-                    <div className={classes.checkout_summary_value}>
+                    <div className={styles.value}>
                       <Typography variant="body2" color="primary">
                         Edit
                       </Typography>
                     </div>
                   </div>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <PhoneIcon
                         color="primary"
                         style={{ fontSize: "1rem", marginRight: "5px" }}
                       />
                       <Typography variant="body2">{phone}</Typography>
                     </div>
-                    <div className={classes.checkout_summary_value}>
+                    <div className={styles.value}>
                       <Typography variant="body2" color="primary">
                         Edit
                       </Typography>
                     </div>
                   </div>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <EmailIcon
                         color="primary"
                         style={{ fontSize: "1rem", marginRight: "5px" }}
                       />
                       <Typography variant="body2">{email}</Typography>
                     </div>
-                    <div className={classes.checkout_summary_value}>
+                    <div className={styles.value}>
                       <Typography variant="body2" color="primary">
                         Edit
                       </Typography>
                     </div>
                   </div>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <MonetizationOnIcon
                         color="primary"
                         style={{ fontSize: "1rem", marginRight: "5px" }}
                       />
                       <Typography variant="body2">Tax Code</Typography>
                     </div>
-                    <div className={classes.checkout_summary_value}>
+                    <div className={styles.value}>
                       <Typography variant="body2" color="primary">
                         Edit
                       </Typography>
                     </div>
                   </div>
-                  <div className={classes.checkout_row}>
-                    <div className={classes.checkout_summary_label}>
+                  <div className={styles.row}>
+                    <div className={styles.label}>
                       <PaymentIcon
                         color="primary"
                         style={{ fontSize: "1rem", marginRight: "5px" }}
@@ -244,7 +245,7 @@ const PlaceOrderPage = ({ history }) => {
                         <strong>Payment Method: {cart.paymentMethod}</strong>
                       </Typography>
                     </div>
-                    <div className={classes.checkout_summary_value}>
+                    <div className={styles.value}>
                       <Typography variant="body2" color="primary">
                         Edit
                       </Typography>
@@ -252,7 +253,7 @@ const PlaceOrderPage = ({ history }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Box>
 
             <Typography
               variant="subtitle1"
@@ -261,227 +262,96 @@ const PlaceOrderPage = ({ history }) => {
             >
               Order Summary
             </Typography>
-            <div className={classes.summary_section_content}>
-              <div className={classes.checkout_summary}>
-                <div className={classes.checkout_rows}>
-                  <div className={classes.checkout_row}>
+
+            <Box pb="1rem">
+              <div>
+                <div>
+                  <div className={styles.row}>
                     <div
-                      className={classes.checkout_summary_label}
+                      className={styles.label}
                       style={{ color: "var(--whiteThin)" }}
                     >
                       Subtotal (
                       {cartItems.reduce((acc, item) => acc + item.qty, 0)}{" "}
                       items)
                     </div>
-                    <div className={classes.checkout_summary_value}>
-                      $ {cart.itemsPrice}
-                    </div>
+                    <div className={styles.value}>$ {cart.itemsPrice}</div>
                   </div>
-                  <div className={classes.checkout_row}>
+                  <div className={styles.row}>
                     <div
-                      className={classes.checkout_summary_label}
+                      className={styles.label}
                       style={{ color: "var(--whiteThin)" }}
                     >
                       Shipping Fee
                     </div>
-                    <div className={classes.checkout_summary_value}>
-                      $ {cart.shippingPrice}
-                    </div>
+                    <div className={styles.value}>$ {cart.shippingPrice}</div>
                   </div>
-                  <div className={classes.checkout_row}>
+                  <div className={styles.row}>
                     <div
-                      className={classes.checkout_summary_label}
+                      className={styles.label}
                       style={{ color: "var(--whiteThin)" }}
                     >
                       Tax
                     </div>
-                    <div className={classes.checkout_summary_value}>
-                      $ {cart.taxPrice}
-                    </div>
+                    <div className={styles.value}>$ {cart.taxPrice}</div>
                   </div>
                 </div>
               </div>
-              <div className={classes.voucher_input}>
-                <div className={classes.voucher_input_inner}>
-                  <div className={classes.voucher_input_col_9}>
+              <Box mb="0.5rem">
+                <div className={styles.voucher_input}>
+                  <Box width="73%">
                     <TextField
                       id="outlined-basic"
                       variant="outlined"
                       size="small"
-                      className={classes.voucher_input_type}
+                      fullWidth
                     />
-                  </div>
-                  <div className={classes.voucher_input_col_3}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      className={classes.voucher_input_button}
-                    >
+                  </Box>
+                  <Box width="25%">
+                    <Button variant="contained" color="primary" fullWidth>
                       Apply
                     </Button>
+                  </Box>
+                </div>
+              </Box>{" "}
+            </Box>
+            <div className={styles.fixed}>
+              <div>
+                <div className={styles.order_row}>
+                  <Typography variant="subtitle1">Total</Typography>
+                  <div className={styles.total}>
+                    ${" "}
+                    {cartItems
+                      .reduce((acc, item) => acc + item.qty * item.price, 0)
+                      .toFixed(2)}
+                    <small className={styles.fee}>
+                      VAT included, where applicable
+                    </small>
                   </div>
                 </div>
               </div>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={styles.button}
+                disabled={cartItems.length === 0}
+                onClick={placeOrderHandler}
+              >
+                Order
+              </Button>{" "}
+              {error && (
+                <SimpleAlerts
+                  title="Error"
+                  severity="danger"
+                  message={error}
+                ></SimpleAlerts>
+              )}{" "}
             </div>
-            <div className={classes.checkout_order_total}>
-              <div className={classes.checkout_order_row}>
-                <div className={classes.checkout_order_total_title}>Total</div>
-                <div className={classes.checkout_order_total_fee}>
-                  $ {cart.totalPrice}
-                  <small className={classes.checkout_order_total_fee_tip}>
-                    VAT included, where applicable
-                  </small>
-                </div>
-              </div>
-            </div>
-            {error && (
-              <SimpleAlerts
-                title="Error"
-                severity="danger"
-                message={error}
-              ></SimpleAlerts>
-            )}
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.confirm_cart_button}
-              disabled={cartItems.length === 0}
-              onClick={placeOrderHandler}
-            >
-              Place Order
-            </Button>
           </div>
         </Grid>
       </Grid>
     </React.Fragment>
   );
 };
-
-const useStyles = makeStyles((theme) => ({
-  layout: {
-    width: "100%",
-    display: "flex",
-    backgroundColor: "#fff",
-    borderRadius: 4,
-  },
-  paper: {
-    margin: "auto",
-    width: "100%",
-    maxWidth: "600px",
-  },
-  base: { padding: "0 8px" },
-  root: {
-    width: "100%",
-  },
-  table: {
-    minWidth: 750,
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: "rect(0 0 0 0)",
-    height: 1,
-    margin: -1,
-    overflow: "hidden",
-    padding: 0,
-    position: "absolute",
-    top: 20,
-    width: 1,
-  },
-  orderDetail: {
-    marginTop: theme.spacing(2),
-  },
-  location: {
-    display: "flex",
-    alignItems: "center",
-    borderBottom: "1px solid #eff0f5",
-  },
-  locationIcon: { color: "var(--whiteThin)" },
-  summary_section: {
-    borderRadius: 4,
-    marginLeft: "16px",
-    padding: "16px",
-    backgroundColor: "#fff !important",
-  },
-  title: {
-    backgroundColor: "#fff",
-    padding: "0.5rem 0",
-    marginTop: "1rem",
-    borderRadius: 4,
-  },
-  summary_section_content: {
-    paddingBottom: 16,
-  },
-  checkout_row: {
-    display: "flex",
-    marginBottom: 16,
-    justifyContent: "space-between",
-  },
-  checkout_summary_label: {
-    alignItems: "center",
-    display: "flex",
-  },
-  checkout_summary_value: {
-    fontSize: 16,
-    textAlign: "right",
-    color: "#202020",
-    letterSpacing: "-.44px",
-    verticalAlign: "middle",
-  },
-  voucher_input: {
-    marginBottom: 8,
-    width: "100%",
-  },
-
-  voucher_input_inner: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "4px",
-    width: "100%",
-  },
-  voucher_input_col_9: {
-    width: "73%",
-  },
-  voucher_input_type: { width: "100%" },
-  voucher_input_button: {
-    height: "100%",
-    margin: 0,
-    width: "100%",
-  },
-  confirm_cart_button: {
-    height: "2.5rem",
-    margin: 0,
-    width: "100%",
-    textTransform: "none",
-  },
-  voucher_input_col_3: {
-    width: "25%",
-  },
-  checkout_order_row: {
-    display: "table",
-    width: "100%",
-    marginBottom: "16px",
-  },
-  checkout_order_total_title: {
-    display: "table-cell",
-    fontSize: "14px",
-    color: "#202020",
-    lineHeight: "16px",
-  },
-  checkout_order_total_fee: {
-    display: "table-cell",
-    fontSize: "18px",
-    color: "var(--secondary)",
-    textAlign: "right",
-  },
-  checkout_order_total_fee_tip: {
-    fontSize: "12px",
-    color: "#424242",
-    letterSpacing: "0",
-    lineHeight: "16px",
-    display: "block",
-    textAlign: "right",
-    marginTop: "5px",
-  },
-}));
 
 export default PlaceOrderPage;

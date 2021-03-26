@@ -1,11 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme) => ({
   tableTh: { width: 130, padding: "16px 0 16px 0" },
-  media: {
-    width: 100,
-    maxWidth: 300,
-    alignItems: "center",
-  },
+
 
   priceCompare: { marginRight: theme.spacing(1) },
   price: { display: "flex", flexDirection: "column" },

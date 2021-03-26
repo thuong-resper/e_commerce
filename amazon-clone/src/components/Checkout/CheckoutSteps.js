@@ -49,7 +49,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           </Link>
         ) : (
           <Button disabled className={classes.button}>
-            Place Order
+            Order
           </Button>
         )}
       </Grid>

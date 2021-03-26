@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   FormControl,
   FormControlLabel,
@@ -80,14 +81,16 @@ const PaymentPage = ({ history }) => {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Continue
-            </Button>
+            <Box m="0.5rem 0" width="100%">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.buttons}
+              >
+                Continue
+              </Button>
+            </Box>
           </Grid>
         </form>
       </Paper>
@@ -117,8 +120,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttons: {
-    display: "flex",
-    justifyContent: "flex-end",
+    display: "block",
+    margin: "0 0.25rem 0 auto",
   },
   title: { margin: "20px 0" },
   button: {
