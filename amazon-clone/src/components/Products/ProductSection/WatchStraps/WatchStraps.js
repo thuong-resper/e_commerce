@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
+import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 import SeeMoreButtonMobile from "../../../Button/SeeMoreButtonMobile/SeeMoreButtonMobile";
 import SimpleAlerts from "../../../UI/Alerts/Alerts";
 import Product from "../../Product/Product";
@@ -33,6 +34,8 @@ const WatchStraps = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const { width } = useWindowDimensions();
 
   // set show skeleton when switching tabs (value change)
   useEffect(() => {
@@ -92,39 +95,25 @@ const WatchStraps = (props) => {
               <Tab label="Watch Straps" {...a11yProps(0)} />
             </Tabs>
           </AppBar>
-          {spinner ? (
-            <Grid
-              container
-              spacing={1}
-              direction="row"
-              style={{ maxHeight: "46rem" }}
-            >
-              <Grid container direction="row" spacing={1}>
-                {[...Array(5)].map((item, index) => (
-                  <Grid key={index} item className="item-skeleton">
-                    <Box mt={3}>
-                      <SkeletonProduct />
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Grid>
-          ) : (
-            <div>
-              <TabPanel value={value} index={0} className="tab-panel">
-                <Link to="/watch-accessories" className="seemore">
-                  <span>
-                    See more <strong> watch straps</strong>
-                  </span>
-                </Link>
+          <div>
+            <TabPanel value={value} index={0} className="tab-panel">
+              <Link to="/watch-accessories" className="seemore">
+                <span>
+                  See more <strong> watch straps</strong>
+                </span>
+              </Link>
 
-                {/* button see more on mobile */}
+              {/* button see more on mobile */}
 
-                <SeeMoreButtonMobile
-                  titleAfterClick="watch accessories"
-                  isActive={true}
-                  link="/watch-accessories"
-                />
+              {width < 600 ? (
+                <Grid container justify="flex-start" className="hide">
+                  {products.map((product) => (
+                    <Grid item xs={6} key={product._id}>
+                      <Product product={product} loading={loading} />
+                    </Grid>
+                  ))}
+                </Grid>
+              ) : (
                 <Grid container justify="flex-start" style={{ width: "100%" }}>
                   <Carousel
                     breakPoints={breakPoints}
@@ -140,9 +129,15 @@ const WatchStraps = (props) => {
                     ))}
                   </Carousel>
                 </Grid>
-              </TabPanel>
-            </div>
-          )}
+              )}
+
+              <SeeMoreButtonMobile
+                titleAfterClick="watch accessories"
+                isActive={true}
+                link="/watch-accessories"
+              />
+            </TabPanel>
+          </div>
         </div>
       )}
     </div>

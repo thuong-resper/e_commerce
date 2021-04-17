@@ -21,6 +21,7 @@ import SmartWatches from "../../components/Products/ProductSection/SmartWatch/Sm
 import WatchStraps from "../../components/Products/ProductSection/WatchStraps/WatchStraps";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import WatchNews from "../../components/WatchNews/WatchNews";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { listProducts } from "../../store/actions/productActions";
 import "./styles.css";
 
@@ -39,8 +40,6 @@ const HomePage = (props) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
-  console.log(products);
-
   const [value, setValue] = useState(0);
 
   const [spinner, setSpinner] = useState(false);
@@ -48,6 +47,9 @@ const HomePage = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const { width } = useWindowDimensions();
+  console.log(width);
 
   const [isActive, setActive] = useState(false);
   const [isActive1, setActive1] = useState(false);
@@ -156,21 +158,43 @@ const HomePage = (props) => {
               </Grid>
             ) : (
               <div>
-                <TabPanel
-                  value={value}
-                  index={0}
-                  className={
-                    isActive ? "skeleton-p-hide tab-panel" : "tab-panel"
-                  }
-                >
+                <TabPanel value={value} index={0} className="tab-panel">
                   <Link to="/fashion-watches" className="seemore">
                     <span>
                       See more <strong> fashion watches</strong>
                     </span>
                   </Link>
-
                   {/* button see more on mobile */}
-
+                  {/* check if in mobile show UI mobile */}
+                  {width < 600 ? (
+                    <Grid
+                      container
+                      justify="flex-start"
+                      className={!isActive ? "hide" : ""}
+                    >
+                      {products.map((product) => (
+                        <Grid item xs={6} key={product._id}>
+                          <Product product={product} loading={loading} />
+                        </Grid>
+                      ))}
+                    </Grid>
+                  ) : (
+                    <Grid container justify="flex-start">
+                      <Carousel
+                        breakPoints={breakPoints}
+                        pagination={false}
+                        enableSwipe={false}
+                      >
+                        {products.map((product) => (
+                          <Product
+                            product={product}
+                            key={product._id}
+                            loading={loading}
+                          />
+                        ))}
+                      </Carousel>
+                    </Grid>
+                  )}
                   <SeeMoreButtonMobile
                     title="fashion watches selling"
                     titleAfterClick="fashion watches"
@@ -178,33 +202,8 @@ const HomePage = (props) => {
                     toggleClass={() => toggleClass(value)}
                     link="/fashion-watches"
                   />
-                  <Grid
-                    container
-                    justify="flex-start"
-                    style={{ width: "100%" }}
-                  >
-                    <Carousel
-                      breakPoints={breakPoints}
-                      pagination={false}
-                      enableSwipe={false}
-                    >
-                      {products.map((product) => (
-                        <Product
-                          product={product}
-                          key={product._id}
-                          loading={loading}
-                        />
-                      ))}
-                    </Carousel>
-                  </Grid>
                 </TabPanel>
-                <TabPanel
-                  value={value}
-                  index={1}
-                  className={
-                    isActive1 ? "skeleton-p-hide tab-panel" : "tab-panel"
-                  }
-                >
+                <TabPanel value={value} index={1} className="tab-panel">
                   <Link to="/smart-watches" className={classes.link}>
                     <span className="seemore">
                       See more <strong> smart watches</strong>
@@ -213,6 +212,35 @@ const HomePage = (props) => {
 
                   {/* button see more on mobile */}
 
+                  {width < 600 ? (
+                    <Grid
+                      container
+                      justify="flex-start"
+                      className={!isActive1 ? "hide" : ""}
+                    >
+                      {products.map((product) => (
+                        <Grid item xs={6} key={product._id}>
+                          <Product product={product} loading={loading} />
+                        </Grid>
+                      ))}
+                    </Grid>
+                  ) : (
+                    <Grid container justify="flex-start">
+                      <Carousel
+                        breakPoints={breakPoints}
+                        pagination={false}
+                        enableSwipe={false}
+                      >
+                        {products.map((product) => (
+                          <Product
+                            product={product}
+                            key={product._id}
+                            loading={loading}
+                          />
+                        ))}
+                      </Carousel>
+                    </Grid>
+                  )}
                   <SeeMoreButtonMobile
                     title="smart watches selling"
                     titleAfterClick="smart watches"
@@ -220,40 +248,43 @@ const HomePage = (props) => {
                     toggleClass={toggleClass1}
                     link="/smart-watches"
                   />
-                  <Grid
-                    container
-                    justify="flex-start"
-                    style={{ width: "100%" }}
-                  >
-                    <Carousel
-                      breakPoints={breakPoints}
-                      pagination={false}
-                      enableSwipe={false}
-                    >
-                      {products.map((product) => (
-                        <Product
-                          product={product}
-                          key={product._id}
-                          loading={loading}
-                        />
-                      ))}
-                    </Carousel>
-                  </Grid>
                 </TabPanel>
-                <TabPanel
-                  value={value}
-                  index={2}
-                  className={
-                    isActive2 ? "skeleton-p-hide tab-panel" : "tab-panel"
-                  }
-                >
+                <TabPanel value={value} index={2} className="tab-panel">
                   <Link to="/watch-straps" className={classes.link}>
                     <span className="seemore">
                       See more <strong> watch straps</strong>
                     </span>
                   </Link>
                   {/* button see more on mobile */}
-
+                  {width < 600 ? (
+                    <Grid
+                      container
+                      justify="flex-start"
+                      className={!isActive2 ? "hide" : ""}
+                    >
+                      {products.map((product) => (
+                        <Grid item xs={6} key={product._id}>
+                          <Product product={product} loading={loading} />
+                        </Grid>
+                      ))}
+                    </Grid>
+                  ) : (
+                    <Grid container justify="flex-start">
+                      <Carousel
+                        breakPoints={breakPoints}
+                        pagination={false}
+                        enableSwipe={false}
+                      >
+                        {products.map((product) => (
+                          <Product
+                            product={product}
+                            key={product._id}
+                            loading={loading}
+                          />
+                        ))}
+                      </Carousel>
+                    </Grid>
+                  )}
                   <SeeMoreButtonMobile
                     title="watch straps selling"
                     titleAfterClick="watch straps"
@@ -261,26 +292,6 @@ const HomePage = (props) => {
                     toggleClass={toggleClass2}
                     link="/watch-straps"
                   />
-                  <Grid
-                    container
-                    justify="space-between"
-                    alignItems="stretch"
-                    style={{ width: "100%" }}
-                  >
-                    <Carousel
-                      breakPoints={breakPoints}
-                      pagination={false}
-                      enableSwipe={false}
-                    >
-                      {products.map((product) => (
-                        <Product
-                          product={product}
-                          key={product._id}
-                          loading={loading}
-                        />
-                      ))}
-                    </Carousel>
-                  </Grid>
                 </TabPanel>
               </div>
             )}

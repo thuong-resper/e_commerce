@@ -28,6 +28,8 @@ const Header = (props) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  console.log(userInfo);
+
   const logoutHandler = () => {
     dispatch(logout());
   };
@@ -75,8 +77,18 @@ const Header = (props) => {
       onClose={handleMenuClose}
       onClick={handleMenuClose}
     >
-      <MenuItem onClick={(e) => router.push("/profile")}>Profile</MenuItem>
-      <MenuItem onClick={logoutHandler}>Log out</MenuItem>
+      {userInfo.isAdmin ? (
+        <div>
+          <MenuItem onClick={(e) => router.push("/user/admin")}>Admin</MenuItem>
+          <MenuItem onClick={(e) => router.push("/profile")}>Profile</MenuItem>
+          <MenuItem onClick={logoutHandler}>Log out</MenuItem>
+        </div>
+      ) : (
+        <div>
+          <MenuItem onClick={(e) => router.push("/profile")}>Profile</MenuItem>
+          <MenuItem onClick={logoutHandler}>Log out</MenuItem>
+        </div>
+      )}
     </Menu>
   );
 
@@ -103,20 +115,42 @@ const Header = (props) => {
         </Typography>
       </Link>
       {userInfo ? (
-        <div>
-          <Link to="/profile" className={classes.link}>
-            <Typography variant="body2" className={classes.spacing}>
-              Profile
+        userInfo.isAdmin ? (
+          <div>
+            <Link to="/user/admin" className={classes.link}>
+              <Typography variant="body2" className={classes.spacing}>
+                Admin
+              </Typography>
+            </Link>
+            <Link to="/profile" className={classes.link}>
+              <Typography variant="body2" className={classes.spacing}>
+                Profile
+              </Typography>
+            </Link>
+            <Typography
+              variant="body2"
+              className={classes.spacing}
+              onClick={logoutHandler}
+            >
+              Logout
             </Typography>
-          </Link>
-          <Typography
-            variant="body2"
-            className={classes.spacing}
-            onClick={logoutHandler}
-          >
-            Logout
-          </Typography>
-        </div>
+          </div>
+        ) : (
+          <div>
+            <Link to="/profile" className={classes.link}>
+              <Typography variant="body2" className={classes.spacing}>
+                Profile
+              </Typography>
+            </Link>
+            <Typography
+              variant="body2"
+              className={classes.spacing}
+              onClick={logoutHandler}
+            >
+              Logout
+            </Typography>
+          </div>
+        )
       ) : null}
     </Menu>
   );

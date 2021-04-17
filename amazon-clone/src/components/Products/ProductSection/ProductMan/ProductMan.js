@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
+import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 import SeeMoreButtonMobile from "../../../Button/SeeMoreButtonMobile/SeeMoreButtonMobile";
 import { AntTab, AntTabs } from "../../../Tab/Tab";
 import SimpleAlerts from "../../../UI/Alerts/Alerts";
@@ -32,6 +33,9 @@ const ProductMan = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const { width } = useWindowDimensions();
+  console.log(width);
 
   // set show skeleton when switching tabs (value change)
   useEffect(() => {
@@ -125,26 +129,37 @@ const ProductMan = (props) => {
                     <strong>Men's fashion watches</strong>
                   </span>
                 </Link>
-                <Grid
-                  container
-                  direction="row"
-                  justify="flex-start"
-                  style={{ width: "100%" }}
-                >
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
+                {width < 600 ? (
+                  <Grid container justify="flex-start" className="hide">
                     {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
+                      <Grid item xs={6} key={product._id}>
+                        <Product product={product} loading={loading} />
+                      </Grid>
                     ))}
-                  </Carousel>
-                </Grid>
+                  </Grid>
+                ) : (
+                  <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    style={{ width: "100%" }}
+                  >
+                    <Carousel
+                      breakPoints={breakPoints}
+                      pagination={false}
+                      enableSwipe={false}
+                    >
+                      {products.map((product) => (
+                        <Product
+                          product={product}
+                          key={product._id}
+                          loading={loading}
+                        />
+                      ))}
+                    </Carousel>
+                  </Grid>
+                )}
+
                 <SeeMoreButtonMobile
                   titleAfterClick="man's fashion watches"
                   isActive={true}
@@ -160,26 +175,37 @@ const ProductMan = (props) => {
                     <strong>Woman's fashion watches</strong>
                   </span>
                 </Link>
-                <Grid
-                  container
-                  direction="row"
-                  justify="flex-start"
-                  style={{ width: "100%" }}
-                >
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
+
+                {width < 600 ? (
+                  <Grid container justify="flex-start" className="hide">
                     {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
+                      <Grid item xs={6} key={product._id}>
+                        <Product product={product} loading={loading} />
+                      </Grid>
                     ))}
-                  </Carousel>
-                </Grid>
+                  </Grid>
+                ) : (
+                  <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    style={{ width: "100%" }}
+                  >
+                    <Carousel
+                      breakPoints={breakPoints}
+                      pagination={false}
+                      enableSwipe={false}
+                    >
+                      {products.map((product) => (
+                        <Product
+                          product={product}
+                          key={product._id}
+                          loading={loading}
+                        />
+                      ))}
+                    </Carousel>
+                  </Grid>
+                )}
 
                 <SeeMoreButtonMobile
                   titleAfterClick="woman's fashion watches"
@@ -196,27 +222,38 @@ const ProductMan = (props) => {
                     <strong>Couple watches</strong>
                   </span>
                 </Link>
-                <Grid
-                  container
-                  direction="row"
-                  justify="space-between"
-                  alignItems="stretch"
-                  style={{ width: "100%" }}
-                >
-                  <Carousel
-                    breakPoints={breakPoints}
-                    pagination={false}
-                    enableSwipe={false}
-                  >
+
+                {width < 600 ? (
+                  <Grid container justify="flex-start" className="hide">
                     {products.map((product) => (
-                      <Product
-                        product={product}
-                        key={product._id}
-                        loading={loading}
-                      />
+                      <Grid item xs={6} key={product._id}>
+                        <Product product={product} loading={loading} />
+                      </Grid>
                     ))}
-                  </Carousel>
-                </Grid>
+                  </Grid>
+                ) : (
+                  <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="stretch"
+                    style={{ width: "100%" }}
+                  >
+                    <Carousel
+                      breakPoints={breakPoints}
+                      pagination={false}
+                      enableSwipe={false}
+                    >
+                      {products.map((product) => (
+                        <Product
+                          product={product}
+                          key={product._id}
+                          loading={loading}
+                        />
+                      ))}
+                    </Carousel>
+                  </Grid>
+                )}
                 <SeeMoreButtonMobile
                   titleAfterClick="couple watches"
                   isActive={true}
@@ -267,24 +304,10 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    padding: 0,
-  },
   link: {
     textDecoration: "none",
     color: "var(--primary)",
     top: "15px",
     right: "3px",
-  },
-  img: {
-    width: "100%",
-    height: "100%",
-  },
-  skeleton: {
-    height: "407px",
-    marginTop: "20px",
-    backgroundColor: "#fff",
   },
 }));

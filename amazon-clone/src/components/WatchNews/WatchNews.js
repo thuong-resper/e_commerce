@@ -1,30 +1,20 @@
-import { Grid, Paper } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Skeleton } from "@material-ui/lab";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
-import Carousel from "react-elastic-carousel";
-import { Link } from "react-router-dom";
-import Product from "../Products/Product/Product";
+import React, { useEffect, useState } from "react";
+import SimpleBackdrop from "../Backdrop/Backdrop";
 import { AntTab, AntTabs } from "../Tab/Tab";
 import SimpleAlerts from "../UI/Alerts/Alerts";
 import { NewsItem } from "./NewsItem/NewsItem";
 import "./styles.css";
 
-const breakPoints = [
-  { width: 1, itemsToShow: 2 },
-  { width: 600, itemsToShow: 3 },
-  { width: 769, itemsToShow: 4 },
-  { width: 960, itemsToShow: 4 },
-];
-
 const WatchNews = (props) => {
   const classes = useStyles();
 
-  const { loading, error, products } = props;
+  const { loading, error } = props;
 
   const [value, setValue] = useState(0);
   // const [spinner, setSpinner] = useState(false);
@@ -33,13 +23,13 @@ const WatchNews = (props) => {
     setValue(newValue);
   };
 
-  // set show skeleton when switching tabs (value change)
-  // useEffect(() => {
-  //   setTimeout(() => setSpinner(false), 1000);
-  //   return () => {
-  //     return setSpinner(true);
-  //   };
-  // }, [value]);
+  const [spinner, setSpinner] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setSpinner(false), 500);
+    return () => {
+      return setSpinner(true);
+    };
+  }, [value]);
 
   return (
     <div>
@@ -73,23 +63,28 @@ const WatchNews = (props) => {
               {/* <AntTab label="Guide" {...a11yProps(2)} /> */}
             </AntTabs>
           </AppBar>
-          <div>
-            <TabPanel
-              value={value}
-              index={0}
-              className="tab-panel tab-panel-footer"
-            >
-              <NewsItem class="video-news" />
-            </TabPanel>
-            <TabPanel
-              value={value}
-              index={1}
-              className="tab-panel tab-panel-footer"
-            >
-              <NewsItem />
-            </TabPanel>
-            {/* <TabPanel value={value} index={2} className="tab-panel"></TabPanel> */}
-          </div>
+
+          {spinner ? (
+            <SimpleBackdrop />
+          ) : (
+            <div>
+              <TabPanel
+                value={value}
+                index={0}
+                className="tab-panel tab-panel-footer"
+              >
+                <NewsItem class="video-news" />
+              </TabPanel>
+              <TabPanel
+                value={value}
+                index={1}
+                className="tab-panel tab-panel-footer"
+              >
+                <NewsItem />
+              </TabPanel>
+              {/* <TabPanel value={value} index={2} className="tab-panel"></TabPanel> */}
+            </div>
+          )}
         </div>
       )}
     </div>

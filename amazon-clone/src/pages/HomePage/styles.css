@@ -40,7 +40,6 @@
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  margin: 20px auto;
 }
 
 .m-heading {
@@ -144,6 +143,10 @@
   width: calc(100% / 4);
 }
 
+.hide > div:nth-child(n + 5) {
+  display: none;
+}
+
 /* carousel */
 .rec-carousel {
   position: relative;
@@ -226,11 +229,6 @@
     margin-top: 0;
     height: auto;
     overflow: hidden;
-  }
-
-  .tab-panel {
-    height: 42.5rem;
-    position: relative;
   }
 
   .skeleton-p-hide {

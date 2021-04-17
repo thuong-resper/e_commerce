@@ -6,9 +6,9 @@ import SimpleBackdrop from "./components/Backdrop/Backdrop";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import "./global.css";
+import AdminPage from "./pages/AdminPage/AdminPage";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import UserListPage from "./pages/UserListPage/UserListPage";
 import { useStyles } from "./styles";
 
 const ProductPage = React.lazy(() => {
@@ -43,6 +43,10 @@ const OrderPage = React.lazy(() => {
   return import("./pages/OrderPage/OrderPage");
 });
 
+const UserListPage = React.lazy(() => {
+  return import("./pages/UserListPage/UserListPage");
+});
+
 const App = () => {
   const classes = useStyles();
 
@@ -65,6 +69,7 @@ const App = () => {
               <Route path="/placeorder" component={PlaceOrderPage} />
               <Route path="/order/:id" component={OrderPage} />
               <Route path="/admin/userlist" component={UserListPage} />
+              <Route path="/user/admin" component={AdminPage} />
             </Suspense>
           </Switch>
         </Container>
