@@ -37,14 +37,14 @@ const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/amazon-clone/build")));
+  app.use(express.static(path.join(__dirname, "./amazon-clone/build")));
 
   app.get("*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "amazon-clone", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
-    res.send("API is running....");
+    res.send("API is ....");
   });
 }
 
