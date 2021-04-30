@@ -77,16 +77,17 @@ const Header = (props) => {
       onClose={handleMenuClose}
       onClick={handleMenuClose}
     >
-      {userInfo.isAdmin ? (
+      {userInfo ? (
         <div>
-          <MenuItem onClick={(e) => router.push("/user/admin")}>Admin</MenuItem>
           <MenuItem onClick={(e) => router.push("/profile")}>Profile</MenuItem>
           <MenuItem onClick={logoutHandler}>Log out</MenuItem>
         </div>
       ) : (
+        <MenuItem onClick={(e) => router.push("/login")}>Sign In</MenuItem>
+      )}
+      {userInfo && userInfo.isAdmin && (
         <div>
-          <MenuItem onClick={(e) => router.push("/profile")}>Profile</MenuItem>
-          <MenuItem onClick={logoutHandler}>Log out</MenuItem>
+          <MenuItem onClick={(e) => router.push("/user/admin")}>Admin</MenuItem>
         </div>
       )}
     </Menu>

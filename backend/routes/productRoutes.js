@@ -2,7 +2,7 @@ import express from "express";
 import {
   createProductReview,
   getProductById,
-  getProducts,
+  getTopTen,
 } from "../controllers/productController.js";
 import { protect } from "../middleware/authMiddleware.js";
 const router = express.Router();
@@ -11,7 +11,7 @@ const router = express.Router();
 // @route  GET /api/products
 // @access  Public
 
-router.route("/").get(getProducts);
+router.route("/").get(getTopTen);
 router.route("/:id").get(getProductById);
 router.route("/:id/reviews").post(protect, createProductReview);
 

@@ -27,15 +27,9 @@ function TabPanel(props) {
   );
 }
 
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`,
-//   };
-// }
-
 const ProductColor = ({ product }) => {
   const { colors } = product;
+  console.log(product);
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 

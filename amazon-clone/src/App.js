@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import "./global.css";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import HomePage from "./pages/HomePage/HomePage";
+import NotFound from "./pages/NotFound/NotFound";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { useStyles } from "./styles";
 
@@ -58,6 +59,7 @@ const App = () => {
         <Container component="main" className="main-view">
           <Switch>
             <Route path="/" component={HomePage} exact />
+
             <Suspense fallback={<SimpleBackdrop />}>
               <Route path="/product/:id" component={ProductPage} />
               <Route path="/cart/:id?" component={CartPage} />
@@ -71,6 +73,7 @@ const App = () => {
               <Route path="/admin/userlist" component={UserListPage} />
               <Route path="/user/admin" component={AdminPage} />
             </Suspense>
+            <Route component={NotFound} />
           </Switch>
         </Container>
       </div>

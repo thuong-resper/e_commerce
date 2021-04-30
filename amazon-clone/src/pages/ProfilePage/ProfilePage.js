@@ -1,38 +1,24 @@
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import SimpleBackdrop from "../../components/Backdrop/Backdrop";
-
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import SimpleAlerts from "../../components/UI/Alerts/Alerts";
-import { listMyOrders } from "../../store/actions/orderActions";
 import ClearIcon from "@material-ui/icons/Clear";
+import { Skeleton } from "@material-ui/lab";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import SimpleAlerts from "../../components/UI/Alerts/Alerts";
+import { USER_UPDATE_PROFILE_RESET } from "../../constants/userConstants";
+import { listMyOrders } from "../../store/actions/orderActions";
 import {
   getUserDetails,
   updateUserProfile,
 } from "../../store/actions/userActions";
-import { Link } from "react-router-dom";
-import { Skeleton } from "@material-ui/lab";
-import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 
 const ProfilePage = ({ location, history }) => {
   const classes = useStyles();
@@ -56,13 +42,12 @@ const ProfilePage = ({ location, history }) => {
   const orderListMy = useSelector((state) => state.orderListMy);
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
-  console.log(orders);
-
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      if (!user.name) {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails("profile"));
         dispatch(listMyOrders());
       } else {
@@ -70,7 +55,7 @@ const ProfilePage = ({ location, history }) => {
         setEmail(user.email);
       }
     }
-  }, [dispatch, history, userInfo, user]);
+  }, [dispatch, history, userInfo, user, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();

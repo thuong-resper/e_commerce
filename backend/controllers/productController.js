@@ -1,14 +1,34 @@
 import asyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
 
-// @desc  Fetch all products
+// @desc  Fetch top ten products by category 1
 // @route  GET /api/products
 // @access  Public
-const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+const getTopTen = asyncHandler(async (req, res) => {
+  const products1 = await Product.find({ category: "1" }).limit(10);
+  const products2 = await Product.find({ category: "2" }).limit(10);
+  const products3 = await Product.find({ category: "3" }).limit(10);
 
-  res.json(products);
+  res.json(products1, products2, products3);
 });
+
+// // @desc  Fetch top ten products by category 2
+// // @route  GET /api/products
+// // @access  Public
+// const getTopTen2 = asyncHandler(async (req, res) => {
+//   const products = await Product.find({ category: "2" }).limit(10);
+
+//   res.json(products);
+// });
+
+// // @desc  Fetch top ten products by category 3
+// // @route  GET /api/products
+// // @access  Public
+// const getTopTen3 = asyncHandler(async (req, res) => {
+//   const products = await Product.find({ category: "3" }).limit(10);
+
+//   res.json(products);
+// });
 
 // @desc  Fetch single product
 // @route  GET /api/products/:id
@@ -115,6 +135,7 @@ const createProductReview = asyncHandler(async (req, res) => {
       comment,
       user: req.user._id,
     };
+    debugger;
 
     product.reviews.push(review);
 
@@ -141,4 +162,4 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
-export { getProducts, getProductById, createProductReview };
+export { getTopTen, getProductById, createProductReview };
