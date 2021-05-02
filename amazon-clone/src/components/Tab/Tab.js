@@ -7,9 +7,7 @@ export const AntTabs = withStyles({
   indicator: {
     backgroundColor: "var(--primary)",
   },
-})((props) => (
-  <Tabs disableRipple {...props} variant="scrollable" scrollButtons="auto" />
-));
+})((props) => <Tabs {...props} variant="scrollable" scrollButtons="auto" />);
 
 export const AntTab = withStyles((theme) => ({
   root: {
@@ -31,4 +29,4 @@ export const AntTab = withStyles((theme) => ({
     },
   },
   selected: {},
-}))((props) => <Tab disableRipple {...props} />);
+}))((props) => <Tab {...props} />);

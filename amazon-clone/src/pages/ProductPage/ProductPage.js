@@ -23,11 +23,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SimpleBackdrop from "../../components/Backdrop/Backdrop";
 import CustomizedBreadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import Product from "../../components/Products/Product/Product";
 import ProductColor from "../../components/Products/ProductColor/ProductColor";
 import ProductDescription from "../../components/Products/ProductDescription/ProductDescription";
 import ProductImageTab from "../../components/Products/ProductImageTab/ProductImageTab";
 import ProductPromotion from "../../components/Products/ProductPromotions/ProductPromotion";
+import ProductSimilar from "../../components/Products/ProductSimilar/ProductSimilar";
 import ProductRating from "../../components/Rating/Rating";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../../constants/productConstants";
@@ -43,7 +43,8 @@ const ProductPage = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
-  const { loading, product, error } = productDetails;
+  const { loading, product, error, similarProducts } = productDetails;
+  console.log(productDetails);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -124,7 +125,7 @@ const ProductPage = ({ history, match }) => {
               <CustomizedBreadcrumbs />
             </Grid>
             <Grid item xs={12} md={7}>
-              {product.colors ? <ProductImageTab product={product} /> : null}
+              {product.image ? <ProductImageTab product={product} /> : null}
             </Grid>
 
             <Grid item xs={12} md={5}>
@@ -348,8 +349,7 @@ const ProductPage = ({ history, match }) => {
               <Typography variant="h5">Similar products</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Grid container direction="row" alignItems="flex-start">
-                {[...Array(6)].map((item, index) => (
+              {/* {[...Array(6)].map((item, index) => (
                   <Grid key={index} item xs={6} sm={4} md={2}>
                     <Product
                       product={product}
@@ -357,8 +357,9 @@ const ProductPage = ({ history, match }) => {
                       loading={loading}
                     />
                   </Grid>
-                ))}
-              </Grid>
+                ))} */}
+
+              <ProductSimilar similarProducts={similarProducts} />
             </Grid>
           </Grid>
           {/* description products */}

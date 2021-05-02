@@ -10,6 +10,7 @@ import styles from "./styles.module.css";
 
 const CartPage = ({ match, location, history }) => {
   const productId = match.params.id;
+  console.log(match);
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
   const dispatch = useDispatch();

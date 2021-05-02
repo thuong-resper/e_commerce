@@ -842,47 +842,6 @@ const products = [
     ],
   },
   {
-    name: "Samsung Galaxy Watch 3 41mm viền thép dây da",
-    image:
-      "/images/products/samsung-galaxy-watch-3-41mm-bac-054220-104255-400x400.jpg",
-    description: "Repair Lumbar Sympathetic Nerve, Open Approach",
-    brand: 2,
-    price: 4745000,
-    sale: false,
-    priceCompare: 9490000,
-    countInStock: 35,
-    rating: 3.7,
-    numReviews: 566,
-    category: 2,
-    sizeStrap: 50,
-    automaticEngine: true,
-    discountOnline: false,
-    promotions: [
-      {
-        name: "Repair Thoracic Duct, Percutaneous Approach",
-        detail: "Allergic arthritis, upper arm",
-      },
-      {
-        name: "Excision of Left Kidney Pelvis, Perc Endo Approach, Diagn",
-        detail: "Injury to deep plantar blood vessels",
-      },
-    ],
-    colors: [
-      {
-        name: "Pink",
-        value: "#74aa8d",
-      },
-      {
-        name: "Turquoise",
-        value: "#23d655",
-      },
-      {
-        name: "Goldenrod",
-        value: "#ae8a12",
-      },
-    ],
-  },
-  {
     name: "Samsung Galaxy Watch 3 LTE 41mm viền thép dây da",
     image: "/images/products/samsung-galaxy-watch-3-lte-41mm-ava-400x400.jpg",
     description: "Dilate R Axilla Art, Bifurc, w 2 Intralum Dev, Perc",
@@ -962,46 +921,7 @@ const products = [
       },
     ],
   },
-  {
-    name: "Samsung Galaxy Watch 3 41mm viền thép dây da",
-    image: "/images/products/samsung-galaxy-watch-3-41mm-thum-400x400.jpg",
-    description: "Release Common Bile Duct, Endo",
-    brand: 6,
-    price: 4745000,
-    sale: true,
-    priceCompare: 9490000,
-    countInStock: 94,
-    rating: 2.3,
-    numReviews: 889,
-    category: 2,
-    sizeStrap: 44,
-    automaticEngine: false,
-    discountOnline: true,
-    promotions: [
-      {
-        name: "Repair Thoracic Duct, Percutaneous Approach",
-        detail: "Allergic arthritis, upper arm",
-      },
-      {
-        name: "Excision of Left Kidney Pelvis, Perc Endo Approach, Diagn",
-        detail: "Injury to deep plantar blood vessels",
-      },
-    ],
-    colors: [
-      {
-        name: "Pink",
-        value: "#74aa8d",
-      },
-      {
-        name: "Turquoise",
-        value: "#23d655",
-      },
-      {
-        name: "Goldenrod",
-        value: "#ae8a12",
-      },
-    ],
-  },
+
   {
     name: "Mi Watch",
     image: "/images/products/mi-watch-255520-015535-400x400.jpg",
@@ -1365,7 +1285,7 @@ const products = [
   },
   {
     name: "Garmin Lily dây silicone",
-    image: "/images/products/ava-400x400 (1).jpg",
+    image: "/images/products/ava-400x400.jpg",
     description: "Drainage of Right Radius, Percutaneous Approach, Diagnostic",
     brand: 4,
     price: 4990000,
@@ -2907,7 +2827,7 @@ const products = [
   },
   {
     name: "Casio A159WA-N1DF - Unisex",
-    image: "/images/products/casio-a159wa-n1df-bac-400x400 (1).jpg",
+    image: "/images/products/casio-a159wa-n1df-bac-400x400.jpg",
     description: "Resection of Left Parotid Duct, Open Approach",
     brand: 5,
     price: 759000,
@@ -3027,7 +2947,7 @@ const products = [
   },
   {
     name: "Q&Q VP30J009Y - Unisex",
-    image: "/images/products/q-q-vp30j009y-nam-1-400x400 (1).jpg",
+    image: "/images/products/q-q-vp30j009y-nam-1-400x400.jpg",
     description: "Replacement of L Carpal Jt with Nonaut Sub, Open Approach",
     brand: 4,
     price: 209000,
@@ -3308,7 +3228,7 @@ const products = [
   },
   {
     name: "Garmin Lily dây silicone",
-    image: "/images/products/ava-400x400 (2).jpg",
+    image: "/images/products/ava-400x400.jpg",
     description: "Occlusion of Left External Iliac Artery, Perc Endo Approach",
     brand: 2,
     price: 4000000,
@@ -3830,7 +3750,7 @@ const products = [
   },
   {
     name: "Apple Watch S6 LTE 40mm viền thép dây cao su đen",
-    image: "/images/products/1-400x400 (1).jpg",
+    image: "/images/products/1-400x400.jpg",
     description: "Excision of Right Lower Lobe Bronchus, Via Opening",
     brand: 5,
     price: 17841000,
@@ -3870,7 +3790,7 @@ const products = [
   },
   {
     name: "Apple Watch SE LTE 40mm viền nhôm dây cao su",
-    image: "/images/products/ava-400x400 (3).jpg",
+    image: "/images/products/ava-400x400(3).jpg",
     description: "Revision of Spacer in L Sternoclav Jt, Open Approach",
     brand: 4,
     price: 10990000,

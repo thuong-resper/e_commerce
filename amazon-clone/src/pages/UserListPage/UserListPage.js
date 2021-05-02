@@ -2,7 +2,7 @@ import { IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import MUIDataTable from "mui-datatables";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CustomBodyCell from "../../components/Table/CustomBodyShell";
@@ -11,10 +11,6 @@ import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { listUsers } from "../../store/actions/userActions";
 
 const UserListPage = ({ history }) => {
-  const [responsive, setResponsive] = useState("standard");
-  const [tableBodyHeight, setTableBodyHeight] = useState("");
-  const [tableBodyMaxHeight, setTableBodyMaxHeight] = useState("");
-
   const dispatch = useDispatch();
 
   const userList = useSelector((state) => state.userList);

@@ -35,7 +35,6 @@ const ProductMan = (props) => {
   };
 
   const { width } = useWindowDimensions();
-  console.log(width);
 
   // set show skeleton when switching tabs (value change)
   useEffect(() => {

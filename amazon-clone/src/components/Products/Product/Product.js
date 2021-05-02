@@ -22,7 +22,6 @@ const Product = (props) => {
                 className="item-img"
                 alt={product.name}
                 src={product.image}
-                // src="https://cdn.tgdd.vn/Products/Images/7264/218120/mvw-mp005-01-nam-1-400x400.jpg"
               />
               <h3 className="item-name">{product.name}</h3>
               <div className="pros">

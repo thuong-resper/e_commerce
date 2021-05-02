@@ -40,6 +40,19 @@ const HomePage = (props) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
+  // declare array cause initial is undefined that cant map
+  let products1 = [];
+  let products2 = []; 
+  let products3 = [];
+
+  if (products.length !== 0) {
+    products1 = products.products1;
+    products2 = products.products2;
+    products3 = products.products3;
+  }
+
+  console.log(products1);
+
   const [value, setValue] = useState(0);
 
   const [spinner, setSpinner] = useState(false);
@@ -49,7 +62,6 @@ const HomePage = (props) => {
   };
 
   const { width } = useWindowDimensions();
-  console.log(width);
 
   const [isActive, setActive] = useState(false);
   const [isActive1, setActive1] = useState(false);
@@ -172,7 +184,7 @@ const HomePage = (props) => {
                       justify="flex-start"
                       className={!isActive ? "hide" : ""}
                     >
-                      {products.map((product) => (
+                      {products1.map((product) => (
                         <Grid item xs={6} key={product._id}>
                           <Product product={product} loading={loading} />
                         </Grid>
@@ -185,7 +197,7 @@ const HomePage = (props) => {
                         pagination={false}
                         enableSwipe={false}
                       >
-                        {products.map((product) => (
+                        {products1.map((product) => (
                           <Product
                             product={product}
                             key={product._id}
@@ -218,7 +230,7 @@ const HomePage = (props) => {
                       justify="flex-start"
                       className={!isActive1 ? "hide" : ""}
                     >
-                      {products.map((product) => (
+                      {products2.map((product) => (
                         <Grid item xs={6} key={product._id}>
                           <Product product={product} loading={loading} />
                         </Grid>
@@ -231,7 +243,7 @@ const HomePage = (props) => {
                         pagination={false}
                         enableSwipe={false}
                       >
-                        {products.map((product) => (
+                        {products2.map((product) => (
                           <Product
                             product={product}
                             key={product._id}
@@ -262,7 +274,7 @@ const HomePage = (props) => {
                       justify="flex-start"
                       className={!isActive2 ? "hide" : ""}
                     >
-                      {products.map((product) => (
+                      {products3.map((product) => (
                         <Grid item xs={6} key={product._id}>
                           <Product product={product} loading={loading} />
                         </Grid>
@@ -275,7 +287,7 @@ const HomePage = (props) => {
                         pagination={false}
                         enableSwipe={false}
                       >
-                        {products.map((product) => (
+                        {products3.map((product) => (
                           <Product
                             product={product}
                             key={product._id}
@@ -336,17 +348,19 @@ const HomePage = (props) => {
               data-original="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png"
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothoitrangbanner.png"
               className="img-m-heading img-m-heading-dk"
+              alt="asd"
             />
 
             <img
               data-original="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-bannerdonghothoitrang.png"
               src="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-bannerdonghothoitrang.png"
               className="img-m-heading img-m-heading-mb"
+              alt="asd"
             />
           </Link>
         </Grid>
         <Grid item xs className="m-content">
-          <ProductMan products={products} loading={loading} error={error} />
+          <ProductMan products={products1} loading={loading} error={error} />
         </Grid>
       </Grid>
       {/* smart watch */}
@@ -357,16 +371,18 @@ const HomePage = (props) => {
               className="img-m-heading img-m-heading-dk"
               data-original="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothongminhbanner.png"
               src="https://cdn.tgdd.vn/v2015/Content/desktop/images/V5/category/desk-donghothongminhbanner.png"
+              alt="asd"
             />
             <img
               data-original="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-donghothongminhbanner.png"
               src="https://cdn.tgdd.vn/v2015/Content/mobile/images/V5/category/mb-donghothongminhbanner.png"
               className="img-m-heading img-m-heading-mb"
+              alt="asd"
             />
           </Link>
         </Grid>
         <Grid item xs className="m-content">
-          <SmartWatches products={products} loading={loading} error={error} />
+          <SmartWatches products={products2} loading={loading} error={error} />
         </Grid>
       </Grid>
       {/*accessories */}
@@ -380,10 +396,10 @@ const HomePage = (props) => {
           position: "relative",
         }}
       ></div>
-      <WatchStraps products={products} loading={loading} error={error} />
+      <WatchStraps products={products3} loading={loading} error={error} />
       {/* watch news*/}
       <div className="top-15">
-        <WatchNews products={products} loading={loading} error={error} />
+        <WatchNews products={products1} loading={loading} error={error} />
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
+import axios from "axios";
 import {
-  FETCH_PRODUCT_LIST_START,
-  FETCH_PRODUCT_LIST_SUCCESS,
-  FETCH_PRODUCT_LIST_FAIL,
+  FETCH_PRODUCT_DETAILS_FAIL,
   FETCH_PRODUCT_DETAILS_START,
   FETCH_PRODUCT_DETAILS_SUCCESS,
-  FETCH_PRODUCT_DETAILS_FAIL,
-  PRODUCT_CREATE_REVIEW_REQUEST,
-  PRODUCT_CREATE_REVIEW_SUCCESS,
+  FETCH_PRODUCT_LIST_FAIL,
+  FETCH_PRODUCT_LIST_START,
+  FETCH_PRODUCT_LIST_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
+  PRODUCT_CREATE_REVIEW_REQUEST,
+  PRODUCT_CREATE_REVIEW_SUCCESS
 } from "../../constants/productConstants";
-import axios from "axios";
 import { logout } from "./userActions";
 
 export const listProducts = () => async (dispatch) => {
@@ -17,8 +17,6 @@ export const listProducts = () => async (dispatch) => {
     dispatch({ type: FETCH_PRODUCT_LIST_START });
 
     const { data } = await axios.get("/api/products");
-
-    console.log(data);
 
     dispatch({
       type: FETCH_PRODUCT_LIST_SUCCESS,

@@ -8,7 +8,7 @@ import {
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_CREATE_REVIEW_REQUEST,
   PRODUCT_CREATE_REVIEW_RESET,
-  PRODUCT_CREATE_REVIEW_SUCCESS
+  PRODUCT_CREATE_REVIEW_SUCCESS,
 } from "../../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -25,14 +25,18 @@ export const productListReducer = (state = { products: [] }, action) => {
 };
 
 export const productDetailsReducer = (
-  state = { product: { review: [] } },
+  state = { product: { review: [] }, similarProducts: [] },
   action
 ) => {
   switch (action.type) {
     case FETCH_PRODUCT_DETAILS_START:
       return { loading: true, ...state };
     case FETCH_PRODUCT_DETAILS_SUCCESS:
-      return { loading: false, product: action.payload };
+      return {
+        loading: false,
+        product: action.payload.product,
+        similarProducts: action.payload.similarProducts,
+      };
     case FETCH_PRODUCT_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:

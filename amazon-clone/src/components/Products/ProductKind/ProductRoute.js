@@ -1,4 +1,4 @@
-import { Badge, Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useStyles } from "./styles";

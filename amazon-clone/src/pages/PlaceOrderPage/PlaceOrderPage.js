@@ -52,6 +52,8 @@ const PlaceOrderPage = ({ history }) => {
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
 
+  console.log(orderCreate);
+
   const placeOrderHandler = () => {
     dispatch(
       createOrder({

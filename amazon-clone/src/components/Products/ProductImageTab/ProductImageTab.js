@@ -29,6 +29,7 @@ function TabPanel(props) {
 }
 
 const ProductImageTab = ({ product }) => {
+  console.log(product);
   const { colors } = product;
 
   const [value, setValue] = React.useState(0);
@@ -63,7 +64,8 @@ const ProductImageTab = ({ product }) => {
         <TabPanel value={value} index={value} className={styles.box}>
           <img
             alt="test avatar"
-            src="https://cdn.tgdd.vn/Products/Images/7264/218120/mvw-mp005-01-nam-1-400x400.jpg"
+            // src={colors[value].image}
+            src={product.image}
             className={styles.imgShow}
           />
         </TabPanel>

@@ -31,11 +31,10 @@ const SmartWatches = (props) => {
   const [spinner, setSpinner] = useState(false);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValue(newValue); 
   };
 
   const { width } = useWindowDimensions();
-  console.log(width);
 
   // set show skeleton when switching tabs (value change)
   useEffect(() => {

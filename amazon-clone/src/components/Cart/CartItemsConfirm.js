@@ -17,8 +17,6 @@ const CartItemsConfirm = (props) => {
   const dispatch = useDispatch();
   const { item } = props;
 
-  console.log(item);
-
   const handleDelete = (id) => {
     dispatch(removeFromCart(id));
     history.push("/cart");

@@ -1,13 +1,12 @@
 import { Grid } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import { Skeleton } from "@material-ui/lab";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
 import useWindowDimensions from "../../../../hooks/useWindowDimensions";
@@ -24,26 +23,15 @@ const breakPoints = [
 ];
 
 const WatchStraps = (props) => {
-  const classes = useStyles();
-
   const { loading, error, products } = props;
 
   const [value, setValue] = useState(0);
-  const [spinner, setSpinner] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const { width } = useWindowDimensions();
-
-  // set show skeleton when switching tabs (value change)
-  useEffect(() => {
-    setTimeout(() => setSpinner(false), 1000);
-    return () => {
-      return setSpinner(true);
-    };
-  }, [value]);
 
   return (
     <div className="skeleton-p">
@@ -178,26 +166,3 @@ function a11yProps(index) {
     "aria-controls": `scrollable-auto-tabpanel-${index}`,
   };
 }
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    padding: 0,
-  },
-  link: {
-    textDecoration: "none",
-    color: "var(--primary)",
-    top: "15px",
-    right: "3px",
-  },
-  img: {
-    width: "100%",
-    height: "100%",
-  },
-  skeleton: {
-    height: "407px",
-    marginTop: "20px",
-    backgroundColor: "#fff",
-  },
-}));

@@ -41,6 +41,7 @@ const ProductDescription = ({ product }) => {
             <iframe
               src="https://www.youtube.com/embed/k578BAHaZgE?start=115&amp;rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.thegioididong.com"
               frameBorder="0"
+              title="This is a unique title"
               allowFullScreen=""
               data-gtm-yt-inspected-1070012_61="true"
               id="877687752"

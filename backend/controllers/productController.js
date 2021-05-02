@@ -5,42 +5,68 @@ import Product from "../models/productModel.js";
 // @route  GET /api/products
 // @access  Public
 const getTopTen = asyncHandler(async (req, res) => {
-  const products1 = await Product.find({ category: "1" }).limit(10);
-  const products2 = await Product.find({ category: "2" }).limit(10);
-  const products3 = await Product.find({ category: "3" }).limit(10);
+  let products1, products2, products3;
 
-  res.json(products1, products2, products3);
+  try {
+    products1 = await Product.find({ category: "1" }).limit(10).exec();
+  } catch (err) {
+    return res.status(400).json({
+      error: "Error en STATUS1",
+    });
+  }
+  try {
+    products2 = await Product.find({ category: "2" }).limit(10).exec();
+  } catch (err) {
+    return res.status(400).json({
+      error: "Error en STATUS2",
+    });
+  }
+  try {
+    products3 = await Product.find({ category: "3" }).limit(10).exec();
+  } catch (err) {
+    return res.status(400).json({
+      error: "Error en STATUS3",
+    });
+  }
+
+  res.json({ products1, products2, products3 });
 });
 
-// // @desc  Fetch top ten products by category 2
-// // @route  GET /api/products
-// // @access  Public
-// const getTopTen2 = asyncHandler(async (req, res) => {
-//   const products = await Product.find({ category: "2" }).limit(10);
-
-//   res.json(products);
-// });
-
-// // @desc  Fetch top ten products by category 3
-// // @route  GET /api/products
-// // @access  Public
-// const getTopTen3 = asyncHandler(async (req, res) => {
-//   const products = await Product.find({ category: "3" }).limit(10);
-
-//   res.json(products);
-// });
-
-// @desc  Fetch single product
+// @desc  Fetch single product, and similar products
 // @route  GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  let product, similarProducts;
+
+  try {
+    product = await Product.findById(req.params.id).exec();
+  } catch (err) {
+    return res.status(400).json({
+      error: "Error getting product by id",
+    });
+  }
+
+  try {
+    similarProducts = await Product.find({ category: "1" }).limit(6).exec();
+  } catch (err) {
+    return res.status(400).json({
+      error: "Error fetching similar products",
+    });
+  }
+
   if (product) {
-    res.json(product);
+    res.json({ product, similarProducts });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Product Not Found");
   }
+  //   const product = await Product.findById(req.params.id);
+  //   if (product) {
+  //     res.json(product);
+  //   } else {
+  //     res.status(404);
+  //     throw new Error("Product not found");
+  //   }
 });
 
 // @desc    Delete a product

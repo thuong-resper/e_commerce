@@ -7,19 +7,19 @@ import {
   orderCreateReducer,
   orderDetailsReducer,
   orderListMyReducer,
-  orderPayReducer,
+  orderPayReducer
 } from "./reducers/orderReducers";
 import {
   productDetailsReducer,
   productListReducer,
-  productReviewCreateReducer,
+  productReviewCreateReducer
 } from "./reducers/productReducers";
 import {
   userDetailsReducer,
   userListReducer,
   userLoginReducer,
   userRegisterReducer,
-  userUpdateProfileReducer,
+  userUpdateProfileReducer
 } from "./reducers/userReducers";
 
 // const composeEnhancers =

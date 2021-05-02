@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useStyles } from "./styles";
 import "./styles.css";
 
 const ProductBanner = ({ product }) => {
-  const classes = useStyles();
-
   return (
     <div className="banner-item">
       <div className="">
