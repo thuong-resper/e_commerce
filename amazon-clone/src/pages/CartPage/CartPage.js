@@ -1,10 +1,12 @@
 import { Box, Button, Grid, TextField } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import CustomizedBreadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import CartList from "../../components/Cart/CartList";
-import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { addToCart } from "../../store/actions/cartActions";
 import styles from "./styles.module.css";
 
@@ -20,8 +22,8 @@ const CartPage = ({ match, location, history }) => {
   const { address, city, country, province } = shippingAddress;
 
   useEffect(() => {
-    if (productId) {
-      dispatch(addToCart(productId, qty));
+      if (productId) {
+        dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
 
@@ -32,14 +34,36 @@ const CartPage = ({ match, location, history }) => {
   return (
     <div>
       {cartItems.length === 0 ? (
-        <Grid container justify="space-between" alignItems="flex-start">
-          <SimpleAlerts
-            severity="info"
-            message="There are no items in this cart"
-            title="Info"
-            to="/"
-            titleLink="CONTINUE SHOPPING"
-          />
+        <Grid
+          container
+          justify="center"
+          alignItems="flex-start"
+          className={styles.wrapper_em}
+        >
+          <Grid item xs={12}>
+            <CustomizedBreadcrumbs step1="Home" step2="Shopping Cart" />
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            style={{ margin: "3rem 0" }}
+          >
+            <Box>
+              <ShoppingCartIcon className={styles.cartIcon} />
+            </Box>
+            <Box m="1rem 0">
+              <Typography variant="subtitle1" gutterBottom>
+                No products added to the cart
+              </Typography>
+            </Box>
+            <Box>
+              <Button variant="contained" className={styles.button1}>
+                <Link to="/"> GO SHOP</Link>
+              </Button>
+            </Box>
+          </Grid>
         </Grid>
       ) : (
         <div>

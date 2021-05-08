@@ -15,11 +15,11 @@ function createData(attribute, value) {
 }
 
 const items = [
-  createData("Đường kính mặt:", 159),
-  createData("Chất liệu mặt:", "Kính khoáng (Mineral)"),
-  createData("Chất liệu khung viền:", "Thép không gỉ"),
-  createData("Độ dày mặt:", "Dày 9 mm"),
-  createData("Chất liệu dây:", "Da"),
+  createData("Face Diameter:", 159),
+  createData("Face material:", "Mineral"),
+  createData("Frame material:", "Stainless Steel"),
+  createData("Face thickness:", "Dày 9 mm"),
+  createData("Wire material:", "Leather"),
 ];
 
 export default function ProductSpecification(item) {

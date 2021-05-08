@@ -31,9 +31,11 @@ import ProductSimilar from "../../components/Products/ProductSimilar/ProductSimi
 import ProductRating from "../../components/Rating/Rating";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../../constants/productConstants";
+import { formatS } from "../../shared/formatCurrency";
 import {
   createProductReview,
   listProductDetails,
+  listSimilarProducts,
 } from "../../store/actions/productActions";
 import { useStyles } from "./styles";
 import styles from "./styles.module.css";
@@ -43,8 +45,15 @@ const ProductPage = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
-  const { loading, product, error, similarProducts } = productDetails;
+  const { loading, product, error } = productDetails;
   console.log(productDetails);
+
+  const productSimilar = useSelector((state) => state.productSimilar);
+  const {
+    loading: loadingSimilarProducts,
+    similarProducts,
+    error: errorSimilarProducts,
+  } = productSimilar;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -57,6 +66,9 @@ const ProductPage = ({ history, match }) => {
   } = productReviewCreate;
 
   useEffect(() => {
+    if (product.category) {
+      dispatch(listSimilarProducts(product.category));
+    }
     if (successProductReview) {
       setRating(0);
       setComment("");
@@ -106,6 +118,9 @@ const ProductPage = ({ history, match }) => {
     );
   };
 
+  //format price to display
+  Number.prototype.format = formatS;
+
   return (
     <div>
       {loading ? (
@@ -122,7 +137,11 @@ const ProductPage = ({ history, match }) => {
             className={classes.background}
           >
             <Grid item xs={12}>
-              <CustomizedBreadcrumbs />
+              <CustomizedBreadcrumbs
+                step1="Home"
+                step2={product.category}
+                step3={product.name}
+              />
             </Grid>
             <Grid item xs={12} md={7}>
               {product.image ? <ProductImageTab product={product} /> : null}
@@ -192,7 +211,9 @@ const ProductPage = ({ history, match }) => {
 
                 <Box>
                   <Typography variant="h4" color="secondary">
-                    {product.price}
+                    {product.price
+                      ? product.price.format(0, 3, ".", ",")
+                      : null}
                     <abbr
                       style={{ textDecoration: "underline", margin: "0 5px" }}
                     >
@@ -211,13 +232,16 @@ const ProductPage = ({ history, match }) => {
                   <Typography variant="body2">
                     <span>
                       <span className={classes.priceCompare}>
-                        ${product.priceCompare}
+                        $
+                        {product.priceCompare
+                          ? product.priceCompare.format(0, 3, ".", ",")
+                          : null}
                       </span>
                       <span>
                         {(
                           -(
                             (product.priceCompare - product.price) /
-                            product.price
+                            product.priceCompare
                           ) * 100
                         ).toFixed() + "%"}
                       </span>
@@ -359,7 +383,11 @@ const ProductPage = ({ history, match }) => {
                   </Grid>
                 ))} */}
 
-              <ProductSimilar similarProducts={similarProducts} />
+              <ProductSimilar
+                similarProducts={similarProducts}
+                loading={loadingSimilarProducts}
+                error={errorSimilarProducts}
+              />
             </Grid>
           </Grid>
           {/* description products */}

@@ -5,6 +5,9 @@ import {
   FETCH_PRODUCT_LIST_FAIL,
   FETCH_PRODUCT_LIST_START,
   FETCH_PRODUCT_LIST_SUCCESS,
+  FETCH_SIMILAR_PRODUCTS,
+  FETCH_SIMILAR_PRODUCTS_FAIL,
+  FETCH_SIMILAR_PRODUCTS_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_CREATE_REVIEW_REQUEST,
   PRODUCT_CREATE_REVIEW_RESET,
@@ -25,7 +28,7 @@ export const productListReducer = (state = { products: [] }, action) => {
 };
 
 export const productDetailsReducer = (
-  state = { product: { review: [] }, similarProducts: [] },
+  state = { product: { review: [] } },
   action
 ) => {
   switch (action.type) {
@@ -34,10 +37,25 @@ export const productDetailsReducer = (
     case FETCH_PRODUCT_DETAILS_SUCCESS:
       return {
         loading: false,
-        product: action.payload.product,
-        similarProducts: action.payload.similarProducts,
+        product: action.payload,
       };
     case FETCH_PRODUCT_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productSimilarReducer = (
+  state = { similarProducts: [] },
+  action
+) => {
+  switch (action.type) {
+    case FETCH_SIMILAR_PRODUCTS:
+      return { loading: true, similarProducts: [] };
+    case FETCH_SIMILAR_PRODUCTS_SUCCESS:
+      return { loading: false, similarProducts: action.payload };
+    case FETCH_SIMILAR_PRODUCTS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

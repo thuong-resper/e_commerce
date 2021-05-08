@@ -6,9 +6,12 @@ import {
   FETCH_PRODUCT_LIST_FAIL,
   FETCH_PRODUCT_LIST_START,
   FETCH_PRODUCT_LIST_SUCCESS,
+  FETCH_SIMILAR_PRODUCTS,
+  FETCH_SIMILAR_PRODUCTS_FAIL,
+  FETCH_SIMILAR_PRODUCTS_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_CREATE_REVIEW_REQUEST,
-  PRODUCT_CREATE_REVIEW_SUCCESS
+  PRODUCT_CREATE_REVIEW_SUCCESS,
 } from "../../constants/productConstants";
 import { logout } from "./userActions";
 
@@ -25,6 +28,27 @@ export const listProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FETCH_PRODUCT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const listSimilarProducts = (categoryID) => async (dispatch) => {
+  try {
+    dispatch({ type: FETCH_SIMILAR_PRODUCTS });
+
+    const { data } = await axios.get(`/api/products/similar/${categoryID}`);
+
+    dispatch({
+      type: FETCH_SIMILAR_PRODUCTS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FETCH_SIMILAR_PRODUCTS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

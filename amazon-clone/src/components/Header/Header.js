@@ -77,16 +77,16 @@ const Header = (props) => {
     >
       {userInfo ? (
         <div>
+          {userInfo && userInfo.isAdmin && (
+            <MenuItem onClick={(e) => router.push("/user/admin")}>
+              Admin
+            </MenuItem>
+          )}
           <MenuItem onClick={(e) => router.push("/profile")}>Profile</MenuItem>
           <MenuItem onClick={logoutHandler}>Log out</MenuItem>
         </div>
       ) : (
         <MenuItem onClick={(e) => router.push("/login")}>Sign In</MenuItem>
-      )}
-      {userInfo && userInfo.isAdmin && (
-        <div>
-          <MenuItem onClick={(e) => router.push("/user/admin")}>Admin</MenuItem>
-        </div>
       )}
     </Menu>
   );
@@ -232,7 +232,7 @@ const Header = (props) => {
               color="inherit"
               className={classes.button}
               startIcon={
-                <Badge badgeContent={5} color="secondary">
+                <Badge badgeContent={0} color="secondary">
                   <FavoriteBorderIcon />
                 </Badge>
               }

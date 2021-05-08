@@ -7,19 +7,20 @@ import {
   orderCreateReducer,
   orderDetailsReducer,
   orderListMyReducer,
-  orderPayReducer
+  orderPayReducer,
 } from "./reducers/orderReducers";
 import {
   productDetailsReducer,
   productListReducer,
-  productReviewCreateReducer
+  productReviewCreateReducer,
+  productSimilarReducer,
 } from "./reducers/productReducers";
 import {
   userDetailsReducer,
   userListReducer,
   userLoginReducer,
   userRegisterReducer,
-  userUpdateProfileReducer
+  userUpdateProfileReducer,
 } from "./reducers/userReducers";
 
 // const composeEnhancers =
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   // auth: authReducer,
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  productSimilar: productSimilarReducer,
   productReviewCreate: productReviewCreateReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,

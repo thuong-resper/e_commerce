@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItemsConfirm from "../../components/Cart/CartItemsConfirm";
 import CheckoutSteps from "../../components/Checkout/CheckoutSteps";
 import SimpleAlerts from "../../components/UI/Alerts/Alerts";
+import { ORDER_CREATE_RESET } from "../../constants/orderConstants";
+import { USER_DETAILS_RESET } from "../../constants/userConstants";
 import { createOrder } from "../../store/actions/orderActions";
 import styles from "./styles.module.css";
 
@@ -52,7 +54,14 @@ const PlaceOrderPage = ({ history }) => {
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
 
-  console.log(orderCreate);
+  useEffect(() => {
+    if (success === true) {
+      history.push(`/order/${order._id}`);
+      dispatch({ type: USER_DETAILS_RESET });
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+    // eslint-disable-next-line
+  }, [history, success]);
 
   const placeOrderHandler = () => {
     dispatch(
@@ -67,12 +76,6 @@ const PlaceOrderPage = ({ history }) => {
       })
     );
   };
-
-  useEffect(() => {
-    if (success) {
-      history.push(`/order/${order._id}`);
-    }
-  }, [history, success, order]);
 
   return (
     <React.Fragment>

@@ -32,41 +32,35 @@ const getTopTen = asyncHandler(async (req, res) => {
   res.json({ products1, products2, products3 });
 });
 
-// @desc  Fetch single product, and similar products
-// @route  GET /api/products/:id
+// @desc    Fetch single product
+// @route   GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  let product, similarProducts;
-
-  try {
-    product = await Product.findById(req.params.id).exec();
-  } catch (err) {
-    return res.status(400).json({
-      error: "Error getting product by id",
-    });
-  }
-
-  try {
-    similarProducts = await Product.find({ category: "1" }).limit(6).exec();
-  } catch (err) {
-    return res.status(400).json({
-      error: "Error fetching similar products",
-    });
-  }
+  const product = await Product.findById(req.params.id);
 
   if (product) {
-    res.json({ product, similarProducts });
+    res.json(product);
   } else {
     res.status(404);
-    throw new Error("Product Not Found");
+    throw new Error("Product not found");
   }
-  //   const product = await Product.findById(req.params.id);
-  //   if (product) {
-  //     res.json(product);
-  //   } else {
-  //     res.status(404);
-  //     throw new Error("Product not found");
-  //   }
+});
+
+// @desc    Fetch similar products
+// @route   GET /api/products/:id
+// @access  Public
+const getSimilarProducts = asyncHandler(async (req, res) => {
+  console.log(req);
+  const similarProducts = await Product.find({
+    category: req.params.categoryID,
+  }).limit(6);
+
+  if (similarProducts) {
+    res.json(similarProducts);
+  } else {
+    res.status(404);
+    throw new Error("Similar products not found");
+  }
 });
 
 // @desc    Delete a product
@@ -188,4 +182,4 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
-export { getTopTen, getProductById, createProductReview };
+export { getTopTen, getProductById, createProductReview, getSimilarProducts };

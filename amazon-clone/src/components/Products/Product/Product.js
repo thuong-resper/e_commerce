@@ -1,12 +1,18 @@
 import { Box, Grid } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatS } from "../../../shared/formatCurrency";
 import ProductRating from "../../Rating/Rating";
 import SkeletonProduct from "./Skeleton/SkeletonProduct";
 import "./styles.css";
 
 const Product = (props) => {
   const { product, loading } = props;
+
+  //format price to display
+  Number.prototype.format = formatS;
+  const price = product.price.format(0, 3, ".", ",");
+  const priceCompare = product.priceCompare.format(0, 3, ".", ",");
 
   return (
     <Grid item className="product-item">
@@ -28,8 +34,8 @@ const Product = (props) => {
                 <span className="dotted lower">30 mm</span>
               </div>
               <div className="price">
-                <strong>{product.price}₫</strong>
-                <span>{product.priceCompare}₫</span>
+                <strong>{price}₫</strong>
+                <span>{priceCompare}₫</span>
                 <i>
                   {(
                     -(
